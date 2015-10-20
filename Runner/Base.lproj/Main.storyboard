@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HVW-hZ-YNP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -73,6 +74,9 @@
                                         <include reference="RFL-0Q-D3E"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="startRun:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u4I-TU-ahX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -118,20 +122,20 @@
                                 <exclude reference="oK2-B8-KqJ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="FBR-Ge-lTa"/>
-                                <exclude reference="fBw-mo-N7j"/>
-                                <exclude reference="sPB-SX-GrL"/>
-                                <exclude reference="7ef-g3-6ef"/>
-                                <exclude reference="aQB-mq-yuT"/>
-                                <exclude reference="39m-XD-BG5"/>
-                                <exclude reference="U8f-3Q-ID8"/>
-                                <exclude reference="HKk-eP-60R"/>
                                 <exclude reference="PwY-Q9-gsb"/>
                                 <exclude reference="T5y-Ml-O1E"/>
+                                <exclude reference="HKk-eP-60R"/>
+                                <exclude reference="39m-XD-BG5"/>
+                                <exclude reference="U8f-3Q-ID8"/>
                                 <exclude reference="GUu-KK-IoQ"/>
                                 <exclude reference="zcU-mi-BfB"/>
                                 <exclude reference="Zma-6Z-AGM"/>
                                 <exclude reference="xPP-Gd-x2c"/>
+                                <exclude reference="7ef-g3-6ef"/>
+                                <exclude reference="aQB-mq-yuT"/>
+                                <exclude reference="FBR-Ge-lTa"/>
+                                <exclude reference="fBw-mo-N7j"/>
+                                <exclude reference="sPB-SX-GrL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -144,26 +148,27 @@
                                 <include reference="oK2-B8-KqJ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="FBR-Ge-lTa"/>
-                                <include reference="fBw-mo-N7j"/>
-                                <include reference="sPB-SX-GrL"/>
-                                <include reference="7ef-g3-6ef"/>
-                                <include reference="aQB-mq-yuT"/>
-                                <include reference="39m-XD-BG5"/>
-                                <include reference="U8f-3Q-ID8"/>
-                                <include reference="HKk-eP-60R"/>
                                 <include reference="PwY-Q9-gsb"/>
                                 <include reference="T5y-Ml-O1E"/>
+                                <include reference="HKk-eP-60R"/>
+                                <include reference="39m-XD-BG5"/>
+                                <include reference="U8f-3Q-ID8"/>
                                 <include reference="GUu-KK-IoQ"/>
                                 <include reference="zcU-mi-BfB"/>
                                 <include reference="Zma-6Z-AGM"/>
                                 <include reference="xPP-Gd-x2c"/>
+                                <include reference="7ef-g3-6ef"/>
+                                <include reference="aQB-mq-yuT"/>
+                                <include reference="FBR-Ge-lTa"/>
+                                <include reference="fBw-mo-N7j"/>
+                                <include reference="sPB-SX-GrL"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Let's Run" id="81g-CY-gGT"/>
                     <connections>
                         <outlet property="startRun" destination="oK2-B8-KqJ" id="RqY-h0-rsg"/>
+                        <outlet property="timeLabel" destination="mgQ-ck-o0z" id="BsU-Nj-iuL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

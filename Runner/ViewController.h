@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *startRun;
 
+@property NSDate *startTime;
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
 @end

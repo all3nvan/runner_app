@@ -25,4 +25,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startRun:(id)sender {
+    _startTime = [NSDate date];
+    
+//    if(_startTime) {
+//        NSTimeInterval timeInterval = [_startTime timeIntervalSinceNow];
+//        _timeLabel.text = stringFromTimeInterval(timeInterval);
+//    }
+    
+    
+    
+    //add another button, make them toggle between the two buttons
+    
+    _startRun.backgroundColor = UIColor.redColor;
+    [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
+}
+
+//- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
+//    NSInteger ti = (NSInteger)interval;
+//    NSInteger seconds = ti % 60;
+//    NSInteger minutes = (ti / 60) % 60;
+//    NSInteger hours = (ti / 3600);
+//    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
+//}
+
+
 @end
