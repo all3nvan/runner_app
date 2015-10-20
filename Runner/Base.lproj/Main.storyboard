@@ -99,7 +99,7 @@
                             </constraint>
                             <constraint firstItem="hiR-05-0CN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fBw-mo-N7j"/>
                             <constraint firstItem="hiR-05-0CN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sPB-SX-GrL">
-                                <variation key="heightClass=regular-widthClass=compact" constant="14"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mgQ-ck-o0z" secondAttribute="bottom" constant="33" id="xPP-Gd-x2c">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
