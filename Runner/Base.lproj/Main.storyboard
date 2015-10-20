@@ -150,6 +150,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Let's Run" id="81g-CY-gGT"/>
+                    <connections>
+                        <outlet property="startRun" destination="oK2-B8-KqJ" id="RqY-h0-rsg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

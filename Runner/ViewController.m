@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _startRun.layer.cornerRadius = _startRun.bounds.size.width/2;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
