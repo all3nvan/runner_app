@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HVW-hZ-YNP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -48,7 +49,12 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="0.042856779351785335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="Ho2-qV-ys5"/>
+                                    <constraint firstAttribute="height" constant="65" id="Ho2-qV-ys5">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="75"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" secondItem="oK2-B8-KqJ" secondAttribute="height" multiplier="1:1" id="RFL-0Q-D3E">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="2"/>
+                                    </constraint>
                                 </constraints>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Start Run">
@@ -58,19 +64,25 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Ho2-qV-ys5"/>
+                                        <exclude reference="RFL-0Q-D3E"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Ho2-qV-ys5"/>
+                                        <include reference="RFL-0Q-D3E"/>
                                     </mask>
                                 </variation>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dXJ-o6-SQg" firstAttribute="top" secondItem="oK2-B8-KqJ" secondAttribute="bottom" constant="14" id="39m-XD-BG5"/>
-                            <constraint firstItem="oK2-B8-KqJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ef-g3-6ef"/>
+                            <constraint firstItem="dXJ-o6-SQg" firstAttribute="top" secondItem="oK2-B8-KqJ" secondAttribute="bottom" constant="14" id="39m-XD-BG5">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="oK2-B8-KqJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ef-g3-6ef">
+                                <variation key="heightClass=regular-widthClass=compact" constant="6.5"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="hiR-05-0CN" secondAttribute="trailing" constant="-20" id="FBR-Ge-lTa"/>
                             <constraint firstItem="mgQ-ck-o0z" firstAttribute="top" secondItem="AOU-9r-PDR" secondAttribute="bottom" constant="16" id="GUu-KK-IoQ"/>
                             <constraint firstItem="AOU-9r-PDR" firstAttribute="leading" secondItem="dXJ-o6-SQg" secondAttribute="trailing" constant="23" id="HKk-eP-60R">
@@ -83,7 +95,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="oK2-B8-KqJ" firstAttribute="top" secondItem="hiR-05-0CN" secondAttribute="bottom" constant="25" id="aQB-mq-yuT">
-                                <variation key="heightClass=regular-widthClass=compact" constant="19"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                             </constraint>
                             <constraint firstItem="hiR-05-0CN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fBw-mo-N7j"/>
                             <constraint firstItem="hiR-05-0CN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sPB-SX-GrL">
