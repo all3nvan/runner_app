@@ -16,6 +16,7 @@
 		51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EEC1BD5BCAC00E7369E /* RunnerTests.m */; };
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
+		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		51527EF71BD5BCAC00E7369E /* RunnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunnerUITests.m; sourceTree = "<group>"; };
 		51527EF91BD5BCAC00E7369E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		518A304D1BD5C35B00003CBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		518A30501BD5CD4A00003CBB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		518A30511BD5CD4A00003CBB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 		51527ED11BD5BCAC00E7369E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				518A304F1BD5CC9600003CBB /* SWRevealViewController */,
 				51527ED51BD5BCAC00E7369E /* AppDelegate.h */,
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
 				51527ED81BD5BCAC00E7369E /* ViewController.h */,
@@ -142,6 +146,15 @@
 				51527EF91BD5BCAC00E7369E /* Info.plist */,
 			);
 			path = RunnerUITests;
+			sourceTree = "<group>";
+		};
+		518A304F1BD5CC9600003CBB /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				518A30501BD5CD4A00003CBB /* SWRevealViewController.h */,
+				518A30511BD5CD4A00003CBB /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +295,7 @@
 				51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
+				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
