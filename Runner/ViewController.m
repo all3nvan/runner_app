@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SWRevealViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _startRun.layer.cornerRadius = _startRun.bounds.size.width/2;
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController)
+    {
+        [self.menuButton setTarget: self.revealViewController];
+        [self.menuButton setAction: @selector( revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

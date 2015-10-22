@@ -17,6 +17,8 @@
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
 		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9967A6781BD86A2600297580 /* menu48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9967A6771BD86A2600297580 /* menu48.png */; settings = {ASSET_TAGS = (); }; };
+		9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		518A304D1BD5C35B00003CBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		518A30501BD5CD4A00003CBB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		518A30511BD5CD4A00003CBB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		9967A6771BD86A2600297580 /* menu48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu48.png; sourceTree = "<group>"; };
+		9967A6791BD86B3E00297580 /* AppDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDrawerViewController.h; sourceTree = "<group>"; };
+		9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDrawerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,11 +113,14 @@
 		51527ED11BD5BCAC00E7369E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				9967A6761BD86A0400297580 /* Images */,
 				518A304F1BD5CC9600003CBB /* SWRevealViewController */,
 				51527ED51BD5BCAC00E7369E /* AppDelegate.h */,
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
 				51527ED81BD5BCAC00E7369E /* ViewController.h */,
 				51527ED91BD5BCAC00E7369E /* ViewController.m */,
+				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
+				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDB1BD5BCAC00E7369E /* Main.storyboard */,
 				51527EDE1BD5BCAC00E7369E /* Assets.xcassets */,
 				51527EE01BD5BCAC00E7369E /* LaunchScreen.storyboard */,
@@ -155,6 +163,14 @@
 				518A30511BD5CD4A00003CBB /* SWRevealViewController.m */,
 			);
 			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		9967A6761BD86A0400297580 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9967A6771BD86A2600297580 /* menu48.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +283,7 @@
 			files = (
 				51527EE21BD5BCAC00E7369E /* LaunchScreen.storyboard in Resources */,
 				51527EDF1BD5BCAC00E7369E /* Assets.xcassets in Resources */,
+				9967A6781BD86A2600297580 /* menu48.png in Resources */,
 				51527EDD1BD5BCAC00E7369E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */,
+				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
