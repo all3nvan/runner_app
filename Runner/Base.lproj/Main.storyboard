@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -169,6 +169,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu48.png" id="gLF-qR-Xbf"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="map" destination="hiR-05-0CN" id="Pdx-Al-Lm4"/>
                         <outlet property="menuButton" destination="gLF-qR-Xbf" id="MeF-s7-gse"/>
                         <outlet property="startRun" destination="oK2-B8-KqJ" id="RqY-h0-rsg"/>
                         <outlet property="timeLabel" destination="mgQ-ck-o0z" id="BsU-Nj-iuL"/>
@@ -176,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.5" y="786.75"/>
+            <point key="canvasLocation" x="958.5" y="741.75"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="lkh-Vn-JJA">
@@ -187,6 +188,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qLo-DU-D1N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s2M-GD-Rfp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -226,6 +228,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ACB-P5-59W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xa6-wS-XLd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

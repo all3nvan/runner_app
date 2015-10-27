@@ -27,6 +27,13 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    self.map.showsUserLocation = YES;
+//    self.map.delegate = self;
+    [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

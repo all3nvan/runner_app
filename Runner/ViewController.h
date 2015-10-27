@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 @interface ViewController : UIViewController
 
@@ -14,7 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *startRun;
 
 @property NSDate *startTime;
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
+@property (strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 

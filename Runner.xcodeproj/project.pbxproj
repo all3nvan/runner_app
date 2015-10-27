@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
 		51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED61BD5BCAC00E7369E /* AppDelegate.m */; };
 		51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED91BD5BCAC00E7369E /* ViewController.m */; };
@@ -16,9 +17,9 @@
 		51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EEC1BD5BCAC00E7369E /* RunnerTests.m */; };
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
-		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
-		9967A6781BD86A2600297580 /* menu48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9967A6771BD86A2600297580 /* menu48.png */; settings = {ASSET_TAGS = (); }; };
-		9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; };
+		9967A6781BD86A2600297580 /* menu48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9967A6771BD86A2600297580 /* menu48.png */; };
+		9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		51527ECF1BD5BCAC00E7369E /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51527ED31BD5BCAC00E7369E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51527ED51BD5BCAC00E7369E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */,
 				518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +95,7 @@
 		51527EC61BD5BCAC00E7369E = {
 			isa = PBXGroup;
 			children = (
+				284BF6E51BDF4DB4008665AF /* CoreLocation.framework */,
 				518A304D1BD5C35B00003CBB /* MapKit.framework */,
 				51527ED11BD5BCAC00E7369E /* Runner */,
 				51527EEB1BD5BCAC00E7369E /* RunnerTests */,
