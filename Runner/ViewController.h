@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "CoreLocationController.h"
+#import <Parse/Parse.h>
 
 @interface ViewController : UIViewController <CoreLocationControllerDelegate>{
     CoreLocationController* CLController;

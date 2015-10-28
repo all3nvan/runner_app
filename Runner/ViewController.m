@@ -40,8 +40,6 @@
     self.map.showsUserLocation = YES;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
     
-    
-    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
