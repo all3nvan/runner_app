@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28597CD51BE0604B000F513E /* CoreLocationController.m */; };
+		28597CD81BE0A711000F513E /* Settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28597CD71BE0A711000F513E /* Settings-icon.png */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
 		51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED61BD5BCAC00E7369E /* AppDelegate.m */; };
 		51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED91BD5BCAC00E7369E /* ViewController.m */; };
@@ -44,6 +45,7 @@
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		28597CD41BE0604B000F513E /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		28597CD51BE0604B000F513E /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
+		28597CD71BE0A711000F513E /* Settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-icon.png"; sourceTree = "<group>"; };
 		51527ECF1BD5BCAC00E7369E /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51527ED31BD5BCAC00E7369E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51527ED51BD5BCAC00E7369E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				9967A6771BD86A2600297580 /* menu48.png */,
+				28597CD71BE0A711000F513E /* Settings-icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				51527EE21BD5BCAC00E7369E /* LaunchScreen.storyboard in Resources */,
 				51527EDF1BD5BCAC00E7369E /* Assets.xcassets in Resources */,
 				9967A6781BD86A2600297580 /* menu48.png in Resources */,
+				28597CD81BE0A711000F513E /* Settings-icon.png in Resources */,
 				51527EDD1BD5BCAC00E7369E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
