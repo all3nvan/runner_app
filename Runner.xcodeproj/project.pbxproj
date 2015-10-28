@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
+		284C7B811BE16AB80094AD53 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C7B801BE16AB80094AD53 /* MenuViewController.m */; };
 		28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28597CD51BE0604B000F513E /* CoreLocationController.m */; };
 		28597CD81BE0A711000F513E /* Settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28597CD71BE0A711000F513E /* Settings-icon.png */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
@@ -43,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		284C7B7F1BE16AB80094AD53 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		284C7B801BE16AB80094AD53 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		28597CD41BE0604B000F513E /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		28597CD51BE0604B000F513E /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		28597CD71BE0A711000F513E /* Settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-icon.png"; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDB1BD5BCAC00E7369E /* Main.storyboard */,
+				284C7B7F1BE16AB80094AD53 /* MenuViewController.h */,
+				284C7B801BE16AB80094AD53 /* MenuViewController.m */,
 				51527EDE1BD5BCAC00E7369E /* Assets.xcassets */,
 				51527EE01BD5BCAC00E7369E /* LaunchScreen.storyboard */,
 				51527EE31BD5BCAC00E7369E /* Info.plist */,
@@ -326,6 +331,7 @@
 				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
 				28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */,
+				284C7B811BE16AB80094AD53 /* MenuViewController.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
 			);

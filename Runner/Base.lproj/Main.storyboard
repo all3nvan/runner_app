@@ -287,10 +287,10 @@
             </objects>
             <point key="canvasLocation" x="87" y="786.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="ELM-2e-HjQ">
             <objects>
-                <viewController id="51d-xg-qha" sceneMemberID="viewController">
+                <viewController id="51d-xg-qha" customClass="MenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x4Y-lE-LUC"/>
                         <viewControllerLayoutGuide type="bottom" id="ACB-P5-59W"/>
@@ -341,7 +341,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="settingsImage" destination="fK4-MW-duU" id="Dav-hG-nfq"/>
+                        <outlet property="settingsImage" destination="fK4-MW-duU" id="H8F-o6-2hw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VS-c7-2Wz" userLabel="First Responder" sceneMemberID="firstResponder"/>
