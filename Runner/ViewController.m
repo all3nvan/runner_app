@@ -31,7 +31,6 @@
     
     [self.locationManager requestWhenInUseAuthorization];
     self.map.showsUserLocation = YES;
-//    self.map.delegate = self;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -43,19 +42,28 @@
 }
 
 - (IBAction)startRun:(id)sender {
-    _startTime = [NSDate date];
-    
-//    if(_startTime) {
-//        NSTimeInterval timeInterval = [_startTime timeIntervalSinceNow];
-//        _timeLabel.text = stringFromTimeInterval(timeInterval);
-//    }
-    
-    
-    
-    //add another button, make them toggle between the two buttons
-    
-    _startRun.backgroundColor = UIColor.redColor;
-    [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
+    UIButton *button = (UIButton *) sender;
+    if(button.isSelected == NO){
+        button.selected = YES;
+        _startTime = [NSDate date];
+        
+        //    if(_startTime) {
+        //        NSTimeInterval timeInterval = [_startTime timeIntervalSinceNow];
+        //        _timeLabel.text = stringFromTimeInterval(timeInterval);
+        //    }
+        
+        
+        
+        //add another button, make them toggle between the two buttons
+        
+        _startRun.backgroundColor = UIColor.redColor;
+        [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
+    }
+    else{
+        button.selected = NO;
+        _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
+        [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
+    }
 }
 
 //- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
