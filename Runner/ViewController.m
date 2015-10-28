@@ -15,8 +15,15 @@
 
 @implementation ViewController
 
+@synthesize CLController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CLController = [[CoreLocationController alloc] init];
+    CLController.speedDelegate = self;
+    [CLController.speedManager startUpdatingLocation];
+    
     _startRun.layer.cornerRadius = _startRun.bounds.size.width/2;
     
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -32,6 +39,8 @@
     [self.locationManager requestWhenInUseAuthorization];
     self.map.showsUserLocation = YES;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
+    
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -54,8 +63,6 @@
         
         
         
-        //add another button, make them toggle between the two buttons
-        
         _startRun.backgroundColor = UIColor.redColor;
         [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
     }
@@ -74,5 +81,13 @@
 //    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
 //}
 
+//******Sets label in storyboard to device location******//
+-(void) locationUpdate:(CLLocation*) location {
+    locationLabel.text = @(location.speed).stringValue;
+}
+//******Sets label to error if an error occurs******//
+-(void) locationError:(NSError *)error{
+    locationLabel.text = @"Speed Unavailable";
+}
 
 @end

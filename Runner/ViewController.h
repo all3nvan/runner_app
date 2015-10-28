@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "CoreLocationController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <CoreLocationControllerDelegate>{
+    CoreLocationController* CLController;
+    IBOutlet UILabel *locationLabel;
+}
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIButton *startRun;
@@ -21,6 +25,7 @@
 @property (strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (nonatomic, retain) CoreLocationController* CLController;
 
 @end
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
+		28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28597CD51BE0604B000F513E /* CoreLocationController.m */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
 		51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED61BD5BCAC00E7369E /* AppDelegate.m */; };
 		51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED91BD5BCAC00E7369E /* ViewController.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		28597CD41BE0604B000F513E /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
+		28597CD51BE0604B000F513E /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		51527ECF1BD5BCAC00E7369E /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51527ED31BD5BCAC00E7369E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51527ED51BD5BCAC00E7369E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
 				51527ED81BD5BCAC00E7369E /* ViewController.h */,
 				51527ED91BD5BCAC00E7369E /* ViewController.m */,
+				28597CD41BE0604B000F513E /* CoreLocationController.h */,
+				28597CD51BE0604B000F513E /* CoreLocationController.m */,
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDB1BD5BCAC00E7369E /* Main.storyboard */,
@@ -316,6 +321,7 @@
 				51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */,
 				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
+				28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
 			);
