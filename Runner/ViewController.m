@@ -80,12 +80,6 @@
     locationLabel.text = @"Speed Unavailable";
 }
 
-//******Stops timer when user navigates away from the view******//
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.timer invalidate];
-}
-
 //******Used in timer to calculate seconds/minutes******//
 -(void) eachSecond{
     self.seconds++;
