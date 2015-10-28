@@ -27,5 +27,10 @@
 
 @property (nonatomic, retain) CoreLocationController* CLController;
 
+@property int seconds;
+@property float distance;
+@property (nonatomic, strong) NSMutableArray *locations;
+@property (nonatomic, strong) NSTimer* timer; 
+
 @end
 

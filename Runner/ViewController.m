@@ -51,35 +51,27 @@
 }
 
 - (IBAction)startRun:(id)sender {
+    self.seconds = 0;
+    self.distance = 0;
+    if(self.timer){
+        [self.timer invalidate];
+        self.timer = nil;
+    }
     UIButton *button = (UIButton *) sender;
     if(button.isSelected == NO){
         button.selected = YES;
-        _startTime = [NSDate date];
-        
-        //    if(_startTime) {
-        //        NSTimeInterval timeInterval = [_startTime timeIntervalSinceNow];
-        //        _timeLabel.text = stringFromTimeInterval(timeInterval);
-        //    }
-        
-        
         
         _startRun.backgroundColor = UIColor.redColor;
         [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(eachSecond) userInfo:nil repeats:YES];
     }
     else{
+        self.timer = nil;
         button.selected = NO;
         _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
         [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
     }
 }
-
-//- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval {
-//    NSInteger ti = (NSInteger)interval;
-//    NSInteger seconds = ti % 60;
-//    NSInteger minutes = (ti / 60) % 60;
-//    NSInteger hours = (ti / 3600);
-//    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
-//}
 
 //******Sets label in storyboard to device location******//
 -(void) locationUpdate:(CLLocation*) location {
@@ -88,6 +80,50 @@
 //******Sets label to error if an error occurs******//
 -(void) locationError:(NSError *)error{
     locationLabel.text = @"Speed Unavailable";
+}
+
+//******Stops timer when user navigates away from the view******//
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.timer invalidate];
+}
+
+//******Used in timer to calculate seconds/minutes******//
+-(void) eachSecond{
+    self.seconds++;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@", [self stringifySecondCount:self.seconds usingLongFormat:NO]];
+}
+
+//******Formats the timer according to how long the run is******//
+-(NSString*) stringifySecondCount:(int)seconds usingLongFormat:(BOOL)longFormat{
+    int remainingSeconds = seconds;
+    int hours = remainingSeconds/3600;
+    remainingSeconds = remainingSeconds - hours * 3600;
+    int minutes = remainingSeconds/60;
+    remainingSeconds = remainingSeconds - minutes * 60;
+    
+    if(longFormat){
+        if(hours > 0){
+            return [NSString stringWithFormat:@"%ihr %imin %isec", hours, minutes, remainingSeconds];
+        }
+        else if(minutes > 0){
+            return [NSString stringWithFormat:@"%imin %isec", minutes, remainingSeconds];
+        }
+        else{
+            return [NSString stringWithFormat:@"%isec", remainingSeconds];
+        }
+    }
+    else{
+        if(hours > 0){
+            return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, remainingSeconds];
+        }
+        else if (minutes > 0){
+            return [NSString stringWithFormat:@"%02i:%02i", minutes, remainingSeconds];
+        }
+        else{
+            return [NSString stringWithFormat:@"00:%02i", remainingSeconds];
+        }
+    }
 }
 
 @end
