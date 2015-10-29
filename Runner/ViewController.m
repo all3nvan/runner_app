@@ -81,7 +81,8 @@ static float const metersInMile = 1609.344;
 
 //******Sets label in storyboard to device speed******//
 -(void) locationUpdate:(CLLocation*) location {
-    locationLabel.text = @(location.speed).stringValue;
+    NSString* speedText = @(location.speed).stringValue;
+    [locationLabel setText:[NSString stringWithFormat:@"%@ mps", speedText]];
 }
 //******Sets label to error if an error occurs******//
 -(void) locationError:(NSError *)error{
