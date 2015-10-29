@@ -8,6 +8,8 @@
 
 #import "SidebarTableViewController.h"
 #import "SWRevealViewController.h"
+#import "ViewController.h"
+
 
 @interface SidebarTableViewController ()
 
@@ -15,13 +17,16 @@
 
 @end
 
+
 @implementation SidebarTableViewController {
     NSArray *menuItems;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menuItems = @[@"runner", @"history", @"settings", @"profile"];
+    self.menuOptions.delegate = self;
+    self.menuOptions.dataSource = self;
+    menuItems = @[@"Runner", @"History", @"Settings", @"Profile"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -48,15 +53,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    
     if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reuseIdentifier"];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.textLabel.numberOfLines = 0;
-        
+        cell.textLabel.numberOfLines=0;
     }
+    
+    UILabel *name = (UILabel*)[cell viewWithTag:2];
+    name.text = CellIdentifier;
+    UIImageView *image = (UIImageView*)[cell viewWithTag:1];
+    image.image = [UIImage imageNamed:[CellIdentifier stringByAppendingString:@".png"]];
     
     return cell;
 }
