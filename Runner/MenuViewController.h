@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *settingsImage;
+@interface MenuViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *menuOptions;
+
 
 @end

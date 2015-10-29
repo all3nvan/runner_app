@@ -7,18 +7,24 @@
 //
 
 #import "MenuViewController.h"
+#import "SWRevealViewController.h"
+
 
 @interface MenuViewController ()
 
 @end
 
-@implementation MenuViewController
+@implementation MenuViewController{
+    NSArray *menuItems;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *image = [UIImage imageNamed: @"Settings-icon.png"];
+    self.menuOptions.delegate = self;
+    self.menuOptions.dataSource = self;
+    menuItems = @[@"runner", @"history", @"settings", @"profile"];
+
     
-    [_settingsImage setImage: image];
     // Do any additional setup after loading the view.
 }
 
@@ -26,6 +32,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Number of rows is the number of time zones in the region for the specified section.
+    return menuItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation
