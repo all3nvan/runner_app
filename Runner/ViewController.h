@@ -12,7 +12,7 @@
 #import "CoreLocationController.h"
 #import <Parse/Parse.h>
 
-@interface ViewController : UIViewController <CoreLocationControllerDelegate>{
+@interface ViewController : UIViewController <UIActionSheetDelegate, CLLocationManagerDelegate>{
     CoreLocationController* CLController;
     IBOutlet UILabel *locationLabel;
 }
@@ -32,6 +32,8 @@
 @property float distance;
 @property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, strong) NSTimer* timer; 
+
+@property (weak, nonatomic) IBOutlet UILabel *distLabel;
 
 @end
 

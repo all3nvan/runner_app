@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		284C7B811BE16AB80094AD53 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C7B801BE16AB80094AD53 /* MenuViewController.m */; };
-		28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28597CD51BE0604B000F513E /* CoreLocationController.m */; };
 		28597CD81BE0A711000F513E /* Settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28597CD71BE0A711000F513E /* Settings-icon.png */; };
+		2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
 		51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED61BD5BCAC00E7369E /* AppDelegate.m */; };
 		51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED91BD5BCAC00E7369E /* ViewController.m */; };
@@ -21,8 +21,8 @@
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
 		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; };
-		51E8FE6E1BE18CD800D53965 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
-		51E8FE701BE18CE200D53965 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6F1BE18CE200D53965 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		51E8FE6E1BE18CD800D53965 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; };
+		51E8FE701BE18CE200D53965 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6F1BE18CE200D53965 /* Bolts.framework */; };
 		51E8FE721BE18D0E00D53965 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE711BE18D0E00D53965 /* AudioToolbox.framework */; };
 		51E8FE741BE18D2000D53965 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE731BE18D2000D53965 /* CFNetwork.framework */; };
 		51E8FE761BE18D2800D53965 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE751BE18D2800D53965 /* CoreGraphics.framework */; };
@@ -57,9 +57,9 @@
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		284C7B7F1BE16AB80094AD53 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		284C7B801BE16AB80094AD53 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		28597CD41BE0604B000F513E /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
-		28597CD51BE0604B000F513E /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		28597CD71BE0A711000F513E /* Settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-icon.png"; sourceTree = "<group>"; };
+		2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
+		2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		51527ECF1BD5BCAC00E7369E /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51527ED31BD5BCAC00E7369E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51527ED51BD5BCAC00E7369E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
 				51527ED81BD5BCAC00E7369E /* ViewController.h */,
 				51527ED91BD5BCAC00E7369E /* ViewController.m */,
-				28597CD41BE0604B000F513E /* CoreLocationController.h */,
-				28597CD51BE0604B000F513E /* CoreLocationController.m */,
+				2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */,
+				2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */,
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDB1BD5BCAC00E7369E /* Main.storyboard */,
@@ -374,10 +374,10 @@
 				51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */,
 				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
-				28597CD61BE0604B000F513E /* CoreLocationController.m in Sources */,
 				284C7B811BE16AB80094AD53 /* MenuViewController.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
+				2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
