@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SWRevealViewController.h"
+#import "Location.h"
 
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
@@ -91,6 +92,9 @@ static float const metersInMile = 1609.344;
         // TODO: set up run to location association in Parse
 //        pfRun[@"locations"] = _run.locations;
         [pfRun saveInBackground];
+        
+        //Displays polyline map of route that was run
+        //[self loadMap];
     }
 }
 
@@ -210,6 +214,82 @@ static float const metersInMile = 1609.344;
             
             [self.locations addObject:newLocation];
         }
+    }
+}
+
+//******Renders the path the user has run******//
+-(MKCoordinateRegion) mapRegion{
+    MKCoordinateRegion region;
+//    Location* initalLoc = self.locations.firstObject;
+    //NSLog(@"%@", self.locations.firstObject);
+    CLLocation* temp = self.locations.firstObject;
+    CLLocationCoordinate2D tempCoordinate = temp.coordinate;
+    //NSLog(@"%f", tempCoordinate.latitude);
+    
+    float minLat = tempCoordinate.latitude;
+    float minLng = tempCoordinate.longitude;
+    float maxLat = tempCoordinate.latitude;
+    float maxLng = tempCoordinate.longitude;
+    
+    for(temp in self.locations){
+        tempCoordinate = temp.coordinate;
+        if(tempCoordinate.latitude < minLat){
+            minLat = tempCoordinate.latitude;
+        }
+        if(tempCoordinate.longitude < minLng){
+            minLng = tempCoordinate.longitude;
+        }
+        if(tempCoordinate.latitude > maxLat){
+            maxLat = tempCoordinate.latitude;
+        }
+        if(tempCoordinate.longitude > maxLng){
+            maxLng = tempCoordinate.longitude;
+        }
+    }
+    
+    region.center.latitude = (minLat + maxLat) / 2.0f;
+    region.center.longitude = (minLng + maxLng) / 2.0f;
+    
+    region.span.latitudeDelta = (maxLat - minLat) * 1.1f;
+    region.span.longitudeDelta = (maxLng - minLng) * 1.1f;
+    
+    return region;
+}
+
+//******Defines color and width of the line renderer******//
+-(MKOverlayRenderer*) mapView:(MKMapView*) mapView renderForOverlay:(id < MKOverlay >) overlay{
+    if([overlay isKindOfClass:[MKPolyline class]]){
+        MKPolyline *polyLine = (MKPolyline*) overlay;
+        MKPolylineRenderer *aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:polyLine];
+        aRenderer.strokeColor = [UIColor blackColor];
+        aRenderer.lineWidth = 7;
+        return aRenderer;
+    }
+    
+    return nil;
+}
+
+//******Defines the coordinates for the line renderer******//
+-(MKPolyline*) polyLine{
+    CLLocationCoordinate2D coords[self.locations.count];
+    CLLocation* location;
+    CLLocationCoordinate2D tempCoordinate;
+    for(int i = 0; i < self.locations.count; i++){
+        location = [self.locations objectAtIndex:i];
+        tempCoordinate = location.coordinate;
+        coords[i] = CLLocationCoordinate2DMake(tempCoordinate.latitude, tempCoordinate.longitude);
+    }
+    return [MKPolyline polylineWithCoordinates:coords count:self.locations.count];
+}
+
+//******Combines the polyLine, mapView, and mapRegion functions******//
+-(void) loadMap{
+    if(self.locations.count > 0){
+        [self.map setRegion:[self mapRegion]];
+        [self.map addOverlay:[self polyLine]];
+    }
+    else{
+        //Display error
     }
 }
 
