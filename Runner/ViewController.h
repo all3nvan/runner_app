@@ -11,7 +11,6 @@
 #import <MapKit/MapKit.h>
 #import "CoreLocationController.h"
 #import <Parse/Parse.h>
-#import "Location.h"
 #import "Run.h"
 
 @interface ViewController : UIViewController <UIActionSheetDelegate, CLLocationManagerDelegate>{

@@ -83,10 +83,7 @@ static float const metersInMile = 1609.344;
         // Saves run
         _run.distance = self.distance;
         _run.duration = self.seconds;
-//        NSLog(@"%@", self.locations);
-//        for(CLLocation* location in self.locations){
-//            NSLog(@"%@", location);
-//        }
+        _run.locations = self.locations;
     }
 }
 
