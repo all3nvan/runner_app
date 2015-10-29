@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281432531BE1ACB90075B067 /* SWRevealViewController.m */; };
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		284C7B811BE16AB80094AD53 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C7B801BE16AB80094AD53 /* MenuViewController.m */; };
 		28597CD81BE0A711000F513E /* Settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 28597CD71BE0A711000F513E /* Settings-icon.png */; };
@@ -20,7 +21,6 @@
 		51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EEC1BD5BCAC00E7369E /* RunnerTests.m */; };
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
-		518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A30511BD5CD4A00003CBB /* SWRevealViewController.m */; };
 		51E8FE6E1BE18CD800D53965 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; };
 		51E8FE701BE18CE200D53965 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6F1BE18CE200D53965 /* Bolts.framework */; };
 		51E8FE721BE18D0E00D53965 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE711BE18D0E00D53965 /* AudioToolbox.framework */; };
@@ -32,9 +32,9 @@
 		51E8FE7E1BE18D5700D53965 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE7D1BE18D5700D53965 /* SystemConfiguration.framework */; };
 		51E8FE801BE18D6300D53965 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE7F1BE18D6300D53965 /* libz.tbd */; };
 		51E8FE821BE18D6D00D53965 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE811BE18D6D00D53965 /* libsqlite3.tbd */; };
-		51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B911BE19F4E00F0F2EE /* Run.m */; settings = {ASSET_TAGS = (); }; };
-		51FF2B951BE19F5500F0F2EE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B941BE19F5500F0F2EE /* User.m */; settings = {ASSET_TAGS = (); }; };
-		51FF2B991BE1A62200F0F2EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B981BE1A62200F0F2EE /* Location.m */; settings = {ASSET_TAGS = (); }; };
+		51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B911BE19F4E00F0F2EE /* Run.m */; };
+		51FF2B951BE19F5500F0F2EE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B941BE19F5500F0F2EE /* User.m */; };
+		51FF2B991BE1A62200F0F2EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FF2B981BE1A62200F0F2EE /* Location.m */; };
 		9967A6781BD86A2600297580 /* menu48.png in Resources */ = {isa = PBXBuildFile; fileRef = 9967A6771BD86A2600297580 /* menu48.png */; };
 		9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */; };
 /* End PBXBuildFile section */
@@ -57,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281432521BE1ACB90075B067 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		281432531BE1ACB90075B067 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		284C7B7F1BE16AB80094AD53 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		284C7B801BE16AB80094AD53 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
@@ -80,8 +82,6 @@
 		51527EF71BD5BCAC00E7369E /* RunnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunnerUITests.m; sourceTree = "<group>"; };
 		51527EF91BD5BCAC00E7369E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		518A304D1BD5C35B00003CBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		518A30501BD5CD4A00003CBB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		518A30511BD5CD4A00003CBB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		51E8FE6D1BE18CD800D53965 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		51E8FE6F1BE18CE200D53965 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		51E8FE711BE18D0E00D53965 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -180,15 +180,11 @@
 			children = (
 				51527ED51BD5BCAC00E7369E /* AppDelegate.h */,
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
-				51527ED81BD5BCAC00E7369E /* ViewController.h */,
-				51527ED91BD5BCAC00E7369E /* ViewController.m */,
 				2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */,
 				2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */,
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDE1BD5BCAC00E7369E /* Assets.xcassets */,
-				28597CD41BE0604B000F513E /* CoreLocationController.h */,
-				28597CD51BE0604B000F513E /* CoreLocationController.m */,
 				9967A6761BD86A0400297580 /* Images */,
 				51527EE31BD5BCAC00E7369E /* Info.plist */,
 				51527EE01BD5BCAC00E7369E /* LaunchScreen.storyboard */,
@@ -237,9 +233,9 @@
 		};
 		518A304F1BD5CC9600003CBB /* SWRevealViewController */ = {
 			isa = PBXGroup;
-Ichildren = (
-				518A30501BD5CD4A00003CBB /* SWRevealViewController.h */,
-				518A30511BD5CD4A00003CBB /* SWRevealViewController.m */,
+			children = (
+				281432521BE1ACB90075B067 /* SWRevealViewController.h */,
+				281432531BE1ACB90075B067 /* SWRevealViewController.m */,
 			);
 			name = SWRevealViewController;
 			sourceTree = "<group>";
@@ -398,7 +394,7 @@ Ichildren = (
 				51FF2B991BE1A62200F0F2EE /* Location.m in Sources */,
 				51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
-				518A30521BD5CD4A00003CBB /* SWRevealViewController.m in Sources */,
+				281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */,
 				2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
