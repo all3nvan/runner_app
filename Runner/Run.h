@@ -10,4 +10,9 @@
 
 @interface Run : NSObject
 
+@property float distance;
+@property int duration;
+@property NSDate* timestamp;
+@property NSMutableArray* locations;
+
 @end
