@@ -64,6 +64,15 @@ static float const metersInMile = 1609.344;
     
 }
 
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {

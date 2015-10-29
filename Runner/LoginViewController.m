@@ -14,8 +14,7 @@
 {
     [super viewDidLoad];
     
-    [self.logInView setBackgroundColor:[UIColor colorWithRed:.3 green:.1 blue:.8 alpha:1]];
-    
+    [self.signUpController.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
     
 }
