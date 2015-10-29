@@ -13,7 +13,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "Run.h"
-
+#import "LoginViewController.h"
 @interface ViewController : UIViewController <UIActionSheetDelegate, CLLocationManagerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>{
     CoreLocationController* CLController;
     IBOutlet UILabel *locationLabel;

@@ -56,14 +56,13 @@ static float const metersInMile = 1609.344;
     
     if (![PFUser currentUser])
     {
-        PFLogInViewController* loginView = [[PFLogInViewController alloc]init];
+        LoginViewController* loginView = [[LoginViewController alloc]init];
         loginView.delegate = self;
         loginView.signUpController.delegate = self;
         [self presentViewController:loginView animated:YES completion:nil];
     }
     
 }
-
 
 
 
