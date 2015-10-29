@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "CoreLocationController.h"
 #import <Parse/Parse.h>
+#import "Run.h"
 
 @interface ViewController : UIViewController <UIActionSheetDelegate, CLLocationManagerDelegate>{
     CoreLocationController* CLController;
@@ -31,7 +32,9 @@
 @property int seconds;
 @property float distance;
 @property (nonatomic, strong) NSMutableArray *locations;
-@property (nonatomic, strong) NSTimer* timer; 
+@property (nonatomic, strong) NSTimer* timer;
+
+@property Run* run;
 
 @property (weak, nonatomic) IBOutlet UILabel *distLabel;
 

@@ -54,7 +54,6 @@ static float const metersInMile = 1609.344;
 
 //******Handles when a user selects Start/Stop Run******//
 - (IBAction)startRun:(id)sender {
-    
     if(self.timer){
         [self.timer invalidate];
         self.timer = nil;
@@ -69,6 +68,10 @@ static float const metersInMile = 1609.344;
         [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(eachSecond) userInfo:nil repeats:YES];
         [self startLocationUpdates];
+        
+        // Initialize run
+        _run = [[Run alloc] init];
+        _run.timestamp = [NSDate dateWithTimeIntervalSinceNow:0];
     }
     else{ //User stops a run
         self.timer = nil;
@@ -76,6 +79,11 @@ static float const metersInMile = 1609.344;
         button.selected = NO;
         _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
         [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
+        
+        // Saves run
+        _run.distance = self.distance;
+        _run.duration = self.seconds;
+        _run.locations = self.locations;
     }
 }
 
