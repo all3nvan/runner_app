@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *menuOptions;
 
+@property (weak, nonatomic) IBOutlet UIButton *logout;
 @end

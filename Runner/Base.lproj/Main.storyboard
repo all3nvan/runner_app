@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -266,19 +266,23 @@
         <!--Sidebar Table View Controller-->
         <scene sceneID="gp5-KF-et1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oJR-gg-LMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="uvX-v4-nfv" customClass="SidebarTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RuO-oO-MuY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="eaN-Uj-z9E">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eaN-Uj-z9E" id="qLN-Mk-pT8">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JCG-j1-9IC">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="ar3-ei-igS"/>
                                                 <constraint firstAttribute="width" constant="37" id="mVe-fN-mTU"/>
@@ -298,11 +302,24 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wga-eP-9M0">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHt-PK-6MI">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
+                                            <state key="normal" title="Logout"/>
+                                            <variation key="heightClass=regular" fixedFrame="YES">
+                                                <rect key="frame" x="27" y="8" width="48" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="logout:" destination="uvX-v4-nfv" eventType="touchUpInside" id="mtr-H2-NqH"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="wga-eP-9M0" firstAttribute="centerY" secondItem="qLN-Mk-pT8" secondAttribute="centerY" id="1js-Cp-1uT"/>
                                         <constraint firstItem="wga-eP-9M0" firstAttribute="leading" secondItem="qLN-Mk-pT8" secondAttribute="leadingMargin" constant="45" id="9KC-Yw-LgU"/>
@@ -313,12 +330,18 @@
                                         <mask key="subviews">
                                             <exclude reference="JCG-j1-9IC"/>
                                             <exclude reference="wga-eP-9M0"/>
+                                            <exclude reference="YHt-PK-6MI"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="G8g-8e-IS4"/>
-                                            <exclude reference="UE6-jI-RR8"/>
                                             <exclude reference="1js-Cp-1uT"/>
                                             <exclude reference="9KC-Yw-LgU"/>
+                                            <exclude reference="G8g-8e-IS4"/>
+                                            <exclude reference="UE6-jI-RR8"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular">
+                                        <mask key="subviews">
+                                            <include reference="YHt-PK-6MI"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -327,13 +350,14 @@
                                             <include reference="wga-eP-9M0"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="G8g-8e-IS4"/>
-                                            <include reference="UE6-jI-RR8"/>
                                             <include reference="1js-Cp-1uT"/>
                                             <include reference="9KC-Yw-LgU"/>
+                                            <include reference="G8g-8e-IS4"/>
+                                            <include reference="UE6-jI-RR8"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -345,6 +369,7 @@
                         <outlet property="menuOptions" destination="RuO-oO-MuY" id="q6A-qR-MS1"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oJR-gg-LMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-177" y="100.5"/>
         </scene>

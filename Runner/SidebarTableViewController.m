@@ -9,6 +9,7 @@
 #import "SidebarTableViewController.h"
 #import "SWRevealViewController.h"
 #import "ViewController.h"
+#import "LoginViewController.h"
 
 
 @interface SidebarTableViewController ()
@@ -40,6 +41,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)logout:(id) sender{
+    [PFUser logOut];
+    if(![PFUser currentUser]){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+        LoginViewController* loginView = [[LoginViewController alloc]init];
+        loginView.delegate = self;
+        loginView.signUpController.delegate = self;
+        [self presentViewController:loginView animated:YES completion:nil];
+}
+
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -48,7 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return menuItems.count;
+    return 1;//menuItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,7 +84,8 @@
     name.text = CellIdentifier;
     UIImageView *image = (UIImageView*)[cell viewWithTag:1];
     image.image = [UIImage imageNamed:[CellIdentifier stringByAppendingString:@".png"]];
-    
+    UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
+    [objectOfButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
