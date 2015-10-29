@@ -84,6 +84,13 @@ static float const metersInMile = 1609.344;
         _run.distance = self.distance;
         _run.duration = self.seconds;
         _run.locations = self.locations;
+
+        PFObject *pfRun = [PFObject objectWithClassName:@"Run"];
+        pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
+        pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
+        // TODO: set up run to location association in Parse
+//        pfRun[@"locations"] = _run.locations;
+        [pfRun saveInBackground];
     }
 }
 
