@@ -22,14 +22,15 @@
     return self;
 }
 
--(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    if([self.speedDelegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {
-        CLLocation *loc = [locations lastObject];
-//        NSLog(@"%@", loc);
-        [self.speedDelegate locationUpdate:loc];
-    }
+//******If location of device is found, sends information about the location/speed of the device through delegate******//
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+//    if([self.speedDelegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {
+//        CLLocation *loc = [locations lastObject];
+//        [self.speedDelegate locationUpdate:loc];
+//    }
 }
 
+//******If an error occurs, sends error through delegate******//
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     if([self.speedDelegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]){
         [self.speedDelegate locationError:error];

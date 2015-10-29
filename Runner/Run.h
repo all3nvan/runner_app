@@ -10,6 +10,13 @@
 
 @interface Run : NSObject
 
+<<<<<<< HEAD
 @property int elapsedSeconds;
+=======
+@property float distance;
+@property int duration;
+@property NSDate* timestamp;
+@property NSMutableArray* locations;
+>>>>>>> ef7f26d312b13101447cb2e4ad30fe4f78a1b4e1
 
 @end
