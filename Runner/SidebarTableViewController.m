@@ -11,6 +11,8 @@
 
 @interface SidebarTableViewController ()
 
+
+
 @end
 
 @implementation SidebarTableViewController {
@@ -19,8 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.menuOptions.delegate = self;
-    self.menuOptions.dataSource = self;
     menuItems = @[@"runner", @"history", @"settings", @"profile"];
     
     // Uncomment the following line to preserve selection between presentations.

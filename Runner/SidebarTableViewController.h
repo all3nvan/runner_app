@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SidebarTableViewController : UITableViewController <UITableViewDelegate,UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UITableView *menuOptions;
+@interface SidebarTableViewController : UITableViewController
 
 @end
