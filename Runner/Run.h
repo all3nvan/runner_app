@@ -10,4 +10,6 @@
 
 @interface Run : NSObject
 
+@property int elapsedSeconds;
+
 @end

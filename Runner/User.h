@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Run.h"
 
 @interface User : NSObject
+
+@property NSString* firstName;
+@property NSString* lastName;
+@property NSString* email;
+@property NSMutableArray* runs;
+
 
 @end
