@@ -48,6 +48,13 @@ static float const metersInMile = 1609.344;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    PFLogInViewController* loginView = [[PFLogInViewController alloc]init];
+    [self presentViewController:loginView animated:YES completion:nil];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
