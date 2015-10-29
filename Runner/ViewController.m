@@ -48,13 +48,25 @@ static float const metersInMile = 1609.344;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+
+//shows login view
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    PFLogInViewController* loginView = [[PFLogInViewController alloc]init];
-    [self presentViewController:loginView animated:YES completion:nil];
+    
+    if (![PFUser currentUser])
+    {
+        PFLogInViewController* loginView = [[PFLogInViewController alloc]init];
+        loginView.delegate = self;
+        loginView.signUpController.delegate = self;
+        [self presentViewController:loginView animated:YES completion:nil];
+    }
     
 }
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -92,12 +104,12 @@ static float const metersInMile = 1609.344;
         _run.distance = self.distance;
         _run.duration = self.seconds;
         _run.locations = self.locations;
-
+        
         PFObject *pfRun = [PFObject objectWithClassName:@"Run"];
         pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
         pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
         // TODO: set up run to location association in Parse
-//        pfRun[@"locations"] = _run.locations;
+        //        pfRun[@"locations"] = _run.locations;
         [pfRun saveInBackground];
         
         //Displays polyline map of route that was run
@@ -227,7 +239,7 @@ static float const metersInMile = 1609.344;
 //******Renders the path the user has run******//
 -(MKCoordinateRegion) mapRegion{
     MKCoordinateRegion region;
-//    Location* initalLoc = self.locations.firstObject;
+    //    Location* initalLoc = self.locations.firstObject;
     //NSLog(@"%@", self.locations.firstObject);
     CLLocation* temp = self.locations.firstObject;
     CLLocationCoordinate2D tempCoordinate = temp.coordinate;
