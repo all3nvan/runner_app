@@ -88,6 +88,8 @@ static float const metersInMile = 1609.344;
     }
     UIButton *button = (UIButton *) sender;
     if(button.isSelected == NO){ //If user starts a run
+        [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES]; //Zooms back to map and follows user again
+        [self.map removeOverlays:self.map.overlays]; //Removes polylines from map
         button.selected = YES;
         self.seconds = 0;
         self.distance = 0;
@@ -107,7 +109,7 @@ static float const metersInMile = 1609.344;
         button.selected = NO;
         _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
         [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
-        
+
         // Saves run
         _run.distance = self.distance;
         _run.duration = self.seconds;
@@ -311,12 +313,23 @@ static float const metersInMile = 1609.344;
 
 //******Combines the polyLine, mapView, and mapRegion functions******//
 -(void) loadMap{
-    if(self.locations.count > 0){
+    if(self.locations.count > 1){
         self.map.hidden = NO;
         [self.map setRegion:[self mapRegion]];
         [self.map addOverlay:[self polyLine]];
     }
     else{
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No locations to display." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
         //Display error saying no locations were recorded
     }
 }
