@@ -44,7 +44,7 @@ static float const metersInMile = 1609.344;
     [self.locationManager requestWhenInUseAuthorization];
     self.map.showsUserLocation = YES;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
-    
+    self.map.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -121,7 +121,7 @@ static float const metersInMile = 1609.344;
         [pfRun saveInBackground];
         
         //Displays polyline map of route that was run
-        //[self loadMap];
+        [self loadMap];
     }
 }
 
@@ -284,12 +284,12 @@ static float const metersInMile = 1609.344;
 }
 
 //******Defines color and width of the line renderer******//
--(MKOverlayRenderer*) mapView:(MKMapView*) mapView renderForOverlay:(id < MKOverlay >) overlay{
+-(MKOverlayRenderer*) mapView:(MKMapView*) mapView rendererForOverlay:(id < MKOverlay >) overlay{
     if([overlay isKindOfClass:[MKPolyline class]]){
         MKPolyline *polyLine = (MKPolyline*) overlay;
         MKPolylineRenderer *aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:polyLine];
         aRenderer.strokeColor = [UIColor blackColor];
-        aRenderer.lineWidth = 7;
+        aRenderer.lineWidth = 5;
         return aRenderer;
     }
     
@@ -312,11 +312,12 @@ static float const metersInMile = 1609.344;
 //******Combines the polyLine, mapView, and mapRegion functions******//
 -(void) loadMap{
     if(self.locations.count > 0){
+        self.map.hidden = NO;
         [self.map setRegion:[self mapRegion]];
         [self.map addOverlay:[self polyLine]];
     }
     else{
-        //Display error
+        //Display error saying no locations were recorded
     }
 }
 
