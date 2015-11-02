@@ -38,6 +38,7 @@
 @property Run* run;
 
 @property (weak, nonatomic) IBOutlet UILabel *distLabel;
+@property (weak, nonatomic) IBOutlet UILabel *paceLabel;
 
 @end
 

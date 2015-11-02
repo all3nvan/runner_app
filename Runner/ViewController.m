@@ -154,7 +154,7 @@ static float const metersInMile = 1609.344;
     self.seconds++;
     self.timeLabel.text = [NSString stringWithFormat:@"%@", [self stringifySecondCount:self.seconds usingLongFormat:NO]];
     self.distLabel.text = [NSString stringWithFormat:@"%@", [self stringifyDistance:self.distance]];
-    //self.paceLabel.text = [NSString stringWithFormat:@"Pace: %@", [self stringifyAvgPaceFromDist:self.distance]];
+    self.paceLabel.text = [NSString stringWithFormat:@"%@", [self stringifyAvgPaceFromDist:self.distance overTime:self.seconds]];
 }
 
 //******Formats the timer according to how long the run is******//
