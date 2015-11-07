@@ -40,5 +40,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *distLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paceLabel;
 
+@property (strong, nonatomic) UIColor *color;
+
 @end
 

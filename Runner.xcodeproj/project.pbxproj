@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
-		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		19EAE0A81BE28C3800A074F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EAE0A71BE28C3800A074F6 /* logo.png */; settings = {ASSET_TAGS = (); }; };
+		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
+		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
+		19EAE0A81BE28C3800A074F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EAE0A71BE28C3800A074F6 /* logo.png */; };
+		28024D341BEDE6AD004BD0EA /* MulticolorPolylineSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 28024D331BEDE6AD004BD0EA /* MulticolorPolylineSegment.m */; };
 		281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281432531BE1ACB90075B067 /* SWRevealViewController.m */; };
 		281432571BE1C54D0075B067 /* Location.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 281432551BE1C54D0075B067 /* Location.xcdatamodeld */; };
 		2814325C1BE1C61D0075B067 /* Location+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 281432591BE1C61D0075B067 /* Location+CoreDataProperties.m */; };
@@ -68,6 +69,8 @@
 		19EAE0A21BE24BC600A074F6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		19EAE0A31BE24BC600A074F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		19EAE0A71BE28C3800A074F6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		28024D321BEDE6AD004BD0EA /* MulticolorPolylineSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticolorPolylineSegment.h; sourceTree = "<group>"; };
+		28024D331BEDE6AD004BD0EA /* MulticolorPolylineSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticolorPolylineSegment.m; sourceTree = "<group>"; };
 		281432521BE1ACB90075B067 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		281432531BE1ACB90075B067 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		281432561BE1C54D0075B067 /* Location.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Location.xcdatamodel; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				51FF2B941BE19F5500F0F2EE /* User.m */,
 				51527ED81BD5BCAC00E7369E /* ViewController.h */,
 				51527ED91BD5BCAC00E7369E /* ViewController.m */,
+				28024D321BEDE6AD004BD0EA /* MulticolorPolylineSegment.h */,
+				28024D331BEDE6AD004BD0EA /* MulticolorPolylineSegment.m */,
 				19EAE0A21BE24BC600A074F6 /* LoginViewController.h */,
 				19EAE0A31BE24BC600A074F6 /* LoginViewController.m */,
 			);
@@ -425,6 +430,7 @@
 				2814325C1BE1C61D0075B067 /* Location+CoreDataProperties.m in Sources */,
 				51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */,
 				281432571BE1C54D0075B067 /* Location.xcdatamodeld in Sources */,
+				28024D341BEDE6AD004BD0EA /* MulticolorPolylineSegment.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */,
 				2814325D1BE1C61D0075B067 /* Location.m in Sources */,

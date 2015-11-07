@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SWRevealViewController.h"
 #import "Location.h"
+#import "MulticolorPolylineSegment.h"
 
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
@@ -286,12 +287,13 @@ static float const metersInMile = 1609.344;
 }
 
 //******Defines color and width of the line renderer******//
--(MKOverlayRenderer*) mapView:(MKMapView*) mapView rendererForOverlay:(id < MKOverlay >) overlay{
-    if([overlay isKindOfClass:[MKPolyline class]]){
-        MKPolyline *polyLine = (MKPolyline*) overlay;
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+{
+    if ([overlay isKindOfClass:[MulticolorPolylineSegment class]]) {
+        MulticolorPolylineSegment *polyLine = (MulticolorPolylineSegment *)overlay;
         MKPolylineRenderer *aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:polyLine];
-        aRenderer.strokeColor = [UIColor blackColor];
-        aRenderer.lineWidth = 5;
+        aRenderer.strokeColor = polyLine.color;
+        aRenderer.lineWidth = 3;
         return aRenderer;
     }
     
@@ -316,7 +318,8 @@ static float const metersInMile = 1609.344;
     if(self.locations.count > 1){
         self.map.hidden = NO;
         [self.map setRegion:[self mapRegion]];
-        [self.map addOverlay:[self polyLine]];
+        NSArray *colorSegmentArray = [self colorSegmentsForLocations:self.locations];
+        [self.map addOverlays:colorSegmentArray];
     }
     else{
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No locations to display." preferredStyle:UIAlertControllerStyleAlert];
@@ -332,6 +335,101 @@ static float const metersInMile = 1609.344;
         [self presentViewController:alert animated:YES completion:nil];
         //Display error saying no locations were recorded
     }
+}
+
+//******Changes color of the map polylines******//
+- (NSArray *)colorSegmentsForLocations:(NSArray *)locations
+{
+    // make array of all speeds, find slowest+fastest
+    NSMutableArray *speeds = [NSMutableArray array];
+    double slowestSpeed = DBL_MAX;
+    double fastestSpeed = 0.0;
+    
+    for (int i = 1; i < locations.count; i++) {
+//        Location *firstLoc = [locations objectAtIndex:(i-1)];
+        CLLocation *firstTemp = [locations objectAtIndex:(i - 1)];
+//        Location *secondLoc = [locations objectAtIndex:i];
+        CLLocation *secondTemp = [locations objectAtIndex:i];
+        
+        CLLocationCoordinate2D firstTempCoordinate = firstTemp.coordinate;
+        CLLocationCoordinate2D secondTempCoordinate = secondTemp.coordinate;
+        
+        CLLocation *firstLocCL = [[CLLocation alloc] initWithLatitude:firstTempCoordinate.latitude longitude:firstTempCoordinate.longitude];
+        CLLocation *secondLocCL = [[CLLocation alloc] initWithLatitude:secondTempCoordinate.latitude longitude:secondTempCoordinate.longitude];
+        
+        double distance = [secondLocCL distanceFromLocation:firstLocCL];
+        double time = [secondTemp.timestamp timeIntervalSinceDate:firstTemp.timestamp];
+        double speed = distance/time;
+        
+        slowestSpeed = speed < slowestSpeed ? speed : slowestSpeed;
+        fastestSpeed = speed > fastestSpeed ? speed : fastestSpeed;
+        
+        [speeds addObject:@(speed)];
+    }
+    
+    // now knowing the slowest+fastest, we can get mean too
+    double meanSpeed = (slowestSpeed + fastestSpeed)/2;
+    
+    // RGB for red (slowest)
+    CGFloat r_red = 1.0f;
+    CGFloat r_green = 20/255.0f;
+    CGFloat r_blue = 44/255.0f;
+    
+    // RGB for yellow (middle)
+    CGFloat y_red = 1.0f;
+    CGFloat y_green = 215/255.0f;
+    CGFloat y_blue = 0.0f;
+    
+    // RGB for green (fastest)
+    CGFloat g_red = 0.0f;
+    CGFloat g_green = 146/255.0f;
+    CGFloat g_blue = 78/255.0f;
+    
+    NSMutableArray *colorSegments = [NSMutableArray array];
+    
+    for (int i = 1; i < locations.count; i++) {
+//        Location *firstLoc = [locations objectAtIndex:(i-1)];
+//        Location *secondLoc = [locations objectAtIndex:i];
+        CLLocation *firstTemp = [locations objectAtIndex:(i - 1)];
+        CLLocation *secondTemp = [locations objectAtIndex:i];
+        
+        CLLocationCoordinate2D firstTempCoord = firstTemp.coordinate;
+        CLLocationCoordinate2D secondTempCoord = secondTemp.coordinate;
+        
+        CLLocationCoordinate2D coords[2];
+        coords[0].latitude = firstTempCoord.latitude;
+        coords[0].longitude = firstTempCoord.longitude;
+        
+        coords[1].latitude = secondTempCoord.latitude;
+        coords[1].longitude = secondTempCoord.longitude;
+        
+        NSNumber *speed = [speeds objectAtIndex:(i-1)];
+        UIColor *color = [UIColor blackColor];
+        
+        // between red and yellow
+        if (speed.doubleValue < meanSpeed) {
+            double ratio = (speed.doubleValue - slowestSpeed) / (meanSpeed - slowestSpeed);
+            CGFloat red = r_red + ratio * (y_red - r_red);
+            CGFloat green = r_green + ratio * (y_green - r_green);
+            CGFloat blue = r_blue + ratio * (y_blue - r_blue);
+            color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+            
+            // between yellow and green
+        } else {
+            double ratio = (speed.doubleValue - meanSpeed) / (fastestSpeed - meanSpeed);
+            CGFloat red = y_red + ratio * (g_red - y_red);
+            CGFloat green = y_green + ratio * (g_green - y_green);
+            CGFloat blue = y_blue + ratio * (g_blue - y_blue);
+            color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+        }
+        
+        MulticolorPolylineSegment *segment = [MulticolorPolylineSegment polylineWithCoordinates:coords count:2];
+        segment.color = color;
+        
+        [colorSegments addObject:segment];
+    }
+    
+    return colorSegments;
 }
 
 @end
