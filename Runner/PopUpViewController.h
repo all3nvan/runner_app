@@ -13,7 +13,9 @@
 @interface PopUpViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImg;
 -(void) showInView:(UIView*) aView animated:(BOOL)animated;
 -(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated;
 -(IBAction) closePopup:(id)sender;
+-(IBAction) saveRun:(id)sender;
 @end

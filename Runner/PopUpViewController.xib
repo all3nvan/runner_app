@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpViewController">
             <connections>
+                <outlet property="logoImg" destination="KHi-Ph-gPq" id="ITd-dU-Jfd"/>
                 <outlet property="popUpView" destination="i5M-Pr-FkT" id="9ss-TZ-cDC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,6 +19,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHB-oo-cNB">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2X3-G4-WEw">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <animations/>
+                            <state key="normal" title="Discard"/>
+                            <connections>
+                                <action selector="closePopup:" destination="-1" eventType="touchUpInside" id="54s-hB-NZd"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popup Window" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBI-hu-LN5">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <animations/>
@@ -25,48 +34,87 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2X3-G4-WEw">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KHi-Ph-gPq">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <animations/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIS-zD-GfB">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <animations/>
-                            <state key="normal" title="Close"/>
+                            <state key="normal" title="Save Run"/>
                             <connections>
-                                <action selector="closePopup:" destination="-1" eventType="touchUpInside" id="54s-hB-NZd"/>
+                                <action selector="saveRun:" destination="-1" eventType="touchUpInside" id="sM3-gN-BeA"/>
                             </connections>
                         </button>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="KHi-Ph-gPq" secondAttribute="trailing" constant="145" id="9uz-Dc-s8C">
+                            <variation key="heightClass=regular" constant="66"/>
+                        </constraint>
                         <constraint firstItem="eBI-hu-LN5" firstAttribute="top" secondItem="WHB-oo-cNB" secondAttribute="top" constant="89" id="AZe-Cq-3LP"/>
                         <constraint firstItem="2X3-G4-WEw" firstAttribute="top" secondItem="eBI-hu-LN5" secondAttribute="bottom" constant="97" id="BR2-xa-ykU"/>
-                        <constraint firstAttribute="trailing" secondItem="2X3-G4-WEw" secondAttribute="trailing" constant="165" id="U1k-iw-Xri"/>
+                        <constraint firstItem="zIS-zD-GfB" firstAttribute="top" secondItem="eBI-hu-LN5" secondAttribute="bottom" constant="42" id="EdX-Xa-GkM"/>
+                        <constraint firstItem="KHi-Ph-gPq" firstAttribute="top" secondItem="eBI-hu-LN5" secondAttribute="bottom" constant="8" id="IE6-tA-35S">
+                            <variation key="heightClass=regular" constant="13"/>
+                        </constraint>
+                        <constraint firstItem="KHi-Ph-gPq" firstAttribute="leading" secondItem="WHB-oo-cNB" secondAttribute="leading" constant="145" id="LR3-hO-Mya">
+                            <variation key="heightClass=regular" constant="224"/>
+                        </constraint>
+                        <constraint firstItem="KHi-Ph-gPq" firstAttribute="leading" secondItem="zIS-zD-GfB" secondAttribute="trailing" constant="8" id="P9u-VA-cjV"/>
+                        <constraint firstAttribute="trailing" secondItem="2X3-G4-WEw" secondAttribute="trailing" constant="165" id="U1k-iw-Xri">
+                            <variation key="heightClass=regular" constant="158"/>
+                        </constraint>
+                        <constraint firstItem="2X3-G4-WEw" firstAttribute="top" secondItem="KHi-Ph-gPq" secondAttribute="bottom" constant="12" id="YDh-MT-dO3">
+                            <variation key="heightClass=regular" constant="7"/>
+                        </constraint>
                         <constraint firstItem="eBI-hu-LN5" firstAttribute="leading" secondItem="WHB-oo-cNB" secondAttribute="leading" constant="126" id="jiQ-DH-1wC"/>
+                        <constraint firstItem="2X3-G4-WEw" firstAttribute="top" secondItem="zIS-zD-GfB" secondAttribute="bottom" constant="25" id="kL7-7p-YF1"/>
                         <constraint firstItem="eBI-hu-LN5" firstAttribute="centerX" secondItem="WHB-oo-cNB" secondAttribute="centerX" id="l79-TH-cx2"/>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
-                            <exclude reference="eBI-hu-LN5"/>
                             <exclude reference="2X3-G4-WEw"/>
+                            <exclude reference="eBI-hu-LN5"/>
+                            <exclude reference="KHi-Ph-gPq"/>
+                            <exclude reference="zIS-zD-GfB"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="AZe-Cq-3LP"/>
                             <exclude reference="jiQ-DH-1wC"/>
                             <exclude reference="l79-TH-cx2"/>
+                            <exclude reference="EdX-Xa-GkM"/>
+                            <exclude reference="9uz-Dc-s8C"/>
+                            <exclude reference="IE6-tA-35S"/>
+                            <exclude reference="LR3-hO-Mya"/>
+                            <exclude reference="P9u-VA-cjV"/>
                             <exclude reference="BR2-xa-ykU"/>
                             <exclude reference="U1k-iw-Xri"/>
+                            <exclude reference="YDh-MT-dO3"/>
+                            <exclude reference="kL7-7p-YF1"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular">
                         <mask key="subviews">
-                            <include reference="eBI-hu-LN5"/>
                             <include reference="2X3-G4-WEw"/>
+                            <include reference="eBI-hu-LN5"/>
+                            <include reference="KHi-Ph-gPq"/>
+                            <include reference="zIS-zD-GfB"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="AZe-Cq-3LP"/>
                             <include reference="jiQ-DH-1wC"/>
                             <include reference="l79-TH-cx2"/>
+                            <include reference="EdX-Xa-GkM"/>
+                            <include reference="9uz-Dc-s8C"/>
+                            <include reference="IE6-tA-35S"/>
+                            <include reference="LR3-hO-Mya"/>
+                            <include reference="P9u-VA-cjV"/>
                             <include reference="BR2-xa-ykU"/>
                             <include reference="U1k-iw-Xri"/>
+                            <include reference="YDh-MT-dO3"/>
+                            <include reference="kL7-7p-YF1"/>
                         </mask>
                     </variation>
                 </view>

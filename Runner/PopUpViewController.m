@@ -43,7 +43,13 @@
     }];
 }
 
+//Closes popup window
 -(IBAction) closePopup:(id)sender{
+    [self removeAnimate];
+}
+
+//Save run data to parse and close popup window
+-(IBAction) saveRun:(id)sender {
     [self removeAnimate];
 }
 
@@ -55,6 +61,11 @@
 }
 
 -(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated{
+    
+//    NSData *imageData = UIImagePNGRepresentation(image);
+//    _logoImg.image = [UIImage imageNamed:[imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+    _logoImg.image = image;
+//    _logoImg.image = [UIImage imageNamed:@"logo.png"];
     [aView addSubview:self.view];
     if(animated){
         [self showAnimate];

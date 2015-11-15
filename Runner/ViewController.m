@@ -130,7 +130,7 @@ static float const metersInMile = 1609.344;
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
         [_popViewController setTitle:@"This is a popup view"];
-        [_popViewController showInView:self.view withImage:[UIImage imageNamed:@"logo.png"] withMessage:@"Hello" animated:YES];
+        [_popViewController showInView:self.view withImage:[UIImage imageNamed:@"settings.png"] withMessage:@"Hello" animated:YES];
     }
 }
 
