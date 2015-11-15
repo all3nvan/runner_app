@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "Location.h"
 #import "MulticolorPolylineSegment.h"
+#import "PopUpViewController.h"
 
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
@@ -125,6 +126,11 @@ static float const metersInMile = 1609.344;
         
         //Displays polyline map of route that was run
         [self loadMap];
+        
+        //Displays popup window
+        _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
+        [_popViewController setTitle:@"This is a popup view"];
+        [_popViewController showInView:self.view withImage:[UIImage imageNamed:@"logo.png"] withMessage:@"Hello" animated:YES];
     }
 }
 

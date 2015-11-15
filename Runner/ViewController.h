@@ -14,6 +14,8 @@
 #import <ParseUI/ParseUI.h>
 #import "Run.h"
 #import "LoginViewController.h"
+#import "PopUpViewController.h"
+
 @interface ViewController : UIViewController <UIActionSheetDelegate, CLLocationManagerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>{
     CoreLocationController* CLController;
     IBOutlet UILabel *locationLabel;
@@ -41,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *paceLabel;
 
 @property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) PopUpViewController* popViewController;
 
 @end
 
