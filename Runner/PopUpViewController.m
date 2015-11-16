@@ -14,6 +14,8 @@
 
 @implementation PopUpViewController
 
+@synthesize dateTime;
+
 - (void)viewDidLoad {
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
@@ -50,7 +52,8 @@
 
 //Save run data to parse and close popup window
 -(IBAction) saveRun:(id)sender {
-    [self removeAnimate];
+    
+    [self closePopup:sender];
 }
 
 -(void) showInView:(UIView*) aView animated:(BOOL)animated{
@@ -61,13 +64,11 @@
 }
 
 -(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated{
-    _dateTime.text = @"Run on";
-//    NSData *imageData = UIImagePNGRepresentation(image);
-//    _logoImg.image = [UIImage imageNamed:[imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
-    _logoImg.image = image;
-//    _logoImg.image = [UIImage imageNamed:@"logo.png"];
+    
     [aView addSubview:self.view];
     if(animated){
+        _logoImg.image = image;
+        self.dateTime.text = @"Run on";
         [self showAnimate];
     }
 }
