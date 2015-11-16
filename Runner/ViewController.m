@@ -118,6 +118,7 @@ static float const metersInMile = 1609.344;
         _run.locations = self.locations;
         
         PFObject *pfRun = [PFObject objectWithClassName:@"Run"];
+        pfRun[@"user"] = [PFUser currentUser];
         pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
         pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
         // TODO: set up run to location association in Parse
