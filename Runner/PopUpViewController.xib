@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpViewController">
             <connections>
+                <outlet property="dateTime" destination="eBI-hu-LN5" id="qs7-Uf-Lxz"/>
                 <outlet property="logoImg" destination="KHi-Ph-gPq" id="ITd-dU-Jfd"/>
                 <outlet property="popUpView" destination="i5M-Pr-FkT" id="9ss-TZ-cDC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +32,7 @@
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KHi-Ph-gPq">
@@ -81,18 +82,18 @@
                             <exclude reference="zIS-zD-GfB"/>
                         </mask>
                         <mask key="constraints">
-                            <exclude reference="AZe-Cq-3LP"/>
-                            <exclude reference="jiQ-DH-1wC"/>
-                            <exclude reference="l79-TH-cx2"/>
-                            <exclude reference="EdX-Xa-GkM"/>
-                            <exclude reference="9uz-Dc-s8C"/>
-                            <exclude reference="IE6-tA-35S"/>
-                            <exclude reference="LR3-hO-Mya"/>
-                            <exclude reference="P9u-VA-cjV"/>
                             <exclude reference="BR2-xa-ykU"/>
                             <exclude reference="U1k-iw-Xri"/>
                             <exclude reference="YDh-MT-dO3"/>
                             <exclude reference="kL7-7p-YF1"/>
+                            <exclude reference="EdX-Xa-GkM"/>
+                            <exclude reference="AZe-Cq-3LP"/>
+                            <exclude reference="jiQ-DH-1wC"/>
+                            <exclude reference="l79-TH-cx2"/>
+                            <exclude reference="9uz-Dc-s8C"/>
+                            <exclude reference="IE6-tA-35S"/>
+                            <exclude reference="LR3-hO-Mya"/>
+                            <exclude reference="P9u-VA-cjV"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular">
@@ -103,18 +104,18 @@
                             <include reference="zIS-zD-GfB"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="AZe-Cq-3LP"/>
-                            <include reference="jiQ-DH-1wC"/>
-                            <include reference="l79-TH-cx2"/>
-                            <include reference="EdX-Xa-GkM"/>
-                            <include reference="9uz-Dc-s8C"/>
-                            <include reference="IE6-tA-35S"/>
-                            <include reference="LR3-hO-Mya"/>
-                            <include reference="P9u-VA-cjV"/>
                             <include reference="BR2-xa-ykU"/>
                             <include reference="U1k-iw-Xri"/>
                             <include reference="YDh-MT-dO3"/>
                             <include reference="kL7-7p-YF1"/>
+                            <include reference="EdX-Xa-GkM"/>
+                            <include reference="AZe-Cq-3LP"/>
+                            <include reference="jiQ-DH-1wC"/>
+                            <include reference="l79-TH-cx2"/>
+                            <include reference="9uz-Dc-s8C"/>
+                            <include reference="IE6-tA-35S"/>
+                            <include reference="LR3-hO-Mya"/>
+                            <include reference="P9u-VA-cjV"/>
                         </mask>
                     </variation>
                 </view>

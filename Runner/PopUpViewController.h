@@ -2,7 +2,7 @@
 //  PopUpViewController.h
 //  Runner
 //
-//  Created by abc on 11/15/15.
+//  Created by William Souraphath on 11/15/15.
 //  Copyright © 2015 Group9. All rights reserved.
 //
 
@@ -17,5 +17,6 @@
 -(void) showInView:(UIView*) aView animated:(BOOL)animated;
 -(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated;
 -(IBAction) closePopup:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *dateTime;
 -(IBAction) saveRun:(id)sender;
 @end

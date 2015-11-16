@@ -2,7 +2,7 @@
 //  PopUpViewController.m
 //  Runner
 //
-//  Created by abc on 11/15/15.
+//  Created by William Souraphath on 11/15/15.
 //  Copyright © 2015 Group9. All rights reserved.
 //
 
@@ -61,7 +61,7 @@
 }
 
 -(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated{
-    
+    _dateTime.text = @"Run on";
 //    NSData *imageData = UIImagePNGRepresentation(image);
 //    _logoImg.image = [UIImage imageNamed:[imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
     _logoImg.image = image;
