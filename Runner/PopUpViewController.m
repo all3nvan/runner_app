@@ -32,7 +32,7 @@
         self.view.frame = CGRectMake(0, 40, 800, 1000);
         self.view.alpha = 1;
         self.view.transform = CGAffineTransformMakeScale(1, 1);
-        NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+//        NSLog(@"%@", NSStringFromCGRect(self.view.frame));
     }];
 }
 
