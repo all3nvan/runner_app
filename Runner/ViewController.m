@@ -104,6 +104,7 @@ static float const metersInMile = 1609.344;
         // Initialize run
         _run = [[Run alloc] init];
         _run.timestamp = [NSDate dateWithTimeIntervalSinceNow:0];
+        _pfRun = [PFObject objectWithClassName:@"Run"];
     }
     else{ //User stops a run
         self.timer = nil;
@@ -117,13 +118,10 @@ static float const metersInMile = 1609.344;
         _run.duration = self.seconds;
         _run.locations = self.locations;
         
-        PFObject *pfRun = [PFObject objectWithClassName:@"Run"];
-        pfRun[@"user"] = [PFUser currentUser];
-        pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
-        pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
-        // TODO: set up run to location association in Parse
-        //        pfRun[@"locations"] = _run.locations;
-        [pfRun saveInBackground];
+        _pfRun[@"user"] = [PFUser currentUser];
+        _pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
+        _pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
+        [_pfRun saveInBackground];
         
         //Displays polyline map of route that was run
         [self loadMap];
@@ -250,6 +248,12 @@ static float const metersInMile = 1609.344;
             }
             
             [self.locations addObject:newLocation];
+            PFObject *pfLocation = [PFObject objectWithClassName:@"Location"];
+            pfLocation[@"run"] = _pfRun;
+            pfLocation[@"latitude"] = [NSNumber numberWithDouble:newLocation.coordinate.latitude];
+            pfLocation[@"longitude"] = [NSNumber numberWithDouble:newLocation.coordinate.longitude];
+            pfLocation[@"timestamp"] = newLocation.timestamp;
+            [pfLocation saveInBackground];
         }
     }
 }

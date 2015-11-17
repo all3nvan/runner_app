@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSTimer* timer;
 
 @property Run* run;
+@property PFObject* pfRun;
 
 @property (weak, nonatomic) IBOutlet UILabel *distLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paceLabel;
