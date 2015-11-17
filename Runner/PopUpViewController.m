@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+    self.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.6];
     self.popUpView.layer.cornerRadius = 5;
     self.popUpView.layer.shadowOpacity = 0.8;
     self.popUpView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
@@ -29,8 +29,10 @@
     self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
     self.view.alpha = 0;
     [UIView animateWithDuration:0.25 animations:^{
+        self.view.frame = CGRectMake(0, 40, 800, 1000);
         self.view.alpha = 1;
         self.view.transform = CGAffineTransformMakeScale(1, 1);
+        NSLog(@"%@", NSStringFromCGRect(self.view.frame));
     }];
 }
 
@@ -68,7 +70,7 @@
     [aView addSubview:self.view];
     if(animated){
         _logoImg.image = image;
-        self.dateTime.text = @"Run on";
+//        self.dateTime.text = @"Run on";
         [self showAnimate];
     }
 }
