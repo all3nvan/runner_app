@@ -107,6 +107,7 @@ static float const metersInMile = 1609.344;
         _pfRun = [PFObject objectWithClassName:@"Run"];
     }
     else{ //User stops a run
+        
         self.timer = nil;
         [self.locationManager stopUpdatingLocation];
         button.selected = NO;
@@ -126,11 +127,72 @@ static float const metersInMile = 1609.344;
         //Displays polyline map of route that was run
         [self loadMap];
         
+        //Takes snapshot of map and saves to file path
+        //UIImage *image = [self snapshotMap];
+        
+        //Takes screenshot of entire view and saves to file path
+        UIImage *image = [self takeAScreenShot];
+        
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
         [_popViewController setTitle:@"This is a popup view"];
-        [_popViewController showInView:self.view withImage:[UIImage imageNamed:@"settings.png"] withMessage:@"Hello" animated:YES];
+        [_popViewController showInView:self.view withImage:image withMessage:@"Hello" animated:YES];
     }
+}
+
+//******Screenshot of view saved to file path******//
+-(UIImage *) takeAScreenShot {
+    // here i am taking screen shot of whole UIWindow, but you can have the screenshot of any individual UIViews, Tableviews  . so in that case just use  object of your UIViews instead of  keyWindow.
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){ // checking for Retina display
+        UIGraphicsBeginImageContextWithOptions(keyWindow.bounds.size, YES, [UIScreen mainScreen].scale);
+    //if this method is not used for Retina device, image will be blurred.
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(keyWindow.bounds.size);
+    }
+    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    // now storing captured image in Photo Library of device
+    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    //if you want to save captured image locally in your app's document directory
+    NSData * data = UIImagePNGRepresentation(image);
+ 
+    // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
+    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
+    // NSLog(@"Path for Image : %@",imagePath);
+    [data writeToURL:fileURL atomically:YES];
+
+    return image;
+}
+
+//******Snapshot of map saved to file path******//
+-(UIImage *) snapshotMap{
+    MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
+    options.region = self.map.region;
+    options.size = self.map.frame.size;
+    options.scale = [[UIScreen mainScreen] scale];
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
+    __block UIImage *image = nil;
+    MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
+    
+    [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+        if (error) {
+            NSLog(@"[Error] %@", error);
+            return;
+        }
+        
+        UIImage *image2 = snapshot.image;
+        image = snapshot.image;
+        NSData *data = UIImagePNGRepresentation(image2);
+        
+        [data writeToURL:fileURL atomically:YES];
+    }];
+    
+    return image;
 }
 
 //******Sets label in storyboard to device speed******//
