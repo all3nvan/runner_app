@@ -15,8 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImg;
 -(void) showInView:(UIView*) aView animated:(BOOL)animated;
--(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated;
+-(void) showInView:(UIView*) aView withImage:(UIImage*) image withPace:(NSString*) avgPace withDist: (NSString*) dist withTime: (NSString*) time withDate:(NSDate*) date withTopSpeed:(double) speed animated:(BOOL) animated;
 -(IBAction) closePopup:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *dateTime;
+@property (weak, nonatomic) IBOutlet UILabel *avgSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *totalDist;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *topSpeed;
 -(IBAction) saveRun:(id)sender;
 @end

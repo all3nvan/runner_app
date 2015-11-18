@@ -65,12 +65,20 @@
     }
 }
 
--(void) showInView:(UIView*) aView withImage:(UIImage*) image withMessage:(NSString*) message animated:(BOOL) animated{
+-(void) showInView:(UIView*) aView withImage:(UIImage*) image withPace:(NSString*) avgPace withDist:(NSString*) dist withTime: (NSString*) time withDate: (NSDate*) date withTopSpeed:(double) speed animated:(BOOL) animated{
     
     [aView addSubview:self.view];
     if(animated){
+        self.avgSpeed.text = [NSString stringWithFormat:@"Average Speed: %@", avgPace];
+        self.totalDist.text = [NSString stringWithFormat:@"Total Distance: %@", dist];
         _logoImg.image = image;
-//        self.dateTime.text = @"Run on";
+        
+        //Splitting time string by delimiter :
+        NSArray* lines = [time componentsSeparatedByString:@":"];
+        self.time.text = [NSString stringWithFormat:@"Time: %@m %@s", lines[0], lines[1]];
+        NSString* dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
+        self.dateTime.text = [NSString stringWithFormat:@"%@", dateString];
+        self.topSpeed.text = [NSString stringWithFormat:@"Top Speed: %.02f mps", speed];
         [self showAnimate];
     }
 }

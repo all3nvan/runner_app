@@ -17,7 +17,7 @@ static float const metersInKM = 1000;
 static float const metersInMile = 1609.344;
 
 @interface ViewController ()
-
+@property double topSpeed;
 @end
 
 @implementation ViewController
@@ -90,6 +90,7 @@ static float const metersInMile = 1609.344;
     }
     UIButton *button = (UIButton *) sender;
     if(button.isSelected == NO){ //If user starts a run
+        self.topSpeed = 0;
         [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES]; //Zooms back to map and follows user again
         [self.map removeOverlays:self.map.overlays]; //Removes polylines from map
         button.selected = YES;
@@ -136,7 +137,7 @@ static float const metersInMile = 1609.344;
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
         [_popViewController setTitle:@"This is a popup view"];
-        [_popViewController showInView:self.view withImage:image withMessage:@"Hello" animated:YES];
+        [_popViewController showInView:self.view withImage:image withPace:self.paceLabel.text withDist:self.distLabel.text withTime: self.timeLabel.text withDate: _run.timestamp withTopSpeed: (double) self.topSpeed animated:YES];
     }
 }
 
@@ -198,6 +199,9 @@ static float const metersInMile = 1609.344;
 //******Sets label in storyboard to device speed******//
 -(void) locationUpdate:(CLLocation*) location {
     NSString* speedText = @(location.speed).stringValue;
+    if(location.speed > self.topSpeed){
+        self.topSpeed = location.speed;
+    }
     [locationLabel setText:[NSString stringWithFormat:@"%@ mps", speedText]];
 }
 //******Sets label to error if an error occurs******//

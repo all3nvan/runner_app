@@ -6,9 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpViewController">
             <connections>
+                <outlet property="avgSpeed" destination="HYd-4Y-nDa" id="P0w-5X-ZgP"/>
                 <outlet property="dateTime" destination="eBI-hu-LN5" id="qs7-Uf-Lxz"/>
                 <outlet property="logoImg" destination="KHi-Ph-gPq" id="ITd-dU-Jfd"/>
                 <outlet property="popUpView" destination="i5M-Pr-FkT" id="9ss-TZ-cDC"/>
+                <outlet property="time" destination="xal-D2-mh0" id="FgR-e8-Jub"/>
+                <outlet property="topSpeed" destination="xxM-vu-Kcf" id="hGn-kq-aen"/>
+                <outlet property="totalDist" destination="Exh-N5-wh4" id="irI-hS-r99"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +29,7 @@
                             <animations/>
                             <state key="normal" title="Discard"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="158" y="512" width="53" height="30"/>
+                                <rect key="frame" x="158" y="535" width="53" height="30"/>
                             </variation>
                             <connections>
                                 <action selector="closePopup:" destination="-1" eventType="touchUpInside" id="54s-hB-NZd"/>
@@ -38,14 +42,14 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="8" y="276" width="246" height="21"/>
+                                <rect key="frame" x="8" y="324" width="352" height="21"/>
                             </variation>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KHi-Ph-gPq">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <animations/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="29" y="8" width="331" height="255"/>
+                                <rect key="frame" x="48" y="8" width="271" height="279"/>
                             </variation>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIS-zD-GfB">
@@ -53,7 +57,7 @@
                             <animations/>
                             <state key="normal" title="Save Run"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="152" y="462" width="64" height="30"/>
+                                <rect key="frame" x="151" y="497" width="64" height="30"/>
                             </variation>
                             <connections>
                                 <action selector="saveRun:" destination="-1" eventType="touchUpInside" id="sM3-gN-BeA"/>
@@ -66,17 +70,17 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="8" y="311" width="156" height="21"/>
+                                <rect key="frame" x="8" y="353" width="318" height="21"/>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Speed: 0 m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYd-4Y-nDa">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Speed: 0 m/s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYd-4Y-nDa">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="8" y="340" width="168" height="21"/>
+                                <rect key="frame" x="8" y="382" width="318" height="21"/>
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burned: 100 calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAr-FQ-NGQ">
@@ -86,7 +90,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="8" y="369" width="224" height="21"/>
+                                <rect key="frame" x="8" y="411" width="318" height="21"/>
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 10h 10m 20s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xal-D2-mh0">
@@ -96,7 +100,27 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="8" y="398" width="145" height="21"/>
+                                <rect key="frame" x="8" y="440" width="318" height="21"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDV-HQ-Wus">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="130" y="295" width="74" height="21"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxM-vu-Kcf">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="8" y="469" width="318" height="21"/>
                             </variation>
                         </label>
                     </subviews>
@@ -112,6 +136,8 @@
                             <exclude reference="HYd-4Y-nDa"/>
                             <exclude reference="UAr-FQ-NGQ"/>
                             <exclude reference="xal-D2-mh0"/>
+                            <exclude reference="EDV-HQ-Wus"/>
+                            <exclude reference="xxM-vu-Kcf"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular" fixedFrame="YES">
@@ -125,6 +151,8 @@
                             <include reference="HYd-4Y-nDa"/>
                             <include reference="UAr-FQ-NGQ"/>
                             <include reference="xal-D2-mh0"/>
+                            <include reference="EDV-HQ-Wus"/>
+                            <include reference="xxM-vu-Kcf"/>
                         </mask>
                     </variation>
                 </view>
