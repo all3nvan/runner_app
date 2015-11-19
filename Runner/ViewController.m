@@ -15,6 +15,7 @@
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
 static float const metersInMile = 1609.344;
+static UIImage* image;
 
 @interface ViewController ()
 @property double topSpeed;
@@ -187,7 +188,7 @@ static float const metersInMile = 1609.344;
     options.scale = [[UIScreen mainScreen] scale];
     
     NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
-    __block UIImage *image = nil;
+
     MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
     
     [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
@@ -196,46 +197,24 @@ static float const metersInMile = 1609.344;
             return;
         }
         
-        UIImage* image3 = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
+        image = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
 
-        UIImage *image2 = snapshot.image;
-        image = snapshot.image;
-//        NSData *data = UIImagePNGRepresentation(image2);
-        NSData *data = UIImagePNGRepresentation(image3);
+//        UIImage *image2 = snapshot.image;
+//        image = snapshot.image;
+        
+        //Saving image to Parse
+        NSData* parseData = UIImageJPEGRepresentation(image, 0.5f);
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:parseData];
+        
+        PFObject* newPhotoObject = [PFObject objectWithClassName:@"PhotoObject"];
+        [newPhotoObject setObject:imageFile forKey:@"image"];
+        
+        [newPhotoObject saveInBackground];
+        
+        //Saving image to local directory
+        NSData *data = UIImagePNGRepresentation(image);
         [data writeToURL:fileURL atomically:YES];
     }];
-//    [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-//              completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
-//                  if (error) {
-//                      NSLog(@"[Error] %@", error);
-//                      return;
-//                  }
-//                  
-//                  MKAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:nil reuseIdentifier:nil];
-//                  
-//                  UIImage *image = snapshot.image;
-//                  UIGraphicsBeginImageContextWithOptions(image.size, YES, image.scale);
-//                  {
-//                      [image drawAtPoint:CGPointMake(0.0f, 0.0f)];
-//                      
-//                      CGRect rect = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
-//                      for (id <MKAnnotation> annotation in self.map.annotations) {
-//                          CGPoint point = [snapshot pointForCoordinate:annotation.coordinate];
-//                          if (CGRectContainsPoint(rect, point)) {
-//                              point.x = point.x + pin.centerOffset.x -
-//                              (pin.bounds.size.width / 2.0f);
-//                              point.y = point.y + pin.centerOffset.y -
-//                              (pin.bounds.size.height / 2.0f);
-//                              [pin.image drawAtPoint:point];
-//                          }
-//                      }
-//                      
-//                      UIImage *compositeImage = UIGraphicsGetImageFromCurrentImageContext();
-//                      NSData *data = UIImagePNGRepresentation(compositeImage);
-//                      [data writeToURL:fileURL atomically:YES];
-//                  }
-//                  UIGraphicsEndImageContext();
-//              }];
     
     return image;
 }
