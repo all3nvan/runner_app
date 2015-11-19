@@ -106,6 +106,7 @@ static float const metersInMile = 1609.344;
         _run = [[Run alloc] init];
         _run.timestamp = [NSDate dateWithTimeIntervalSinceNow:0];
         _pfRun = [PFObject objectWithClassName:@"Run"];
+        _pfLocations = [[NSMutableArray alloc] init];
     }
     else{ //User stops a run
         
@@ -123,7 +124,6 @@ static float const metersInMile = 1609.344;
         _pfRun[@"user"] = [PFUser currentUser];
         _pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
         _pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
-        [_pfRun saveInBackground];
         
         //Displays polyline map of route that was run
         [self loadMap];
@@ -137,7 +137,17 @@ static float const metersInMile = 1609.344;
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
         [_popViewController setTitle:@"This is a popup view"];
-        [_popViewController showInView:self.view withImage:image withPace:self.paceLabel.text withDist:self.distLabel.text withTime: self.timeLabel.text withDate: _run.timestamp withTopSpeed: (double) self.topSpeed animated:YES];
+        _popViewController.run = _pfRun;
+        _popViewController.locations = [[NSArray alloc] initWithArray:_pfLocations];
+        [_popViewController
+            showInView:self.view
+            withImage:image
+            withPace:self.paceLabel.text
+            withDist:self.distLabel.text
+            withTime: self.timeLabel.text
+            withDate: _run.timestamp
+            withTopSpeed: (double) self.topSpeed
+            animated:YES];
     }
 }
 
@@ -319,7 +329,7 @@ static float const metersInMile = 1609.344;
             pfLocation[@"latitude"] = [NSNumber numberWithDouble:newLocation.coordinate.latitude];
             pfLocation[@"longitude"] = [NSNumber numberWithDouble:newLocation.coordinate.longitude];
             pfLocation[@"timestamp"] = newLocation.timestamp;
-            [pfLocation saveInBackground];
+            [_pfLocations addObject:pfLocation];
         }
     }
 }

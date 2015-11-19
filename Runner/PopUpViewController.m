@@ -54,6 +54,11 @@
 
 //Save run data to parse and close popup window
 -(IBAction) saveRun:(id)sender {
+    [_run saveInBackground];
+    
+    for (PFObject *location in _locations) {
+        [location saveInBackground];
+    }
     
     [self closePopup:sender];
 }

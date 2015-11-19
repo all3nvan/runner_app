@@ -39,6 +39,7 @@
 
 @property Run* run;
 @property PFObject* pfRun;
+@property NSMutableArray* pfLocations;
 
 @property (weak, nonatomic) IBOutlet UILabel *distLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paceLabel;
