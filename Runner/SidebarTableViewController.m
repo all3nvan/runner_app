@@ -10,11 +10,12 @@
 #import "SWRevealViewController.h"
 #import "ViewController.h"
 #import "LoginViewController.h"
+#import "ProfileViewController.h"
 
 
 @interface SidebarTableViewController ()
 
-
+ 
 
 @end
 
@@ -73,17 +74,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.textLabel.numberOfLines=0;
-        NSLog(@"cell is not available");
-    }
-    
-    
     UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
-    [objectOfButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+    [objectOfButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -121,14 +113,18 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Set the title of navigation bar by using the menu items
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    destViewController.title = [[menuItems objectAtIndex:indexPath.row] capitalizedString];
+    
+    // Set the photo if it navigates to the PhotoView
+    if ([segue.identifier isEqualToString:@"showProfile"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        ProfileViewController *profileController = [navController childViewControllers].firstObject;
+    }
 }
-*/
+
 
 @end

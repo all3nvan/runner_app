@@ -7,6 +7,54 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Profile View Controller-->
+        <scene sceneID="4Ie-Ae-N9Z">
+            <objects>
+                <viewController id="Ol8-kO-efl" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KaV-6L-0Pv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ibl-wS-aaU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y27-Re-9c9">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is working" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tB-0a-dMc">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0tB-0a-dMc" firstAttribute="centerX" secondItem="y27-Re-9c9" secondAttribute="centerX" id="WeJ-Ga-BfV"/>
+                            <constraint firstItem="0tB-0a-dMc" firstAttribute="centerY" secondItem="y27-Re-9c9" secondAttribute="centerY" id="zHe-vv-Obl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0tB-0a-dMc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="WeJ-Ga-BfV"/>
+                                <exclude reference="zHe-vv-Obl"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="0tB-0a-dMc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="WeJ-Ga-BfV"/>
+                                <include reference="zHe-vv-Obl"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z2w-78-Dyc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJo-Wu-ngR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2148" y="-13.5"/>
+        </scene>
         <!--Let's Run-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -453,6 +501,9 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="oX9-Jb-ABu" kind="custom" identifier="showProfile" customClass="SWRevealViewControllerSeguePushController" id="GjU-w6-Ucy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -466,7 +517,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJR-gg-LMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="100.5"/>
+            <point key="canvasLocation" x="-123" y="-13.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HBd-jZ-Kis">
@@ -486,6 +537,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uak-WX-Rfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="87" y="786.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g5w-0H-fTh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oX9-Jb-ABu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q4Z-me-XZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ol8-kO-efl" kind="relationship" relationship="rootViewController" id="e7u-Wj-G5s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQL-Eq-K7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="-13.5"/>
         </scene>
     </scenes>
     <resources>
