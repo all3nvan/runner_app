@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.menuOptions.delegate = self;
     self.menuOptions.dataSource = self;
-    menuItems = @[@"Runner", @"History", @"Settings", @"Profile"];
+    menuItems = @[@"home", @"logout", @"history", @"settings", @"profile"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -65,25 +65,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return 1;//menuItems.count;
+    return menuItems.count;//menuItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reuseIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         cell.textLabel.numberOfLines=0;
+        NSLog(@"cell is not available");
     }
     
-    UILabel *name = (UILabel*)[cell viewWithTag:2];
-    name.text = CellIdentifier;
-    UIImageView *image = (UIImageView*)[cell viewWithTag:1];
-    image.image = [UIImage imageNamed:[CellIdentifier stringByAppendingString:@".png"]];
+    
     UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
     [objectOfButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
