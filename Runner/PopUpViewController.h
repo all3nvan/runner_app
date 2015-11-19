@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
 
 @interface PopUpViewController : UIViewController
@@ -22,5 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalDist;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *topSpeed;
+
+@property PFObject *run;
+@property NSArray *locations;
+
 -(IBAction) saveRun:(id)sender;
 @end
