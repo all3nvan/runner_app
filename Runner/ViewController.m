@@ -199,17 +199,10 @@ static UIImage* image;
         
         image = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
 
-//        UIImage *image2 = snapshot.image;
-//        image = snapshot.image;
-        
         //Saving image to Parse
         NSData* parseData = UIImageJPEGRepresentation(image, 0.5f);
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:parseData];
-        
-        PFObject* newPhotoObject = [PFObject objectWithClassName:@"PhotoObject"];
-        [newPhotoObject setObject:imageFile forKey:@"image"];
-        
-        [newPhotoObject saveInBackground];
+        [_pfRun setObject:imageFile forKey:@"image"];
         
         //Saving image to local directory
         NSData *data = UIImagePNGRepresentation(image);
