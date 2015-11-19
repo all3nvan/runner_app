@@ -129,10 +129,10 @@ static float const metersInMile = 1609.344;
         [self loadMap];
         
         //Takes snapshot of map and saves to file path
-        //UIImage *image = [self snapshotMap];
+        UIImage *image = [self snapshotMap];
         
         //Takes screenshot of entire view and saves to file path
-        UIImage *image = [self takeAScreenShot];
+        //UIImage *image = [self takeAScreenShot];
         
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
@@ -170,7 +170,7 @@ static float const metersInMile = 1609.344;
     //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     //if you want to save captured image locally in your app's document directory
     NSData * data = UIImagePNGRepresentation(image);
- 
+
     // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
     NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
     // NSLog(@"Path for Image : %@",imagePath);
@@ -196,14 +196,113 @@ static float const metersInMile = 1609.344;
             return;
         }
         
+        UIImage* image3 = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
+
         UIImage *image2 = snapshot.image;
         image = snapshot.image;
-        NSData *data = UIImagePNGRepresentation(image2);
-        
+//        NSData *data = UIImagePNGRepresentation(image2);
+        NSData *data = UIImagePNGRepresentation(image3);
         [data writeToURL:fileURL atomically:YES];
     }];
+//    [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+//              completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+//                  if (error) {
+//                      NSLog(@"[Error] %@", error);
+//                      return;
+//                  }
+//                  
+//                  MKAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:nil reuseIdentifier:nil];
+//                  
+//                  UIImage *image = snapshot.image;
+//                  UIGraphicsBeginImageContextWithOptions(image.size, YES, image.scale);
+//                  {
+//                      [image drawAtPoint:CGPointMake(0.0f, 0.0f)];
+//                      
+//                      CGRect rect = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
+//                      for (id <MKAnnotation> annotation in self.map.annotations) {
+//                          CGPoint point = [snapshot pointForCoordinate:annotation.coordinate];
+//                          if (CGRectContainsPoint(rect, point)) {
+//                              point.x = point.x + pin.centerOffset.x -
+//                              (pin.bounds.size.width / 2.0f);
+//                              point.y = point.y + pin.centerOffset.y -
+//                              (pin.bounds.size.height / 2.0f);
+//                              [pin.image drawAtPoint:point];
+//                          }
+//                      }
+//                      
+//                      UIImage *compositeImage = UIGraphicsGetImageFromCurrentImageContext();
+//                      NSData *data = UIImagePNGRepresentation(compositeImage);
+//                      [data writeToURL:fileURL atomically:YES];
+//                  }
+//                  UIGraphicsEndImageContext();
+//              }];
     
     return image;
+}
+
+- (UIImage *)drawRoute:(MKPolyline *)polyline onSnapshot:(MKMapSnapshot *)snapShot withColor:(UIColor *)lineColor {
+    
+    UIGraphicsBeginImageContext(snapShot.image.size);
+    CGRect rectForImage = CGRectMake(0, 0, snapShot.image.size.width, snapShot.image.size.height);
+    
+    // Draw map
+    [snapShot.image drawInRect:rectForImage];
+    
+    // Get points in the snapshot from the snapshot
+    int lastPointIndex = 0;
+    int firstPointIndex = 0;
+    BOOL isfirstPoint = NO;
+    NSMutableArray *pointsToDraw = [NSMutableArray array];
+    for (int i = 0; i < polyline.pointCount; i++){
+        MKMapPoint point = polyline.points[i];
+        CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+        CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+        if (CGRectContainsPoint(rectForImage, pointInSnapshot)) {
+            [pointsToDraw addObject:[NSValue valueWithCGPoint:pointInSnapshot]];
+            lastPointIndex = i;
+            if (i == 0)
+                firstPointIndex = YES;
+            if (!isfirstPoint) {
+                isfirstPoint = YES;
+                firstPointIndex = i;
+            }
+        }
+    }
+    
+    // Adding the first point on the outside too so we have a nice path
+    if (lastPointIndex + 1 <= polyline.pointCount) {
+        MKMapPoint point = polyline.points[lastPointIndex+1];
+        CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+        CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+        [pointsToDraw addObject:[NSValue valueWithCGPoint:pointInSnapshot]];
+    }
+        // Adding the point before the first point in the map as well (if needed) to have nice path
+        
+        if (firstPointIndex != 0) {
+            MKMapPoint point = polyline.points[firstPointIndex-1];
+            CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+            CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+            [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
+        }
+        
+        // Draw that points
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetLineWidth(context, 3.0);
+        
+        for (NSValue *point in pointsToDraw){
+            CGPoint pointToDraw = [point CGPointValue];
+            if ([pointsToDraw indexOfObject:point] == 0){
+                CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
+            } else {
+                CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
+            }
+        }
+        CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
+        CGContextStrokePath(context);
+        
+        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return resultingImage;
 }
 
 //******Sets label in storyboard to device speed******//
