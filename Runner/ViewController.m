@@ -224,8 +224,9 @@ static UIImage* image;
     int lastPointIndex = 0;
     int firstPointIndex = 0;
     BOOL isfirstPoint = NO;
-    NSMutableArray *pointsToDraw = [NSMutableArray array];
-    for (int i = 0; i < polyline.pointCount; i++){
+//    NSMutableArray *pointsToDraw = [NSMutableArray array];
+    NSMutableArray* pointsToDraw = [[NSMutableArray alloc] init];
+    for (int i = 1; i < polyline.pointCount-1; i++){
         MKMapPoint point = polyline.points[i];
         CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
         CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];

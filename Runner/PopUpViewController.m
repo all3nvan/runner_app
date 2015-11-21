@@ -76,7 +76,7 @@
     if(animated){
         self.avgSpeed.text = [NSString stringWithFormat:@"Average Speed: %@", avgPace];
         self.totalDist.text = [NSString stringWithFormat:@"Total Distance: %@", dist];
-        _logoImg.image = image;
+//        _logoImg.image = image;
         
         //Splitting time string by delimiter :
         NSArray* lines = [time componentsSeparatedByString:@":"];
@@ -84,6 +84,30 @@
         NSString* dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
         self.dateTime.text = [NSString stringWithFormat:@"%@", dateString];
         self.topSpeed.text = [NSString stringWithFormat:@"Top Speed: %.02f mps", speed];
+        
+        //Querying Parse for image
+//        PFUser* currentUser = [PFUser currentUser];
+        PFQuery *query = [PFQuery queryWithClassName:@"Run"];
+//        [query whereKey:@"objectId" equalTo:currentUser];
+
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                return NSLog(@"%@", error);
+            }
+            
+            PFFile *imageFile = object[@"image"];
+            
+            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!data) {
+                    return NSLog(@"%@", error);
+                }
+                
+                // Do something with the image
+                self.logoImg.image = [UIImage imageWithData:data];
+                NSLog(@"%@", self.logoImg.image);
+            }];
+        }];
+        
         [self showAnimate];
     }
 }
