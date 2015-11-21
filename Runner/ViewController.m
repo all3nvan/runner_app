@@ -130,25 +130,11 @@ static UIImage* image;
         [self loadMap];
         
         //Takes snapshot of map and saves to file path
-        UIImage *image = [self snapshotMap];
-        
+        [self snapshotMap];
+
         //Takes screenshot of entire view and saves to file path
         //UIImage *image = [self takeAScreenShot];
         
-        //Displays popup window
-        _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
-        [_popViewController setTitle:@"This is a popup view"];
-        _popViewController.run = _pfRun;
-        _popViewController.locations = [[NSArray alloc] initWithArray:_pfLocations];
-        [_popViewController
-            showInView:self.view
-            withImage:image
-            withPace:self.paceLabel.text
-            withDist:self.distLabel.text
-            withTime: self.timeLabel.text
-            withDate: _run.timestamp
-            withTopSpeed: (double) self.topSpeed
-            animated:YES];
     }
 }
 
@@ -165,19 +151,19 @@ static UIImage* image;
         UIGraphicsBeginImageContext(keyWindow.bounds.size);
     }
     [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     // now storing captured image in Photo Library of device
     //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     //if you want to save captured image locally in your app's document directory
-    NSData * data = UIImagePNGRepresentation(image);
+    NSData * data = UIImagePNGRepresentation(image2);
 
     // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
     NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
     // NSLog(@"Path for Image : %@",imagePath);
     [data writeToURL:fileURL atomically:YES];
 
-    return image;
+    return image2;
 }
 
 //******Snapshot of map saved to file path******//
@@ -190,7 +176,7 @@ static UIImage* image;
     NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
 
     MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
-    
+
     [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
         if (error) {
             NSLog(@"[Error] %@", error);
@@ -198,17 +184,32 @@ static UIImage* image;
         }
         
         image = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
-
         //Saving image to Parse
         NSData* parseData = UIImageJPEGRepresentation(image, 0.5f);
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:parseData];
         [_pfRun setObject:imageFile forKey:@"image"];
-        
+//        [_pfRun saveInBackground];
         //Saving image to local directory
+
         NSData *data = UIImagePNGRepresentation(image);
         [data writeToURL:fileURL atomically:YES];
+        
+        //Displays popup window
+        _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
+        [_popViewController setTitle:@"This is a popup view"];
+        _popViewController.run = _pfRun;
+        _popViewController.locations = [[NSArray alloc] initWithArray:_pfLocations];
+        [_popViewController
+         showInView:self.view
+         withImage:image
+         withPace:self.paceLabel.text
+         withDist:self.distLabel.text
+         withTime: self.timeLabel.text
+         withDate: _run.timestamp
+         withTopSpeed: (double) self.topSpeed
+         animated:YES];
     }];
-    
+
     return image;
 }
 
@@ -272,7 +273,7 @@ static UIImage* image;
         }
         CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
         CGContextStrokePath(context);
-        
+    
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return resultingImage;
