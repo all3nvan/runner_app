@@ -129,8 +129,10 @@ static UIImage* image;
         //Displays polyline map of route that was run
         [self loadMap];
         
+        if(self.locations.count > 1){
         //Takes snapshot of map and saves to file path
-        [self snapshotMap];
+            [self snapshotMap];
+        }
 
         //Takes screenshot of entire view and saves to file path
         //UIImage *image = [self takeAScreenShot];
