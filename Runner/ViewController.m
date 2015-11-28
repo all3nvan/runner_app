@@ -11,6 +11,7 @@
 #import "Location.h"
 #import "MulticolorPolylineSegment.h"
 #import "PopUpViewController.h"
+#import "CalorieCalculator.h"
 
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
@@ -168,7 +169,7 @@ static UIImage* image;
     return image2;
 }
 
-//******Snapshot of map saved to file path******//
+//******Snapshot of map saved to Parse, call to PopUpViewController, and CalorieCalculator******//
 -(UIImage *) snapshotMap{
     MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
     options.region = self.map.region;
@@ -196,6 +197,9 @@ static UIImage* image;
 //        NSData *data = UIImagePNGRepresentation(image);
 //        [data writeToURL:fileURL atomically:YES];
         
+        //Call calorie
+        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:120 andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
+        
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
         [_popViewController setTitle:@"This is a popup view"];
@@ -208,7 +212,8 @@ static UIImage* image;
          withDist:self.distLabel.text
          withTime: self.timeLabel.text
          withDate: _run.timestamp
-         withTopSpeed: (double) self.topSpeed
+         withTopSpeed: (double)self.topSpeed
+         withCalories: calories
          animated:YES];
     }];
 
@@ -360,6 +365,8 @@ static UIImage* image;
         unitName = @"mi";
         unitDivider = metersInMile;
     }
+    self.avgSpeed = meters / unitDivider;
+    
     return [NSString stringWithFormat:@"%.2f %@", (meters / unitDivider), unitName];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "PopUpViewController.h"
-
 @interface PopUpViewController ()
 
 @end
@@ -70,7 +69,7 @@
     }
 }
 
--(void) showInView:(UIView*) aView withImage:(UIImage*) image withPace:(NSString*) avgPace withDist:(NSString*) dist withTime: (NSString*) time withDate: (NSDate*) date withTopSpeed:(double) speed animated:(BOOL) animated{
+-(void) showInView:(UIView*) aView withImage:(UIImage*) image withPace:(NSString*) avgPace withDist:(NSString*) dist withTime: (NSString*) time withDate: (NSDate*) date withTopSpeed:(double) speed withCalories:(CalorieCalculator*) caloriesBurned animated:(BOOL) animated{
     
     [aView addSubview:self.view];
     if(animated){
@@ -84,7 +83,7 @@
         NSString* dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
         self.dateTime.text = [NSString stringWithFormat:@"%@", dateString];
         self.topSpeed.text = [NSString stringWithFormat:@"Top Speed: %.02f mps", speed];
-        
+        self.calories.text = [NSString stringWithFormat:@"Calories Burned: %.02f calories,\n %@", caloriesBurned.caloriesBurned, [caloriesBurned comparisonForCaloriesBurned]];
         //Querying Parse for image
 //        PFUser* currentUser = [PFUser currentUser];
 //        PFQuery *query = [PFQuery queryWithClassName:@"Run"];

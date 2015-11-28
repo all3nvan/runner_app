@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "SWRevealViewController.h"
+#import <Parse/Parse.h>
 
 @interface ProfileViewController ()
 
@@ -25,11 +26,16 @@
         [self.menuButton setAction: @selector( revealToggle:)];
         [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
 //    }
+    [self getUsername];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) getUsername {
+    [self.welcomeLabel setText:[NSString stringWithFormat:@"Welcome, %@!", [[PFUser currentUser] username]]];
 }
 
 /*
