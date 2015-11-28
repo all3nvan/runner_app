@@ -10,13 +10,15 @@
 #import "SWRevealViewController.h"
 #import "Location.h"
 #import "MulticolorPolylineSegment.h"
+#import "PopUpViewController.h"
 
 static bool const isMetric = YES;
 static float const metersInKM = 1000;
 static float const metersInMile = 1609.344;
+static UIImage* image;
 
 @interface ViewController ()
-
+@property double topSpeed;
 @end
 
 @implementation ViewController
@@ -89,6 +91,7 @@ static float const metersInMile = 1609.344;
     }
     UIButton *button = (UIButton *) sender;
     if(button.isSelected == NO){ //If user starts a run
+        self.topSpeed = 0;
         [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES]; //Zooms back to map and follows user again
         [self.map removeOverlays:self.map.overlays]; //Removes polylines from map
         button.selected = YES;
@@ -103,8 +106,11 @@ static float const metersInMile = 1609.344;
         // Initialize run
         _run = [[Run alloc] init];
         _run.timestamp = [NSDate dateWithTimeIntervalSinceNow:0];
+        _pfRun = [PFObject objectWithClassName:@"Run"];
+        _pfLocations = [[NSMutableArray alloc] init];
     }
     else{ //User stops a run
+        
         self.timer = nil;
         [self.locationManager stopUpdatingLocation];
         button.selected = NO;
@@ -116,21 +122,175 @@ static float const metersInMile = 1609.344;
         _run.duration = self.seconds;
         _run.locations = self.locations;
         
-        PFObject *pfRun = [PFObject objectWithClassName:@"Run"];
-        pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
-        pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
-        // TODO: set up run to location association in Parse
-        //        pfRun[@"locations"] = _run.locations;
-        [pfRun saveInBackground];
+        _pfRun[@"user"] = [PFUser currentUser];
+        _pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
+        _pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
         
         //Displays polyline map of route that was run
         [self loadMap];
+        
+        if(self.locations.count > 1){
+        //Takes snapshot of map and saves to file path
+            [self snapshotMap];
+        }
+
+        //Takes screenshot of entire view and saves to file path
+        //UIImage *image = [self takeAScreenShot];
+        
     }
+}
+
+//******Screenshot of view saved to file path******//
+-(UIImage *) takeAScreenShot {
+    // here i am taking screen shot of whole UIWindow, but you can have the screenshot of any individual UIViews, Tableviews  . so in that case just use  object of your UIViews instead of  keyWindow.
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){ // checking for Retina display
+        UIGraphicsBeginImageContextWithOptions(keyWindow.bounds.size, YES, [UIScreen mainScreen].scale);
+    //if this method is not used for Retina device, image will be blurred.
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(keyWindow.bounds.size);
+    }
+    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    // now storing captured image in Photo Library of device
+    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    //if you want to save captured image locally in your app's document directory
+    NSData * data = UIImagePNGRepresentation(image2);
+
+    // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
+    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
+    // NSLog(@"Path for Image : %@",imagePath);
+    [data writeToURL:fileURL atomically:YES];
+
+    return image2;
+}
+
+//******Snapshot of map saved to file path******//
+-(UIImage *) snapshotMap{
+    MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
+    options.region = self.map.region;
+    options.size = self.map.frame.size;
+    options.scale = [[UIScreen mainScreen] scale];
+    
+//    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
+
+    MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
+
+    [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+        if (error) {
+            NSLog(@"[Error] %@", error);
+            return;
+        }
+        
+        image = [self drawRoute: [self polyLine] onSnapshot:snapshot withColor:[UIColor blackColor]];
+        //Saving image to Parse
+        NSData* parseData = UIImageJPEGRepresentation(image, 0.5f);
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:parseData];
+        [_pfRun setObject:imageFile forKey:@"image"];
+//        [_pfRun saveInBackground];
+        //Saving image to local directory
+
+//        NSData *data = UIImagePNGRepresentation(image);
+//        [data writeToURL:fileURL atomically:YES];
+        
+        //Displays popup window
+        _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
+        [_popViewController setTitle:@"This is a popup view"];
+        _popViewController.run = _pfRun;
+        _popViewController.locations = [[NSArray alloc] initWithArray:_pfLocations];
+        [_popViewController
+         showInView:self.view
+         withImage:image
+         withPace:self.paceLabel.text
+         withDist:self.distLabel.text
+         withTime: self.timeLabel.text
+         withDate: _run.timestamp
+         withTopSpeed: (double) self.topSpeed
+         animated:YES];
+    }];
+
+    return image;
+}
+
+- (UIImage *)drawRoute:(MKPolyline *)polyline onSnapshot:(MKMapSnapshot *)snapShot withColor:(UIColor *)lineColor {
+    
+    UIGraphicsBeginImageContext(snapShot.image.size);
+    CGRect rectForImage = CGRectMake(0, 0, snapShot.image.size.width, snapShot.image.size.height);
+    
+    // Draw map
+    [snapShot.image drawInRect:rectForImage];
+    
+    // Get points in the snapshot from the snapshot
+    int lastPointIndex = 0;
+    int firstPointIndex = 0;
+    BOOL isfirstPoint = NO;
+//    NSMutableArray *pointsToDraw = [NSMutableArray array];
+    NSMutableArray* pointsToDraw = [[NSMutableArray alloc] init];
+    for (int i = 1; i < polyline.pointCount-1; i++){
+        MKMapPoint point = polyline.points[i];
+        CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+        CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+        if (CGRectContainsPoint(rectForImage, pointInSnapshot)) {
+            [pointsToDraw addObject:[NSValue valueWithCGPoint:pointInSnapshot]];
+            lastPointIndex = i;
+            if (i == 0)
+                firstPointIndex = YES;
+            if (!isfirstPoint) {
+                isfirstPoint = YES;
+                firstPointIndex = i;
+            }
+        }
+    }
+    
+    // Adding the first point on the outside too so we have a nice path
+    if (lastPointIndex + 1 <= polyline.pointCount) {
+        MKMapPoint point = polyline.points[lastPointIndex+1];
+        CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+        CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+        [pointsToDraw addObject:[NSValue valueWithCGPoint:pointInSnapshot]];
+    }
+        // Adding the point before the first point in the map as well (if needed) to have nice path
+        
+        if (firstPointIndex != 0) {
+            MKMapPoint point = polyline.points[firstPointIndex-1];
+            CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+            CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+            [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
+        }
+    NSArray *colorSegmentArray = [self colorSegmentsForLocations:self.locations];
+    for(int i = 0; i < colorSegmentArray.count; i++){
+        NSLog(@"%@", colorSegmentArray[i]);
+    }
+        // Draw that points
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetLineWidth(context, 3.0);
+    
+        for (NSValue *point in pointsToDraw){
+            CGPoint pointToDraw = [point CGPointValue];
+            if ([pointsToDraw indexOfObject:point] == 0){
+                CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
+            } else {
+                CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
+//                CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
+            }
+        }
+        CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
+        CGContextStrokePath(context);
+    
+        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return resultingImage;
 }
 
 //******Sets label in storyboard to device speed******//
 -(void) locationUpdate:(CLLocation*) location {
     NSString* speedText = @(location.speed).stringValue;
+    if(location.speed > self.topSpeed){
+        self.topSpeed = location.speed;
+    }
     [locationLabel setText:[NSString stringWithFormat:@"%@ mps", speedText]];
 }
 //******Sets label to error if an error occurs******//
@@ -243,6 +403,12 @@ static float const metersInMile = 1609.344;
             }
             
             [self.locations addObject:newLocation];
+            PFObject *pfLocation = [PFObject objectWithClassName:@"Location"];
+            pfLocation[@"run"] = _pfRun;
+            pfLocation[@"latitude"] = [NSNumber numberWithDouble:newLocation.coordinate.latitude];
+            pfLocation[@"longitude"] = [NSNumber numberWithDouble:newLocation.coordinate.longitude];
+            pfLocation[@"timestamp"] = newLocation.timestamp;
+            [_pfLocations addObject:pfLocation];
         }
     }
 }

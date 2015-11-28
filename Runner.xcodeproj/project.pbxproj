@@ -18,6 +18,8 @@
 		2814325D1BE1C61D0075B067 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 2814325B1BE1C61D0075B067 /* Location.m */; };
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */; };
+		28DF3D0A1BF925CB0001D02D /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF3D081BF925CB0001D02D /* PopUpViewController.m */; };
+		28DF3D0B1BF925CB0001D02D /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DF3D091BF925CB0001D02D /* PopUpViewController.xib */; };
 		513DA9851BE1BAC5003006B5 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513DA9841BE1BAC5003006B5 /* SidebarTableViewController.m */; };
 		51527ED41BD5BCAC00E7369E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED31BD5BCAC00E7369E /* main.m */; };
 		51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527ED61BD5BCAC00E7369E /* AppDelegate.m */; };
@@ -84,6 +86,9 @@
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
+		28DF3D071BF925CB0001D02D /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
+		28DF3D081BF925CB0001D02D /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
+		28DF3D091BF925CB0001D02D /* PopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		513DA9831BE1BAC5003006B5 /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
 		513DA9841BE1BAC5003006B5 /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		51527ECF1BD5BCAC00E7369E /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +225,9 @@
 				2814325B1BE1C61D0075B067 /* Location.m */,
 				51527ED51BD5BCAC00E7369E /* AppDelegate.h */,
 				51527ED61BD5BCAC00E7369E /* AppDelegate.m */,
+				28DF3D071BF925CB0001D02D /* PopUpViewController.h */,
+				28DF3D081BF925CB0001D02D /* PopUpViewController.m */,
+				28DF3D091BF925CB0001D02D /* PopUpViewController.xib */,
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDE1BD5BCAC00E7369E /* Assets.xcassets */,
@@ -408,6 +416,7 @@
 				99C491231BE1D03400BE2574 /* Profile.png in Resources */,
 				51527EDF1BD5BCAC00E7369E /* Assets.xcassets in Resources */,
 				19EAE0A81BE28C3800A074F6 /* logo.png in Resources */,
+				28DF3D0B1BF925CB0001D02D /* PopUpViewController.xib in Resources */,
 				99C491251BE1D06700BE2574 /* History.png in Resources */,
 				9967A6781BD86A2600297580 /* menu48.png in Resources */,
 				51527EDD1BD5BCAC00E7369E /* Main.storyboard in Resources */,
@@ -444,6 +453,7 @@
 				2814325C1BE1C61D0075B067 /* Location+CoreDataProperties.m in Sources */,
 				19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */,
 				51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */,
+				28DF3D0A1BF925CB0001D02D /* PopUpViewController.m in Sources */,
 				281432571BE1C54D0075B067 /* Location.xcdatamodeld in Sources */,
 				28024D341BEDE6AD004BD0EA /* MulticolorPolylineSegment.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,

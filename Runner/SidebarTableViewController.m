@@ -10,11 +10,12 @@
 #import "SWRevealViewController.h"
 #import "ViewController.h"
 #import "LoginViewController.h"
+#import "ProfileViewController.h"
 
 
 @interface SidebarTableViewController ()
 
-
+ 
 
 @end
 
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     self.menuOptions.delegate = self;
     self.menuOptions.dataSource = self;
-    menuItems = @[@"Runner", @"History", @"Settings", @"Profile"];
+    menuItems = @[@"home", @"logout", @"history", @"settings", @"profile"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -41,6 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//******Log out current user******//
 -(IBAction)logout:(id) sender{
     [PFUser logOut];
     if(![PFUser currentUser]){
@@ -50,6 +52,21 @@
         loginView.delegate = self;
         loginView.signUpController.delegate = self;
         [self presentViewController:loginView animated:YES completion:nil];
+}
+
+//******Segue to History******//
+-(IBAction) showHistory:(id) sender{
+    NSLog(@"In showHistory function");
+}
+
+//******Segue to Settings******//
+-(IBAction) showSettings:(id) sender{
+    NSLog(@"In showSettings function");
+}
+
+//******Segue to Home******//
+-(IBAction) showHome:(id) sender{
+    NSLog(@"In showHome function");
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
@@ -65,27 +82,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return 1;//menuItems.count;
+    return menuItems.count;//menuItems.count;
 }
 
+//******Handles actions for separate buttons in cells******//
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reuseIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.textLabel.numberOfLines=0;
-    }
-    
-    UILabel *name = (UILabel*)[cell viewWithTag:2];
-    name.text = CellIdentifier;
-    UIImageView *image = (UIImageView*)[cell viewWithTag:1];
-    image.image = [UIImage imageNamed:[CellIdentifier stringByAppendingString:@".png"]];
     UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
-    [objectOfButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+    [objectOfButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showHistoryButton = (UIButton*)[cell viewWithTag: 3];
+    [showHistoryButton addTarget:self action:@selector(showHistory) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showSettingsButton = (UIButton*)[cell viewWithTag:2];
+    [showSettingsButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showHomeButton = (UIButton*)[cell viewWithTag: 1];
+    [showHomeButton addTarget:self action:@selector(showHome) forControlEvents:UIControlEventTouchUpInside];
+    
+    //This is the action for the profile button; not sure if needed
+//    UIButton *showProfileButton = (UIButton*) [cell viewWithTag:4];
+//    [showProfileButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -123,14 +144,18 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Set the title of navigation bar by using the menu items
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    destViewController.title = [[menuItems objectAtIndex:indexPath.row] capitalizedString];
+    
+    // Set the photo if it navigates to the PhotoView
+    if ([segue.identifier isEqualToString:@"showProfile"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        ProfileViewController *profileController = [navController childViewControllers].firstObject;
+    }
 }
-*/
+
 
 @end
