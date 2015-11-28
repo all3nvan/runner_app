@@ -11,6 +11,8 @@
 @interface SidebarTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *menuOptions;
-
+@property (weak, nonatomic) IBOutlet UIButton *showHistory;
 @property (weak, nonatomic) IBOutlet UIButton *logout;
+@property (weak, nonatomic) IBOutlet UIButton *showSettings;
+@property (weak, nonatomic) IBOutlet UIButton *showHome;
 @end

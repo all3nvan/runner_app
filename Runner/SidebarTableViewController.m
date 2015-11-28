@@ -42,6 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//******Log out current user******//
 -(IBAction)logout:(id) sender{
     [PFUser logOut];
     if(![PFUser currentUser]){
@@ -51,6 +52,21 @@
         loginView.delegate = self;
         loginView.signUpController.delegate = self;
         [self presentViewController:loginView animated:YES completion:nil];
+}
+
+//******Segue to History******//
+-(IBAction) showHistory:(id) sender{
+    NSLog(@"In showHistory function");
+}
+
+//******Segue to Settings******//
+-(IBAction) showSettings:(id) sender{
+    NSLog(@"In showSettings function");
+}
+
+//******Segue to Home******//
+-(IBAction) showHome:(id) sender{
+    NSLog(@"In showHome function");
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
@@ -69,6 +85,7 @@
     return menuItems.count;//menuItems.count;
 }
 
+//******Handles actions for separate buttons in cells******//
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     
@@ -76,6 +93,20 @@
     
     UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
     [objectOfButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showHistoryButton = (UIButton*)[cell viewWithTag: 3];
+    [showHistoryButton addTarget:self action:@selector(showHistory) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showSettingsButton = (UIButton*)[cell viewWithTag:2];
+    [showSettingsButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showHomeButton = (UIButton*)[cell viewWithTag: 1];
+    [showHomeButton addTarget:self action:@selector(showHome) forControlEvents:UIControlEventTouchUpInside];
+    
+    //This is the action for the profile button; not sure if needed
+//    UIButton *showProfileButton = (UIButton*) [cell viewWithTag:4];
+//    [showProfileButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 

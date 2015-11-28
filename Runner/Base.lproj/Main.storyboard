@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -16,15 +16,18 @@
                         <viewControllerLayoutGuide type="bottom" id="Ibl-wS-aaU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y27-Re-9c9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is working" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tB-0a-dMc">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0tB-0a-dMc" firstAttribute="centerX" secondItem="y27-Re-9c9" secondAttribute="centerX" id="WeJ-Ga-BfV"/>
@@ -344,8 +347,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w0-SA-i8X">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w0-SA-i8X">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
                                             <state key="normal" title="Home"/>
                                             <variation key="heightClass=regular" fixedFrame="YES">
                                                 <rect key="frame" x="27" y="8" width="48" height="30"/>
@@ -354,10 +358,11 @@
                                                 <rect key="frame" x="31" y="8" width="41" height="30"/>
                                             </variation>
                                             <connections>
-                                                <action selector="logout:" destination="uvX-v4-nfv" eventType="touchUpInside" id="Z6x-rl-B2s"/>
+                                                <action selector="showHome:" destination="uvX-v4-nfv" eventType="touchUpInside" id="9Dj-ce-3B7"/>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="3w0-SA-i8X"/>
@@ -369,9 +374,10 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logout" id="eaN-Uj-z9E">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eaN-Uj-z9E" id="qLN-Mk-pT8">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -404,14 +410,15 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settings" id="Db6-IH-XAg">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Db6-IH-XAg" id="44Z-Xe-yKn">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjT-7d-K1e">
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjT-7d-K1e">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
                                             <state key="normal" title="Settings"/>
                                             <variation key="heightClass=regular" fixedFrame="YES">
                                                 <rect key="frame" x="27" y="8" width="48" height="30"/>
@@ -420,10 +427,11 @@
                                                 <rect key="frame" x="26" y="7" width="57" height="30"/>
                                             </variation>
                                             <connections>
-                                                <action selector="logout:" destination="uvX-v4-nfv" eventType="touchUpInside" id="4zJ-jf-bku"/>
+                                                <action selector="showSettings:" destination="uvX-v4-nfv" eventType="touchUpInside" id="oLc-ut-FNr"/>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="RjT-7d-K1e"/>
@@ -435,16 +443,18 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="history" id="Ppe-hn-Gwt">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ppe-hn-Gwt" id="7a9-JL-v65">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMl-iC-B4I">
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMl-iC-B4I">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
                                             <state key="normal" title="History"/>
                                             <variation key="heightClass=regular" fixedFrame="YES">
                                                 <rect key="frame" x="27" y="8" width="48" height="30"/>
@@ -453,10 +463,11 @@
                                                 <rect key="frame" x="26" y="10" width="50" height="24"/>
                                             </variation>
                                             <connections>
-                                                <action selector="logout:" destination="uvX-v4-nfv" eventType="touchUpInside" id="6jG-Ag-0Pi"/>
+                                                <action selector="showHistory:" destination="uvX-v4-nfv" eventType="touchUpInside" id="cUF-Vj-vX4"/>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="aMl-iC-B4I"/>
@@ -468,16 +479,18 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profile" id="9eT-4Y-32P">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="204" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9eT-4Y-32P" id="O6o-5x-7Er">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-Q2-u5N">
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-Q2-u5N">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
                                             <state key="normal" title="Profile"/>
                                             <variation key="heightClass=regular" fixedFrame="YES">
                                                 <rect key="frame" x="27" y="8" width="48" height="30"/>
@@ -485,11 +498,9 @@
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="26" y="7" width="44" height="30"/>
                                             </variation>
-                                            <connections>
-                                                <action selector="logout:" destination="uvX-v4-nfv" eventType="touchUpInside" id="tAd-i3-BdT"/>
-                                            </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="omU-Q2-u5N"/>
@@ -501,6 +512,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <segue destination="oX9-Jb-ABu" kind="custom" identifier="showProfile" customClass="SWRevealViewControllerSeguePushController" id="GjU-w6-Ucy"/>
                                 </connections>
@@ -546,6 +558,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q4Z-me-XZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
