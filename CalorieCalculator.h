@@ -12,7 +12,9 @@
 
 @property double caloriesBurned;
 
--(id) calculateWithWeight: (float)weight andDistance:(float)distance andAverageSpeed:(float)avgspeed;
+-(id) initWithRunDetailsOfWeight: (float)weight andDistance:(float)distance andAverageSpeed:(float)avgspeed isImperial:(BOOL) isImperial;
 
+-(id) initWithCaloriesBurned:(double)caloriesBurned;
 -(NSString*) comparisonForCaloriesBurned;
++(NSDictionary*) foodComparisons;
 @end

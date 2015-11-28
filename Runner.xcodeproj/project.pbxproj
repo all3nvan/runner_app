@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; settings = {ASSET_TAGS = (); }; };
 		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; settings = {ASSET_TAGS = (); }; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		199479501C0A403400EB36DA /* CalorieCounterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCounterTests.m; sourceTree = "<group>"; };
 		19C9CBD71BF54A0500E897BD /* CalorieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieCalculator.h; sourceTree = "<group>"; };
 		19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCalculator.m; sourceTree = "<group>"; };
 		19EAE0A01BE2339100A074F6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				51527EEC1BD5BCAC00E7369E /* RunnerTests.m */,
+				199479501C0A403400EB36DA /* CalorieCounterTests.m */,
 				51527EEE1BD5BCAC00E7369E /* Info.plist */,
 			);
 			path = RunnerTests;
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */,
 				51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
