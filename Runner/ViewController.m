@@ -141,39 +141,7 @@ static UIImage* image;
         //Takes snapshot of map and saves to file path
             [self snapshotMap:calories];
         }
-
-        //Takes screenshot of entire view and saves to file path
-        //UIImage *image = [self takeAScreenShot];
-        
     }
-}
-
-//******Screenshot of view saved to file path******//
--(UIImage *) takeAScreenShot {
-    // here i am taking screen shot of whole UIWindow, but you can have the screenshot of any individual UIViews, Tableviews  . so in that case just use  object of your UIViews instead of  keyWindow.
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){ // checking for Retina display
-        UIGraphicsBeginImageContextWithOptions(keyWindow.bounds.size, YES, [UIScreen mainScreen].scale);
-    //if this method is not used for Retina device, image will be blurred.
-    }
-    else
-    {
-        UIGraphicsBeginImageContext(keyWindow.bounds.size);
-    }
-    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    // now storing captured image in Photo Library of device
-    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    //if you want to save captured image locally in your app's document directory
-    NSData * data = UIImagePNGRepresentation(image2);
-
-    // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
-    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
-    // NSLog(@"Path for Image : %@",imagePath);
-    [data writeToURL:fileURL atomically:YES];
-
-    return image2;
 }
 
 //******Snapshot of map saved to Parse, call to PopUpViewController******//
