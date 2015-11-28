@@ -175,7 +175,7 @@ static UIImage* image;
     options.size = self.map.frame.size;
     options.scale = [[UIScreen mainScreen] scale];
     
-    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
+//    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
 
     MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
 
@@ -193,8 +193,8 @@ static UIImage* image;
 //        [_pfRun saveInBackground];
         //Saving image to local directory
 
-        NSData *data = UIImagePNGRepresentation(image);
-        [data writeToURL:fileURL atomically:YES];
+//        NSData *data = UIImagePNGRepresentation(image);
+//        [data writeToURL:fileURL atomically:YES];
         
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
@@ -260,17 +260,21 @@ static UIImage* image;
             CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
             [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
         }
-        
+    NSArray *colorSegmentArray = [self colorSegmentsForLocations:self.locations];
+    for(int i = 0; i < colorSegmentArray.count; i++){
+        NSLog(@"%@", colorSegmentArray[i]);
+    }
         // Draw that points
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 3.0);
-        
+    
         for (NSValue *point in pointsToDraw){
             CGPoint pointToDraw = [point CGPointValue];
             if ([pointsToDraw indexOfObject:point] == 0){
                 CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
             } else {
                 CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
+//                CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
             }
         }
         CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
