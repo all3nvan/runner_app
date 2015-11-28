@@ -69,6 +69,12 @@
     NSLog(@"In showHome function");
 }
 
+//******Segue to Profile******//
+-(IBAction) showProfile:(id) sender{
+    NSLog(@"In showProfile function");
+    [self performSegueWithIdentifier:@"profileSegue" sender:nil];
+}
+
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -94,18 +100,17 @@
     UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
     [objectOfButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *showHistoryButton = (UIButton*)[cell viewWithTag: 3];
-    [showHistoryButton addTarget:self action:@selector(showHistory) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *showHomeButton = (UIButton*)[cell viewWithTag: 1];
+    [showHomeButton addTarget:self action:@selector(showHome) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *showSettingsButton = (UIButton*)[cell viewWithTag:2];
     [showSettingsButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *showHomeButton = (UIButton*)[cell viewWithTag: 1];
-    [showHomeButton addTarget:self action:@selector(showHome) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *showHistoryButton = (UIButton*)[cell viewWithTag: 3];
+    [showHistoryButton addTarget:self action:@selector(showHistory) forControlEvents:UIControlEventTouchUpInside];
     
-    //This is the action for the profile button; not sure if needed
-//    UIButton *showProfileButton = (UIButton*) [cell viewWithTag:4];
-//    [showProfileButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *showProfileButton = (UIButton*) [cell viewWithTag:4];
+    [showProfileButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -151,11 +156,20 @@
     destViewController.title = [[menuItems objectAtIndex:indexPath.row] capitalizedString];
     
     // Set the photo if it navigates to the PhotoView
-    if ([segue.identifier isEqualToString:@"showProfile"]) {
+    if ([segue.identifier isEqualToString:@"profileSegue"]) {
         UINavigationController *navController = segue.destinationViewController;
         ProfileViewController *profileController = [navController childViewControllers].firstObject;
     }
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    [tableView deselectRowAtIndexPath:indexPath
+//                             animated:true];
+    NSLog(@"%@", indexPath);
+
+}
+
 
 
 @end

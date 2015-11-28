@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *logout;
 @property (weak, nonatomic) IBOutlet UIButton *showSettings;
 @property (weak, nonatomic) IBOutlet UIButton *showHome;
+@property (weak, nonatomic) IBOutlet UIButton *showProfile;
 @end

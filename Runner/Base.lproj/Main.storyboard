@@ -498,6 +498,9 @@
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="26" y="7" width="44" height="30"/>
                                             </variation>
+                                            <connections>
+                                                <action selector="showProfile:" destination="uvX-v4-nfv" eventType="touchUpInside" id="Agj-fB-s0S"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
@@ -514,7 +517,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="oX9-Jb-ABu" kind="custom" identifier="showProfile" customClass="SWRevealViewControllerSeguePushController" id="GjU-w6-Ucy"/>
+                                    <segue destination="oX9-Jb-ABu" kind="custom" identifier="profileSegue" customClass="SWRevealViewControllerSeguePushController" id="GjU-w6-Ucy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
