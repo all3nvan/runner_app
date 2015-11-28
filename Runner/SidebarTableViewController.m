@@ -67,6 +67,7 @@
 //******Segue to Home******//
 -(IBAction) showHome:(id) sender{
     NSLog(@"In showHome function");
+    [self performSegueWithIdentifier:@"homeSegue" sender:nil];
 }
 
 //******Segue to Profile******//

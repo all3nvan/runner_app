@@ -17,6 +17,7 @@
 		2814325D1BE1C61D0075B067 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 2814325B1BE1C61D0075B067 /* Location.m */; };
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
 		2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */; };
+		28CD954A1C0A3C2D00574726 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CD95491C0A3C2D00574726 /* ProfileViewController.m */; };
 		28DF3D0A1BF925CB0001D02D /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DF3D081BF925CB0001D02D /* PopUpViewController.m */; };
 		28DF3D0B1BF925CB0001D02D /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DF3D091BF925CB0001D02D /* PopUpViewController.xib */; };
 		513DA9851BE1BAC5003006B5 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513DA9841BE1BAC5003006B5 /* SidebarTableViewController.m */; };
@@ -83,6 +84,8 @@
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
+		28CD95481C0A3C2D00574726 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		28CD95491C0A3C2D00574726 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		28DF3D071BF925CB0001D02D /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		28DF3D081BF925CB0001D02D /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		28DF3D091BF925CB0001D02D /* PopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				28DF3D071BF925CB0001D02D /* PopUpViewController.h */,
 				28DF3D081BF925CB0001D02D /* PopUpViewController.m */,
 				28DF3D091BF925CB0001D02D /* PopUpViewController.xib */,
+				28CD95481C0A3C2D00574726 /* ProfileViewController.h */,
+				28CD95491C0A3C2D00574726 /* ProfileViewController.m */,
 				9967A6791BD86B3E00297580 /* AppDrawerViewController.h */,
 				9967A67A1BD86B3E00297580 /* AppDrawerViewController.m */,
 				51527EDE1BD5BCAC00E7369E /* Assets.xcassets */,
@@ -432,6 +437,7 @@
 			files = (
 				513DA9851BE1BAC5003006B5 /* SidebarTableViewController.m in Sources */,
 				51527EDA1BD5BCAC00E7369E /* ViewController.m in Sources */,
+				28CD954A1C0A3C2D00574726 /* ProfileViewController.m in Sources */,
 				19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */,
 				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				51FF2B951BE19F5500F0F2EE /* User.m in Sources */,

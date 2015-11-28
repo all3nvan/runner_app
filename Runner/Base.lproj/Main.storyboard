@@ -52,7 +52,12 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Z2w-78-Dyc"/>
+                    <navigationItem key="navigationItem" id="Z2w-78-Dyc">
+                        <barButtonItem key="leftBarButtonItem" image="menu48.png" id="ZhG-3Q-178"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="ZhG-3Q-178" id="y8Y-Uj-aRL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJo-Wu-ngR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,6 +380,9 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="HVW-hZ-YNP" kind="custom" identifier="homeSegue" customClass="SWRevealViewControllerSeguePushController" id="E94-za-Mju"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logout" id="eaN-Uj-z9E">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -576,4 +584,7 @@
     <resources>
         <image name="menu48.png" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="E94-za-Mju"/>
+    </inferredMetricsTieBreakers>
 </document>

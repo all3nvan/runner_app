@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "SWRevealViewController.h"
 
 @interface ProfileViewController ()
 
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    SWRevealViewController *revealViewController = self.revealViewController;
+//    if (revealViewController)
+//    {
+        [self.menuButton setTarget: revealViewController];
+        [self.menuButton setAction: @selector( revealToggle:)];
+        [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

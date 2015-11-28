@@ -35,12 +35,12 @@ static UIImage* image;
     _startRun.layer.cornerRadius = _startRun.bounds.size.width/2;
     
     SWRevealViewController *revealViewController = self.revealViewController;
-    if (revealViewController)
-    {
-        [self.menuButton setTarget: self.revealViewController];
+//    if (revealViewController)
+//    {
+        [self.menuButton setTarget: revealViewController];
         [self.menuButton setAction: @selector( revealToggle:)];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
+        [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
+//    }
     
     self.locationManager = [[CLLocationManager alloc] init];
     
