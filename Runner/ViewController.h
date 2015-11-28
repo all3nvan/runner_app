@@ -47,5 +47,7 @@
 @property (strong, nonatomic) UIColor *color;
 @property (strong, nonatomic) PopUpViewController* popViewController;
 
+@property float avgSpeed;
+
 @end
 
