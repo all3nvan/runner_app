@@ -260,10 +260,7 @@ static UIImage* image;
             CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
             [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
         }
-    NSArray *colorSegmentArray = [self colorSegmentsForLocations:self.locations];
-    for(int i = 0; i < colorSegmentArray.count; i++){
-        NSLog(@"%@", colorSegmentArray[i]);
-    }
+    
         // Draw that points
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 3.0);
