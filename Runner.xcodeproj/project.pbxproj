@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; settings = {ASSET_TAGS = (); }; };
+		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; settings = {ASSET_TAGS = (); }; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
 		19EAE0A81BE28C3800A074F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EAE0A71BE28C3800A074F6 /* logo.png */; };
@@ -70,6 +72,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		199479501C0A403400EB36DA /* CalorieCounterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCounterTests.m; sourceTree = "<group>"; };
+		19C9CBD71BF54A0500E897BD /* CalorieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieCalculator.h; sourceTree = "<group>"; };
+		19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCalculator.m; sourceTree = "<group>"; };
 		19EAE0A01BE2339100A074F6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		19EAE0A21BE24BC600A074F6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		19EAE0A31BE24BC600A074F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -176,6 +181,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19C9CBD61BF549B700E897BD /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				19C9CBD71BF54A0500E897BD /* CalorieCalculator.h */,
+				19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */,
+			);
+			name = Objects;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		51527EC61BD5BCAC00E7369E = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +229,7 @@
 		51527ED11BD5BCAC00E7369E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				19C9CBD61BF549B700E897BD /* Objects */,
 				281432581BE1C61D0075B067 /* Location+CoreDataProperties.h */,
 				281432591BE1C61D0075B067 /* Location+CoreDataProperties.m */,
 				2814325A1BE1C61D0075B067 /* Location.h */,
@@ -268,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				51527EEC1BD5BCAC00E7369E /* RunnerTests.m */,
+				199479501C0A403400EB36DA /* CalorieCounterTests.m */,
 				51527EEE1BD5BCAC00E7369E /* Info.plist */,
 			);
 			path = RunnerTests;
@@ -455,6 +472,7 @@
 				51FF2B951BE19F5500F0F2EE /* User.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
 				2814325C1BE1C61D0075B067 /* Location+CoreDataProperties.m in Sources */,
+				19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */,
 				51FF2B921BE19F4E00F0F2EE /* Run.m in Sources */,
 				28DF3D0A1BF925CB0001D02D /* PopUpViewController.m in Sources */,
 				281432571BE1C54D0075B067 /* Location.xcdatamodeld in Sources */,
@@ -470,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */,
 				51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
