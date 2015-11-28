@@ -10,6 +10,7 @@
 
 @implementation CalorieCalculator
 
+/// weight in lbs or kg, distance in  miles or kilometers, speed in mph or meters/second
 -(id) initWithRunDetailsOfWeight: (float)weight andDistance:(float)distance andAverageSpeed:(float)avgspeed isImperial:(BOOL) isImperial
 {
     float weightToImperial = weight;
