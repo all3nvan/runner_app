@@ -57,11 +57,13 @@
 //******Segue to History******//
 -(IBAction) showHistory:(id) sender{
     NSLog(@"In showHistory function");
+    [self performSegueWithIdentifier:@"historySegue" sender:nil];
 }
 
 //******Segue to Settings******//
 -(IBAction) showSettings:(id) sender{
     NSLog(@"In showSettings function");
+    [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
 }
 
 //******Segue to Home******//
