@@ -14,5 +14,6 @@
 @property int duration;
 @property NSDate* timestamp;
 @property NSMutableArray* locations;
+@property float calories;
 
 @end

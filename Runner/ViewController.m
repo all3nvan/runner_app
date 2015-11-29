@@ -118,6 +118,12 @@ static UIImage* image;
         _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
         [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
 
+        //Call calorie calculator
+        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:120 andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
+        
+        //Stores calories in Run object
+        _run.calories = calories.caloriesBurned;
+        
         // Saves run
         _run.distance = self.distance;
         _run.duration = self.seconds;
@@ -126,51 +132,20 @@ static UIImage* image;
         _pfRun[@"user"] = [PFUser currentUser];
         _pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
         _pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
+        _pfRun[@"caloriesBurned"] = [NSNumber numberWithFloat:_run.calories];
         
         //Displays polyline map of route that was run
         [self loadMap];
         
         if(self.locations.count > 1){
         //Takes snapshot of map and saves to file path
-            [self snapshotMap];
+            [self snapshotMap:calories];
         }
-
-        //Takes screenshot of entire view and saves to file path
-        //UIImage *image = [self takeAScreenShot];
-        
     }
 }
 
-//******Screenshot of view saved to file path******//
--(UIImage *) takeAScreenShot {
-    // here i am taking screen shot of whole UIWindow, but you can have the screenshot of any individual UIViews, Tableviews  . so in that case just use  object of your UIViews instead of  keyWindow.
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){ // checking for Retina display
-        UIGraphicsBeginImageContextWithOptions(keyWindow.bounds.size, YES, [UIScreen mainScreen].scale);
-    //if this method is not used for Retina device, image will be blurred.
-    }
-    else
-    {
-        UIGraphicsBeginImageContext(keyWindow.bounds.size);
-    }
-    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    // now storing captured image in Photo Library of device
-    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    //if you want to save captured image locally in your app's document directory
-    NSData * data = UIImagePNGRepresentation(image2);
-
-    // NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"testImage.png"];
-    NSURL *fileURL = [NSURL fileURLWithPath:@"Users/abc/Documents/Github/Runner/snapshot.png"];
-    // NSLog(@"Path for Image : %@",imagePath);
-    [data writeToURL:fileURL atomically:YES];
-
-    return image2;
-}
-
-//******Snapshot of map saved to Parse, call to PopUpViewController, and CalorieCalculator******//
--(UIImage *) snapshotMap{
+//******Snapshot of map saved to Parse, call to PopUpViewController******//
+-(UIImage *) snapshotMap:(CalorieCalculator*) calories{
     MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
     options.region = self.map.region;
     options.size = self.map.frame.size;
@@ -196,9 +171,6 @@ static UIImage* image;
 
 //        NSData *data = UIImagePNGRepresentation(image);
 //        [data writeToURL:fileURL atomically:YES];
-        
-        //Call calorie
-        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:120 andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
         
         //Displays popup window
         _popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
