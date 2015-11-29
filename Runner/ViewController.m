@@ -49,8 +49,11 @@ static UIImage* image;
     self.map.showsUserLocation = YES;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
     self.map.delegate = self;
-    // Do any additional setup after loading the view, typically from a nib.
-    [self checkWeight];
+    
+    //Check if a user is currently logged in
+    if([PFUser currentUser]){
+        [self checkWeight];
+    }
 }
 
 
@@ -130,6 +133,23 @@ static UIImage* image;
 
 //******Handles when a user selects Start/Stop Run******//
 - (IBAction)startRun:(id)sender {
+    
+    //If a valid user is not logged in
+    if(![PFUser currentUser]){
+        UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                                 [self viewDidAppear:YES];
+                             }];
+        [invalidUser addAction:ok];
+        [self presentViewController:invalidUser animated:YES completion:nil];
+        
+        return;
+    }
     if(self.timer){
         [self.timer invalidate];
         self.timer = nil;
@@ -162,9 +182,12 @@ static UIImage* image;
         button.selected = NO;
         _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
         [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
+        
+        //Get current user's weight
+        NSNumber* userWeight = [[PFUser currentUser] objectForKey:@"userWeight"];
 
         //Call calorie calculator
-        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:120 andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
+        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:[userWeight floatValue] andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
             
         //Stores calories in Run object
         _run.calories = calories.caloriesBurned;
