@@ -14,6 +14,9 @@
 @end
 
 @implementation HistoryViewController
+{
+    NSArray *runHistory;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +26,26 @@
     [self.menuButton setTarget: revealViewController];
     [self.menuButton setAction: @selector( revealToggle:)];
     [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
+    
+    [self getRunHistory];
+}
+
+- (void) getRunHistory {
+    PFQuery *query = [PFQuery queryWithClassName:@"Run"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSMutableArray *runs = [[NSMutableArray alloc] init];
+            
+            for (PFObject *object in objects) {
+                [runs addObject:object];
+            }
+            
+            runHistory = [[NSArray alloc] initWithArray:runs];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

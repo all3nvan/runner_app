@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @interface HistoryViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
