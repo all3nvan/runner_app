@@ -50,6 +50,7 @@ static UIImage* image;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES];
     self.map.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
+    [self checkWeight];
 }
 
 
@@ -65,7 +66,50 @@ static UIImage* image;
         loginView.signUpController.delegate = self;
         [self presentViewController:loginView animated:YES completion:nil];
     }
-    
+}
+
+//******Check if user's weight is defined******//
+-(void) checkWeight{
+    //If user's weight is undefined
+  
+    if([[PFUser currentUser] objectForKey:@"userWeight"] == nil){
+        
+        __block float weight = 135.0;
+        
+        __weak UIAlertController* weightAlert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Weight has not been set. Weight will be set to default of 135lbs if not specified." preferredStyle:UIAlertControllerStyleAlert];
+        
+        [weightAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Weight";
+        }];
+        
+        UIAlertAction* submit = [UIAlertAction
+                                 actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                     NSString *text = ((UITextField *)[weightAlert.textFields objectAtIndex:0]).text;
+                                     if([text floatValue] <= 0 || text.length == 0){
+                                         weight = 135.0;
+                                     }
+                                     else{
+                                         weight = [text floatValue];
+                                     }
+                                     NSNumber* weightNum = [NSNumber numberWithFloat:weight];
+                                     
+                                     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+                                     [query whereKey:@"username" equalTo:[[PFUser currentUser]username]];
+                                     [query getFirstObjectInBackgroundWithBlock:^(PFObject * userAttr, NSError *error) {
+                                         if (!error) {
+                                             [userAttr setObject:weightNum forKey:@"userWeight"];
+                                             
+                                             [userAttr saveInBackground];
+                                         } else {
+                                             NSLog(@"Error: %@", error);
+                                         }
+                                     }];
+                                     [weightAlert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+        [weightAlert addAction:submit];
+        
+        [self presentViewController:weightAlert animated:YES completion:nil];
+    }
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
@@ -90,9 +134,10 @@ static UIImage* image;
         [self.timer invalidate];
         self.timer = nil;
     }
+    
     UIButton *button = (UIButton *) sender;
     if(button.isSelected == NO){ //If user starts a run
-        self.topSpeed = 0;
+            self.topSpeed = 0;
         [self.map setUserTrackingMode:MKUserTrackingModeFollow animated: YES]; //Zooms back to map and follows user again
         [self.map removeOverlays:self.map.overlays]; //Removes polylines from map
         button.selected = YES;
@@ -120,25 +165,25 @@ static UIImage* image;
 
         //Call calorie calculator
         CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:120 andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
-        
+            
         //Stores calories in Run object
         _run.calories = calories.caloriesBurned;
-        
+            
         // Saves run
         _run.distance = self.distance;
         _run.duration = self.seconds;
         _run.locations = self.locations;
-        
+            
         _pfRun[@"user"] = [PFUser currentUser];
         _pfRun[@"distance"] = [NSNumber numberWithFloat:_run.distance];
         _pfRun[@"duration"] = [NSNumber numberWithInt:_run.duration];
         _pfRun[@"caloriesBurned"] = [NSNumber numberWithFloat:_run.calories];
-        
+            
         //Displays polyline map of route that was run
         [self loadMap];
-        
+            
         if(self.locations.count > 1){
-        //Takes snapshot of map and saves to file path
+            //Takes snapshot of map and saves to file path
             [self snapshotMap:calories];
         }
     }
