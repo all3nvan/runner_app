@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (strong, nonatomic) IBOutlet UITableView *runHistoryTable;
 
 @end
