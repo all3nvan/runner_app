@@ -83,31 +83,54 @@
         NSString* dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
         self.dateTime.text = [NSString stringWithFormat:@"%@", dateString];
         self.topSpeed.text = [NSString stringWithFormat:@"Top Speed: %.02f mps", speed];
-        self.calories.text = [NSString stringWithFormat:@"Calories Burned: %.02f calories,\n %@", caloriesBurned.caloriesBurned, [caloriesBurned comparisonForCaloriesBurned]];
-        //Querying Parse for image
-//        PFUser* currentUser = [PFUser currentUser];
-//        PFQuery *query = [PFQuery queryWithClassName:@"Run"];
-////        [query whereKey:@"objectId" equalTo:currentUser];
-//
-//        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//            if (!object) {
-//                return NSLog(@"%@", error);
-//            }
-//            
-//            PFFile *imageFile = object[@"image"];
-//            
-//            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//                if (!data) {
-//                    return NSLog(@"%@", error);
-//                }
-//                
-//                // Do something with the image
-//                self.logoImg.image = [UIImage imageWithData:data];
-//                NSLog(@"%@", self.logoImg.image);
-//            }];
-//        }];
-        
+        if(caloriesBurned.caloriesBurned >= 50){
+            self.calories.text = [NSString stringWithFormat:@"Calories Burned: %.02f calories,\n %@", caloriesBurned.caloriesBurned, [caloriesBurned comparisonForCaloriesBurned]];
+        }
+        else{
+            self.calories.text = [NSString stringWithFormat:@"Calories Burned: %.02f calories", caloriesBurned.caloriesBurned];
+        }
         [self showAnimate];
+    }
+}
+
+-(void) ShareFacebook{
+    SLComposeViewController *fbController=[SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        fbController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            [fbController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                default:
+                {
+                    NSLog(@"Cancelled.....");
+                    // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs://"]];
+                    
+                }
+                    break;
+                case SLComposeViewControllerResultDone:
+                {
+                    NSLog(@"Posted....");
+                }
+                    break;
+            }};
+        
+        
+        [fbController setInitialText:@"This is My Sample Text"];
+        //        [fbController addImage: @"some image"];
+        
+        [fbController setCompletionHandler:completionHandler];
+        
+        [self presentViewController:fbController animated:YES completion:nil];
+    }
+    else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please sign in to your Facebook account" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

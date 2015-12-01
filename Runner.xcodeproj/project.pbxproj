@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; settings = {ASSET_TAGS = (); }; };
-		199479541C0A636D00EB36DA /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479531C0A636D00EB36DA /* Trail.m */; settings = {ASSET_TAGS = (); }; };
-		199479561C0A6AA900EB36DA /* TrailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479551C0A6AA900EB36DA /* TrailTests.m */; settings = {ASSET_TAGS = (); }; };
-		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; settings = {ASSET_TAGS = (); }; };
+		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; };
+		199479541C0A636D00EB36DA /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479531C0A636D00EB36DA /* Trail.m */; };
+		199479561C0A6AA900EB36DA /* TrailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479551C0A6AA900EB36DA /* TrailTests.m */; };
+		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
 		19EAE0A81BE28C3800A074F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EAE0A71BE28C3800A074F6 /* logo.png */; };
@@ -20,6 +20,7 @@
 		2814325C1BE1C61D0075B067 /* Location+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 281432591BE1C61D0075B067 /* Location+CoreDataProperties.m */; };
 		2814325D1BE1C61D0075B067 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 2814325B1BE1C61D0075B067 /* Location.m */; };
 		284BF6E61BDF4DB4008665AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BF6E51BDF4DB4008665AF /* CoreLocation.framework */; };
+		285AD3A31C0E3FB500590CF9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285AD3A21C0E3FB500590CF9 /* Social.framework */; };
 		2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */; };
 		28CD954A1C0A3C2D00574726 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CD95491C0A3C2D00574726 /* ProfileViewController.m */; };
 		28CD954D1C0A416700574726 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CD954C1C0A416700574726 /* HistoryViewController.m */; };
@@ -94,6 +95,7 @@
 		2814325A1BE1C61D0075B067 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		2814325B1BE1C61D0075B067 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		284BF6E51BDF4DB4008665AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		285AD3A21C0E3FB500590CF9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2868F0BB1BE1A82100FAC96B /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		2868F0BC1BE1A82100FAC96B /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		28CD95481C0A3C2D00574726 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285AD3A31C0E3FB500590CF9 /* Social.framework in Frameworks */,
 				51E8FE821BE18D6D00D53965 /* libsqlite3.tbd in Frameworks */,
 				51E8FE801BE18D6300D53965 /* libz.tbd in Frameworks */,
 				19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */,
@@ -201,6 +204,7 @@
 		51527EC61BD5BCAC00E7369E = {
 			isa = PBXGroup;
 			children = (
+				285AD3A21C0E3FB500590CF9 /* Social.framework */,
 				281432551BE1C54D0075B067 /* Location.xcdatamodeld */,
 				19EAE0A01BE2339100A074F6 /* ParseUI.framework */,
 				51E8FE711BE18D0E00D53965 /* AudioToolbox.framework */,

@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "CalorieCalculator.h"
+#import <Social/Social.h>
 
 @interface PopUpViewController : UIViewController
 
