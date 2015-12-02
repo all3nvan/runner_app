@@ -27,6 +27,10 @@
     [self.menuButton setAction: @selector( revealToggle:)];
     [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
     
+
+    self.runHistoryTable.delegate = self;
+    self.runHistoryTable.dataSource = self;
+    
     [self getRunHistory];
 }
 
@@ -42,6 +46,7 @@
             }
             
             runHistory = [[NSArray alloc] initWithArray:runs];
+            [_runHistoryTable reloadData];
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -51,6 +56,36 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return runHistory.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"runHistoryCell" forIndexPath:indexPath];
+    
+    PFObject *currentRun = [runHistory objectAtIndex:indexPath.row];
+    
+    UILabel *date = (UILabel*)[cell viewWithTag:1];
+    date.text = currentRun.createdAt.description;
+    
+    UILabel *distance = (UILabel*)[cell viewWithTag:2];
+    distance.text = [[[currentRun objectForKey:@"distance"] description] stringByAppendingString:@" meters"];
+    
+    UILabel *duration = (UILabel*)[cell viewWithTag:3];
+    duration.text = [[[currentRun objectForKey:@"duration"] description] stringByAppendingString:@" seconds"];
+    
+    UILabel *calories = (UILabel*)[cell viewWithTag:4];
+    calories.text = [[currentRun objectForKey:@"caloriesBurned"] description];
+    
+    return cell;
 }
 
 /*
