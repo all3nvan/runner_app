@@ -56,12 +56,21 @@
 
 //******Segue to History******//
 -(IBAction) showHistory:(id) sender{
-    [self performSegueWithIdentifier:@"historySegue" sender:nil];
+    if([PFUser currentUser]){
+        [self performSegueWithIdentifier:@"historySegue" sender:nil];
+    }else{
+        [self userNotLoggedIn];
+    }
 }
 
 //******Segue to Settings******//
 -(IBAction) showSettings:(id) sender{
-    [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
+    if([PFUser currentUser]){
+        [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
+    }
+    else{
+        [self userNotLoggedIn];
+    }
 }
 
 //******Segue to Home******//
@@ -71,7 +80,30 @@
 
 //******Segue to Profile******//
 -(IBAction) showProfile:(id) sender{
-    [self performSegueWithIdentifier:@"profileSegue" sender:nil];
+    if([PFUser currentUser]){
+        [self performSegueWithIdentifier:@"profileSegue" sender:nil];
+    }
+    else{
+        [self userNotLoggedIn];
+    }
+}
+
+//******Displays an alert if a user is not logged in******//
+-(void) userNotLoggedIn{
+    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                             LoginViewController* loginView = [[LoginViewController alloc]init];
+                             loginView.delegate = self;
+                             loginView.signUpController.delegate = self;
+                             [self presentViewController:loginView animated:YES completion:nil];
+                         }];
+    [invalidUser addAction:ok];
+    [self presentViewController:invalidUser animated:YES completion:nil];
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user

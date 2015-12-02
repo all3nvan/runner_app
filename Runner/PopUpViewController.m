@@ -130,6 +130,15 @@
     }
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please sign in to your Facebook account" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* login = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self viewDidAppear:YES];
+        }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+            [self viewDidAppear:YES];
+        }];
+        [alert addAction:login];
+        [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }

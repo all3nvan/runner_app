@@ -131,23 +131,27 @@ static UIImage* image;
     // Dispose of any resources that can be recreated.
 }
 
+//******Displays an alert if a user is not logged in******//
+-(void) userNotLoggedIn{
+    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                             [self viewDidAppear:YES];
+                         }];
+    [invalidUser addAction:ok];
+    [self presentViewController:invalidUser animated:YES completion:nil];
+}
+
 //******Handles when a user selects Start/Stop Run******//
 - (IBAction)startRun:(id)sender {
     
     //If a valid user is not logged in
     if(![PFUser currentUser]){
-        UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [invalidUser dismissViewControllerAnimated:YES completion:nil];
-                                 [self viewDidAppear:YES];
-                             }];
-        [invalidUser addAction:ok];
-        [self presentViewController:invalidUser animated:YES completion:nil];
-        
+        [self userNotLoggedIn];
         return;
     }
     if(self.timer){
