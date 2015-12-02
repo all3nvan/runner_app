@@ -13,10 +13,13 @@
 
 @end
 
-@implementation SettingsViewController
+@implementation SettingsViewController {
+    NSArray *allSettings;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    allSettings = @[@"weight", @"gender", @"height", @"unit", @"version"];
     // Do any additional setup after loading the view.
     SWRevealViewController *revealViewController = self.revealViewController;
     
@@ -29,6 +32,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return allSettings.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allSettingsCell" forIndexPath:indexPath];
+    
+    NSString *currentSettings = [allSettings objectAtIndex:indexPath.row];
+    
+    
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation
