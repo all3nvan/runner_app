@@ -36,7 +36,7 @@
 
 - (void) getRunHistory {
     PFQuery *query = [PFQuery queryWithClassName:@"Run"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [[query whereKey:@"user" equalTo:[PFUser currentUser]] orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSMutableArray *runs = [[NSMutableArray alloc] init];
