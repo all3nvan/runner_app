@@ -73,8 +73,17 @@
     
     PFObject *currentRun = [runHistory objectAtIndex:indexPath.row];
     
-    UILabel *time = (UILabel*)[cell viewWithTag:1];
-    time.text = [currentRun objectForKey:@"distance"];
+    UILabel *date = (UILabel*)[cell viewWithTag:1];
+    date.text = currentRun.createdAt.description;
+    
+    UILabel *distance = (UILabel*)[cell viewWithTag:2];
+    distance.text = [[[currentRun objectForKey:@"distance"] description] stringByAppendingString:@" meters"];
+    
+    UILabel *duration = (UILabel*)[cell viewWithTag:3];
+    duration.text = [[[currentRun objectForKey:@"duration"] description] stringByAppendingString:@" seconds"];
+    
+    UILabel *calories = (UILabel*)[cell viewWithTag:4];
+    calories.text = [[currentRun objectForKey:@"caloriesBurned"] description];
     
     return cell;
 }
