@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.settingsOptions.delegate = self;
+    self.settingsOptions.dataSource = self;
     allSettings = @[@"weight", @"gender", @"height", @"unit", @"version"];
     // Do any additional setup after loading the view.
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -33,6 +35,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction) changeWeight:(id) sender{
+    
+}
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -45,9 +54,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allSettingsCell" forIndexPath:indexPath];
     
-    NSString *currentSettings = [allSettings objectAtIndex:indexPath.row];
+    NSString *CellIdentifier = [allSettings objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    UITextField *weightField = (UITextField*)[cell viewWithTag:196];
+    weightField.text = [[PFUser currentUser] weight];
+    [weightField addTarget:self action:@selector(changeWeight) forControlEvents:UIControlEventTouchUpInside];
+    
+    UISegmentedControl *genderField = (UISegmentedControl*)[cell viewWithTag: 197];
+    [genderField addTarget:self action:@selector(changeGender) forControlEvents:UIControlEventTouchUpInside];
+    
+    UITextField *heightField = (UITextField*)[cell viewWithTag:198];
+    [heightField addTarget:self action:@selector(changeHeight) forControlEvents:UIControlEventTouchUpInside];
+    
+    UISegmentedControl *unitField = (UISegmentedControl*)[cell viewWithTag: 199];
+    [unitField addTarget:self action:@selector(changeUnit) forControlEvents:UIControlEventTouchUpInside];
+    
     
     
     return cell;
