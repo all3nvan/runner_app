@@ -8,6 +8,7 @@
 
 #import "HistoryViewController.h"
 #import "SWRevealViewController.h"
+#import "RunImageViewController.h"
 
 @interface HistoryViewController ()
 
@@ -100,9 +101,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    MapViewController* mvc = [segue destinationViewController];
-//    
-//    mvc.contactData = selectedContact;
+    RunImageViewController *destination = [segue destinationViewController];
+    destination.runImage = runImage;
 }
 
 /*
