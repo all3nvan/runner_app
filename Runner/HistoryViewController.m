@@ -8,8 +8,11 @@
 
 #import "HistoryViewController.h"
 #import "SWRevealViewController.h"
+#import "RunImageViewController.h"
 
 @interface HistoryViewController ()
+
+@property PFFile *runImage;
 
 @end
 
@@ -17,6 +20,8 @@
 {
     NSArray *runHistory;
 }
+
+@synthesize runImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +41,7 @@
 
 - (void) getRunHistory {
     PFQuery *query = [PFQuery queryWithClassName:@"Run"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [[query whereKey:@"user" equalTo:[PFUser currentUser]] orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSMutableArray *runs = [[NSMutableArray alloc] init];
@@ -91,14 +96,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-//    selectedContact = (Contact*)[contactArray objectAtIndex:indexPath.row];
+    runImage = [[runHistory objectAtIndex:indexPath.row] objectForKey:@"image"];
     [self performSegueWithIdentifier:@"historySegue" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    MapViewController* mvc = [segue destinationViewController];
-//    
-//    mvc.contactData = selectedContact;
+    RunImageViewController *destination = [segue destinationViewController];
+    destination.runImage = runImage;
 }
 
 /*

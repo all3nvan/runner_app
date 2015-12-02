@@ -36,6 +36,7 @@
 		51527EE21BD5BCAC00E7369E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51527EE01BD5BCAC00E7369E /* LaunchScreen.storyboard */; };
 		51527EED1BD5BCAC00E7369E /* RunnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EEC1BD5BCAC00E7369E /* RunnerTests.m */; };
 		51527EF81BD5BCAC00E7369E /* RunnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51527EF71BD5BCAC00E7369E /* RunnerUITests.m */; };
+		5162D1461C0FB30D00899CF9 /* RunImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5162D1451C0FB30D00899CF9 /* RunImageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		518A304E1BD5C35B00003CBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 518A304D1BD5C35B00003CBB /* MapKit.framework */; };
 		51E8FE6E1BE18CD800D53965 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; };
 		51E8FE701BE18CE200D53965 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6F1BE18CE200D53965 /* Bolts.framework */; };
@@ -125,6 +126,8 @@
 		51527EF31BD5BCAC00E7369E /* RunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51527EF71BD5BCAC00E7369E /* RunnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunnerUITests.m; sourceTree = "<group>"; };
 		51527EF91BD5BCAC00E7369E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5162D1441C0FB30D00899CF9 /* RunImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunImageViewController.h; sourceTree = "<group>"; };
+		5162D1451C0FB30D00899CF9 /* RunImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunImageViewController.m; sourceTree = "<group>"; };
 		518A304D1BD5C35B00003CBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		51E8FE6D1BE18CD800D53965 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		51E8FE6F1BE18CE200D53965 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				28024D331BEDE6AD004BD0EA /* MulticolorPolylineSegment.m */,
 				19EAE0A21BE24BC600A074F6 /* LoginViewController.h */,
 				19EAE0A31BE24BC600A074F6 /* LoginViewController.m */,
+				5162D1441C0FB30D00899CF9 /* RunImageViewController.h */,
+				5162D1451C0FB30D00899CF9 /* RunImageViewController.m */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
 				281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */,
 				2814325D1BE1C61D0075B067 /* Location.m in Sources */,
+				5162D1461C0FB30D00899CF9 /* RunImageViewController.m in Sources */,
 				2868F0BD1BE1A82100FAC96B /* CoreLocationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
