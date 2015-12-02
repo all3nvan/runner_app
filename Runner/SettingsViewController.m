@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    allSettings = @[@"weight", @"gender", @"height", @"unit", @"version"];
     // Do any additional setup after loading the view.
     SWRevealViewController *revealViewController = self.revealViewController;
     
