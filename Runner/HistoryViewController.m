@@ -88,6 +88,19 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+//    selectedContact = (Contact*)[contactArray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"historySegue" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    MapViewController* mvc = [segue destinationViewController];
+//    
+//    mvc.contactData = selectedContact;
+}
+
 /*
 #pragma mark - Navigation
 
