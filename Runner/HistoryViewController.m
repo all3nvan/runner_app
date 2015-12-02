@@ -11,12 +11,16 @@
 
 @interface HistoryViewController ()
 
+@property PFFile *runImage;
+
 @end
 
 @implementation HistoryViewController
 {
     NSArray *runHistory;
 }
+
+@synthesize runImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,7 +95,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-//    selectedContact = (Contact*)[contactArray objectAtIndex:indexPath.row];
+    runImage = [[runHistory objectAtIndex:indexPath.row] objectForKey:@"image"];
     [self performSegueWithIdentifier:@"historySegue" sender:nil];
 }
 
