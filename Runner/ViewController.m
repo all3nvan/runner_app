@@ -281,14 +281,12 @@ static UIImage* image;
     UIGraphicsBeginImageContext(snapShot.image.size);
     CGRect rectForImage = CGRectMake(0, 0, snapShot.image.size.width, snapShot.image.size.height);
     
-    // Draw map
     [snapShot.image drawInRect:rectForImage];
     
-    // Get points in the snapshot from the snapshot
     int lastPointIndex = 0;
     int firstPointIndex = 0;
     BOOL isfirstPoint = NO;
-//    NSMutableArray *pointsToDraw = [NSMutableArray array];
+
     NSMutableArray* pointsToDraw = [[NSMutableArray alloc] init];
     for (int i = 1; i < polyline.pointCount-1; i++){
         MKMapPoint point = polyline.points[i];
@@ -305,42 +303,38 @@ static UIImage* image;
             }
         }
     }
-    
-    // Adding the first point on the outside too so we have a nice path
+    //NSArray *colorSegmentArray = [self colorSegmentsForLocations:self.locations];
     if (lastPointIndex + 1 <= polyline.pointCount) {
         MKMapPoint point = polyline.points[lastPointIndex+1];
         CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
         CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
         [pointsToDraw addObject:[NSValue valueWithCGPoint:pointInSnapshot]];
     }
-        // Adding the point before the first point in the map as well (if needed) to have nice path
         
-        if (firstPointIndex != 0) {
-            MKMapPoint point = polyline.points[firstPointIndex-1];
-            CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
-            CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
-            [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
+    if (firstPointIndex != 0) {
+        MKMapPoint point = polyline.points[firstPointIndex-1];
+        CLLocationCoordinate2D pointCoord = MKCoordinateForMapPoint(point);
+        CGPoint pointInSnapshot = [snapShot pointForCoordinate:pointCoord];
+        [pointsToDraw insertObject:[NSValue valueWithCGPoint:pointInSnapshot] atIndex:0];
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 3.0);
+    
+    for (NSValue *point in pointsToDraw){
+        CGPoint pointToDraw = [point CGPointValue];
+        if ([pointsToDraw indexOfObject:point] == 0){
+            CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
+        } else {
+            CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
         }
+    }
+    CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
+    CGContextStrokePath(context);
     
-        // Draw that points
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetLineWidth(context, 3.0);
-    
-        for (NSValue *point in pointsToDraw){
-            CGPoint pointToDraw = [point CGPointValue];
-            if ([pointsToDraw indexOfObject:point] == 0){
-                CGContextMoveToPoint(context, pointToDraw.x, pointToDraw.y);
-            } else {
-                CGContextAddLineToPoint(context, pointToDraw.x, pointToDraw.y);
-//                CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
-            }
-        }
-        CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
-        CGContextStrokePath(context);
-    
-        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return resultingImage;
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultingImage;
 }
 
 //******Sets label in storyboard to device speed******//
