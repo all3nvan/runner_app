@@ -38,23 +38,70 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction) changeWeight:(id) sender{
+
+
+-(IBAction) genderSegmentedControlIndexChanged{
+    switch (self.changeGender.selectedSegmentIndex) {
+        case 0:
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"gender"];
+            break;
+        case 1:
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"gender"];
+            break;
+        case 2:
+            [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"gender"];
+            break;
+        default:
+            break;
+    }
     
 }
 
--(IBAction) changeGender:(id) sender{
+-(IBAction) unitSegmentedControlIndexChanged{
+    switch (self.changeGender.selectedSegmentIndex) {
+        case 0:
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMetric"];
+            break;
+        case 1:
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
+            break;
+        default:
+            break;
+    }
     
 }
 
--(IBAction) changeHeight:(id) sender{
+
+
+-(BOOL)getUnit {
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isMetric"] != nil) {
+        return [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
+        return true;
+    }
 }
 
--(IBAction) changeUnit:(id) sender{
+-(int)getGender {
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"gender"] != nil) {
+        return [[NSUserDefaults standardUserDefaults] integerForKey:@"gender"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"gender"];
+        return 1;
+    }
 }
 
-
+-(NSString*)getHeight {
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"height"] != nil) {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:@"height"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"5' 2''" forKey:@"height"];
+        return @"5' 2''";
+    }
+}
 
 
 
@@ -81,12 +128,18 @@
         _changeWeight.text = [[[PFUser currentUser] objectForKey:@"userWeight"] description ];
     }
     
-
-    _changeGender = (UISegmentedControl*)[cell viewWithTag: 197];
-    
-    _changeHeight = (UITextField*)[cell viewWithTag:198];
-    
-    _changeUnit = (UISegmentedControl*)[cell viewWithTag: 199];
+    if ([CellIdentifier isEqualToString:@"gender"] ) {
+        _changeGender = (UISegmentedControl*)[cell viewWithTag: 197];
+        _changeGender.selectedSegmentIndex = [self getGender];
+    }
+    if ([CellIdentifier isEqualToString:@"height"] ) {
+        _changeHeight = (UITextField*)[cell viewWithTag:198];
+        _changeHeight.text = [self getHeight];
+    }
+    if ([CellIdentifier isEqualToString:@"unit"] ) {
+        _changeUnit = (UISegmentedControl*)[cell viewWithTag: 199];
+        _changeUnit.selectedSegmentIndex = [self getUnit];
+    }
     
     
     
