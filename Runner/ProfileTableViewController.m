@@ -15,10 +15,20 @@
 
 @implementation ProfileTableViewController {
     NSArray *profileAttributes;
+    float calBurned;
+    long numberOfRuns;
+    float totalDistance;
+    float duration;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    
+    [self.menuButton setTarget: revealViewController];
+    [self.menuButton setAction: @selector( revealToggle:)];
+    [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
     
     profileAttributes = [[NSArray alloc] init];
     [self populateProfileData];
@@ -26,73 +36,63 @@
     
 }
 
-
 - (void) populateProfileData {
-    
-//    //join date
-//    NSDate *joinDate = [[PFUser currentUser] createdAt];
-//    [self.joinLabel setText:[NSString stringWithFormat:@"Join Date: %@", joinDate]];
-//    
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Run"];
-//    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            NSMutableArray *runs = [[NSMutableArray alloc] init];
-//            
-//            for (PFObject *object in objects) {
-//                [runs addObject:object];
-//            }
-//            
-//            runHistory = [[NSArray alloc] initWithArray:runs];
-//            
-//            //number of runs
-//            numberOfRuns = 0;
-//            numberOfRuns = runHistory.count;
-//            [self.numOfRuns setText:[NSString stringWithFormat:@"Number of Runs: %ld", numberOfRuns]];
-//            
-//            
-//            calBurned = 0;
-//            totalDistance = 0;
-//            duration = 0;
-//            float topSpeed = 0;
-//            
-//            for(int i = 0; i < runHistory.count; i++) {
-//                PFObject *currentRun = [runHistory objectAtIndex:i];
-//                
-//                float speed = ([[currentRun objectForKey:@"distance"] floatValue] / [[currentRun objectForKey:@"duration"] floatValue]);
-//                
-//                if(topSpeed < speed) {
-//                    topSpeed = speed;
-//                }
-//                
-//                if([currentRun objectForKey:@"caloriesBurned"] != nil) {
-//                    calBurned += [[currentRun objectForKey:@"caloriesBurned"] floatValue];
-//                }
-//                
-//                if([currentRun objectForKey:@"caloriesBurned"] != nil) {
-//                    totalDistance += [[currentRun objectForKey:@"distance"] floatValue];
-//                }
-//                
-//                if([currentRun objectForKey:@"duration"] != nil) {
-//                    duration += [[currentRun objectForKey:@"duration"] floatValue];
-//                }
-//            }
-//            
-//            [self.topSpeedLabel setText:[NSString stringWithFormat:@"Top Speed: %.2f meters per second", topSpeed]];
-//            [self.avgCaloriesLabel setText:[NSString stringWithFormat:@"Average Calories Burned: %.2f per run", (calBurned /numberOfRuns)]];
-//            [self.avgDistanceLabel setText:[NSString stringWithFormat:@"Average Distance: %.2f per run", (totalDistance / numberOfRuns)]];
-//            [self.distanceLabel setText:[NSString stringWithFormat:@"Total Distance: %.2f meters", totalDistance]];
-//            [self.totalCalories setText:[NSString stringWithFormat:@"Calories Burned: %.2f kcals", calBurned]];
-//            
-//            
-//            
-//            
-//        } else {
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-    
+    PFQuery *query = [PFQuery queryWithClassName:@"Run"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSMutableArray *runs = [[NSMutableArray alloc] init];
+            
+            for (PFObject *object in objects) {
+                [runs addObject:object];
+            }
+            
+            NSDate *joinDate = [[PFUser currentUser] createdAt];
+            
+            numberOfRuns = 0;
+            calBurned = 0;
+            totalDistance = 0;
+            duration = 0;
+            float topSpeed = 0;
+            
+            numberOfRuns = runs.count;
+            
+            for(int i = 0; i < runs.count; i++) {
+                PFObject *currentRun = [runs objectAtIndex:i];
+                
+                float currentSpeed = ([[currentRun objectForKey:@"distance"] floatValue] / [[currentRun objectForKey:@"duration"] floatValue]);
+                
+                if(topSpeed < currentSpeed) {
+                    topSpeed = currentSpeed;
+                }
+                
+                if([currentRun objectForKey:@"caloriesBurned"] != nil) {
+                    calBurned += [[currentRun objectForKey:@"caloriesBurned"] floatValue];
+                }
+                
+                if([currentRun objectForKey:@"caloriesBurned"] != nil) {
+                    totalDistance += [[currentRun objectForKey:@"distance"] floatValue];
+                }
+                
+                if([currentRun objectForKey:@"duration"] != nil) {
+                    duration += [[currentRun objectForKey:@"duration"] floatValue];
+                }
+            }
+
+            NSMutableArray *profileData = [[NSMutableArray alloc] init];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Join Date:"], [NSString stringWithFormat:@"%@", joinDate], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Number of Runs:"], [NSString stringWithFormat:@"%ld", numberOfRuns], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Top Speed:"], [NSString stringWithFormat:@"%.2f meters per second", topSpeed], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", calBurned], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Distance:"], [NSString stringWithFormat:@"%.2f meters", totalDistance], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", (calBurned / numberOfRuns)], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Distance:"], [NSString stringWithFormat:@"%ld", numberOfRuns], nil]];
+            profileAttributes = [[NSArray alloc] initWithArray:profileData];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 
@@ -104,20 +104,21 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return profileAttributes.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSArray *rowData = [[NSArray alloc] initWithArray:[profileAttributes objectAtIndex:indexPath.row]];
+    
+    cell.attributeLabel.text = [[rowData objectAtIndex:0] description];
+    cell.valueLabel.text = [[rowData objectAtIndex:1] description];
     
     return cell;
 }

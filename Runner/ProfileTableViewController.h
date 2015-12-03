@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import "SWRevealViewController.h"
 
 @interface ProfileTableViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
