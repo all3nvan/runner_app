@@ -296,33 +296,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
                             </mapView>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4x-Y5-2cG">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0068732452067277209" green="0.93641493058888881" blue="0.071873080490092306" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="8QD-Kr-iBe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Start Run">
-                                    <color key="titleColor" red="0.0" green="0.42116500969999998" blue="0.9367503157" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8QD-Kr-iBe"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="8QD-Kr-iBe"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="startRun:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qDE-GZ-Egx"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT3-kH-MeG">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <animations/>
@@ -355,6 +328,34 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4x-Y5-2cG">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0068732452067277209" green="0.93641493058888881" blue="0.071873080490092306" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="8QD-Kr-iBe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Start Run" image="button_start_run.png">
+                                    <color key="titleColor" red="0.0" green="0.42116500969999998" blue="0.9367503157" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" image="button_stop_run.png"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8QD-Kr-iBe"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="8QD-Kr-iBe"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="startRun:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qDE-GZ-Egx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -391,11 +392,11 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="vld-D8-BXk"/>
-                                <exclude reference="R4x-Y5-2cG"/>
                                 <exclude reference="bT3-kH-MeG"/>
                                 <exclude reference="LOy-eO-whu"/>
                                 <exclude reference="eLl-UG-DWR"/>
                                 <exclude reference="szg-ka-abV"/>
+                                <exclude reference="R4x-Y5-2cG"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="BQN-f3-fDm"/>
@@ -427,11 +428,11 @@
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="vld-D8-BXk"/>
-                                <include reference="R4x-Y5-2cG"/>
                                 <include reference="bT3-kH-MeG"/>
                                 <include reference="LOy-eO-whu"/>
                                 <include reference="eLl-UG-DWR"/>
                                 <include reference="szg-ka-abV"/>
+                                <include reference="R4x-Y5-2cG"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="BQN-f3-fDm"/>
@@ -1265,7 +1266,7 @@
             </objects>
             <point key="canvasLocation" x="958" y="-1359"/>
         </scene>
-        <!--Trail Table View Controller-->
+        <!--Trails Suggested By Others-->
         <scene sceneID="OiC-aS-3aN">
             <objects>
                 <tableViewController id="CSH-aG-RHs" customClass="TrailTableViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
@@ -1406,7 +1407,7 @@
                             <outlet property="delegate" destination="CSH-aG-RHs" id="l6x-Tu-AeV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bmJ-DY-fvM">
+                    <navigationItem key="navigationItem" title="Trails Suggested By Others" id="bmJ-DY-fvM">
                         <barButtonItem key="leftBarButtonItem" image="menu48.png" id="Xxx-RG-3Fj"/>
                     </navigationItem>
                     <connections>
@@ -1419,6 +1420,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button_start_run.png" width="204" height="204"/>
+        <image name="button_stop_run.png" width="204" height="204"/>
         <image name="menu48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
