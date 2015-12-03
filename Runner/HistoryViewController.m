@@ -23,18 +23,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
     SWRevealViewController *revealViewController = self.revealViewController;
     
     [self.menuButton setTarget: revealViewController];
     [self.menuButton setAction: @selector( revealToggle:)];
     [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
-    
 
-    self.runHistoryTable.delegate = self;
-    self.runHistoryTable.dataSource = self;
+    if(![PFUser currentUser]){
+        [self userNotLoggedIn];
+    }
+    else{
+
+        self.runHistoryTable.delegate = self;
+        self.runHistoryTable.dataSource = self;
     
-    [self getRunHistory];
+        [self getRunHistory];
+    }
+}
+
+//******Displays an alert if a user is not logged in******//
+-(void) userNotLoggedIn{
+    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                         }];
+    [invalidUser addAction:ok];
+    [self presentViewController:invalidUser animated:YES completion:nil];
 }
 
 - (void) getRunHistory {

@@ -22,9 +22,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.settingsOptions.delegate = self;
-    self.settingsOptions.dataSource = self;
-    allSettings = @[@"weight", @"gender", @"height", @"unit", @"version"];
+    if(![PFUser currentUser]){
+        [self userNotLoggedIn];
+    }
+    else{
+        self.settingsOptions.delegate = self;
+        self.settingsOptions.dataSource = self;
+        allSettings = @[@"weight", @"gender", @"height", @"unit", @"version"];
+    }
     // Do any additional setup after loading the view.
     SWRevealViewController *revealViewController = self.revealViewController;
     
@@ -38,7 +43,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void) userNotLoggedIn{
+    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                         }];
+    [invalidUser addAction:ok];
+    [self presentViewController:invalidUser animated:YES completion:nil];
+}
 
 -(IBAction) genderSegmentedControlIndexChanged{
     switch (self.changeGender.selectedSegmentIndex) {

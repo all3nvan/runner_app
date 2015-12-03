@@ -30,10 +30,26 @@
     [self.menuButton setAction: @selector( revealToggle:)];
     [self.view addGestureRecognizer:revealViewController.panGestureRecognizer];
     
-    profileAttributes = [[NSArray alloc] init];
-    [self populateProfileData];
-    
-    
+    if(![PFUser currentUser]){
+        [self userNotLoggedIn];
+    }
+    else{
+        profileAttributes = [[NSArray alloc] init];
+        [self populateProfileData];
+    }
+}
+
+-(void) userNotLoggedIn{
+    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
+                         }];
+    [invalidUser addAction:ok];
+    [self presentViewController:invalidUser animated:YES completion:nil];
 }
 
 - (void) populateProfileData {
