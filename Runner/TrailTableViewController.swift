@@ -17,7 +17,6 @@
 import UIKit
 
 
-
 class TrailTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     
@@ -27,6 +26,7 @@ class TrailTableViewController: UITableViewController, CLLocationManagerDelegate
     let locationManager = CLLocationManager()
     
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         
@@ -56,8 +56,14 @@ class TrailTableViewController: UITableViewController, CLLocationManagerDelegate
             
         })
         
+        // Do any additional setup after loading the view.
+        let revealViewController = self.revealViewController;
         
-        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     

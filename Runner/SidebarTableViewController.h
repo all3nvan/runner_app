@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *showSettings;
 @property (weak, nonatomic) IBOutlet UIButton *showHome;
 @property (weak, nonatomic) IBOutlet UIButton *showProfile;
+@property (weak, nonatomic) IBOutlet UIButton *showTrails;
 @end

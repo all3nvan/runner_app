@@ -602,6 +602,7 @@
                                             </variation>
                                             <connections>
                                                 <action selector="showSettings:" destination="uvX-v4-nfv" eventType="touchUpInside" id="oLc-ut-FNr"/>
+                                                <segue destination="Hds-Pq-n4a" kind="custom" identifier="settingsSegue" customClass="SWRevealViewControllerSeguePushController" id="4O4-h4-IYv"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -618,9 +619,42 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <connections>
-                                    <segue destination="Hds-Pq-n4a" kind="custom" identifier="settingsSegue" customClass="SWRevealViewControllerSeguePushController" id="Mjg-JJ-r3f"/>
-                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trails" id="rrc-ig-npe">
+                                <rect key="frame" x="0.0" y="116" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rrc-ig-npe" id="9ny-oL-kpn">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lha-IG-BXT">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <animations/>
+                                            <state key="normal" title="Trails"/>
+                                            <variation key="heightClass=regular" fixedFrame="YES">
+                                                <rect key="frame" x="16" y="8" width="61" height="30"/>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="26" y="7" width="57" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="showTrails:" destination="uvX-v4-nfv" eventType="touchUpInside" id="yqh-2N-hdJ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="Lha-IG-BXT"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular">
+                                        <mask key="subviews">
+                                            <include reference="Lha-IG-BXT"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="history" id="Ppe-hn-Gwt">
                                 <rect key="frame" x="0.0" y="160" width="600" height="44"/>
@@ -641,6 +675,7 @@
                                             </variation>
                                             <connections>
                                                 <action selector="showHistory:" destination="uvX-v4-nfv" eventType="touchUpInside" id="cUF-Vj-vX4"/>
+                                                <segue destination="Fw8-cU-2K3" kind="custom" identifier="historySegue" customClass="SWRevealViewControllerSeguePushController" id="SuJ-Qd-aNU"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -658,7 +693,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="Fw8-cU-2K3" kind="custom" identifier="historySegue" customClass="SWRevealViewControllerSeguePushController" id="3iw-pH-JDV"/>
+                                    <segue destination="fAe-D7-K3o" kind="custom" identifier="trailsSegue" customClass="SWRevealViewControllerSeguePushController" id="PXn-hH-mHY"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profile" id="9eT-4Y-32P">
@@ -668,7 +703,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-Q2-u5N">
+                                        <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-Q2-u5N">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <animations/>
                                             <state key="normal" title="Profile"/>
@@ -1195,6 +1230,23 @@
             <point key="canvasLocation" x="958" y="-689.25"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="QZj-Cw-967">
+            <objects>
+                <navigationController id="fAe-D7-K3o" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gBN-WA-nfo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CSH-aG-RHs" kind="relationship" relationship="rootViewController" id="peu-5I-woU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D41-Ch-H1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="-2372.25"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="ESl-Od-swG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hds-Pq-n4a" sceneMemberID="viewController">
@@ -1354,6 +1406,12 @@
                             <outlet property="delegate" destination="CSH-aG-RHs" id="l6x-Tu-AeV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="bmJ-DY-fvM">
+                        <barButtonItem key="leftBarButtonItem" image="menu48.png" id="Xxx-RG-3Fj"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="Xxx-RG-3Fj" id="zqs-0Q-GfW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9o-9T-Y2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1364,6 +1422,6 @@
         <image name="menu48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NH3-SF-jkq"/>
+        <segue reference="E94-za-Mju"/>
     </inferredMetricsTieBreakers>
 </document>

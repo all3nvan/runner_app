@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.menuOptions.delegate = self;
     self.menuOptions.dataSource = self;
-    menuItems = @[@"home", @"logout", @"history", @"settings", @"profile"];
+    menuItems = @[@"home", @"logout", @"history",@"trails", @"settings", @"profile"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -88,6 +88,17 @@
     }
 }
 
+-(IBAction) showTrails:(id) sender
+{
+    if([PFUser currentUser]){
+        [self performSegueWithIdentifier:@"trailsSegue" sender:nil];
+    }
+    else{
+        [self userNotLoggedIn];
+    }
+
+}
+
 //******Displays an alert if a user is not logged in******//
 -(void) userNotLoggedIn{
     UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
@@ -142,6 +153,10 @@
     
     UIButton *showProfileButton = (UIButton*) [cell viewWithTag:4];
     [showProfileButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *showTrailsButton = (UIButton*) [cell viewWithTag:15];
+    [showTrailsButton addTarget:self action:@selector(showTrails) forControlEvents:UIControlEventTouchUpInside];
+
     
     return cell;
 }
