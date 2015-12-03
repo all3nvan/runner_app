@@ -76,7 +76,7 @@
     
     UITextField *weightField = (UITextField*)[cell viewWithTag:196];
     
-    weightField.text = [[[PFUser currentUser] objectForKey:@"weight"] description ];
+    weightField.text = [[[PFUser currentUser] objectForKey:@"userWeight"] description ];
     
     [weightField addTarget:self action:@selector(changeWeight) forControlEvents:UIControlEventTouchUpInside];
     
