@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pje-pa-gAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CSH-aG-RHs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1317,11 +1317,11 @@
                                             <exclude reference="7l1-CJ-AAH"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <exclude reference="3md-KN-iG8"/>
                                             <exclude reference="lLl-Qr-kjx"/>
                                             <exclude reference="ne7-EA-IBt"/>
-                                            <exclude reference="3md-KN-iG8"/>
-                                            <exclude reference="yoZ-FK-yg5"/>
                                             <exclude reference="YQT-2c-5lR"/>
+                                            <exclude reference="yoZ-FK-yg5"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular">
@@ -1332,11 +1332,11 @@
                                             <include reference="7l1-CJ-AAH"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <include reference="3md-KN-iG8"/>
                                             <include reference="lLl-Qr-kjx"/>
                                             <include reference="ne7-EA-IBt"/>
-                                            <include reference="3md-KN-iG8"/>
-                                            <include reference="yoZ-FK-yg5"/>
                                             <include reference="YQT-2c-5lR"/>
+                                            <include reference="yoZ-FK-yg5"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

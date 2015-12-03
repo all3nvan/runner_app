@@ -10,6 +10,8 @@
 		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; };
 		199479541C0A636D00EB36DA /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479531C0A636D00EB36DA /* Trail.m */; };
 		199479561C0A6AA900EB36DA /* TrailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479551C0A6AA900EB36DA /* TrailTests.m */; };
+		19A4232A1C107D6D006A0C2F /* TrailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A423291C107D6D006A0C2F /* TrailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		19A4232C1C107DC1006A0C2F /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
@@ -81,6 +83,9 @@
 		199479521C0A636D00EB36DA /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
 		199479531C0A636D00EB36DA /* Trail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trail.m; sourceTree = "<group>"; };
 		199479551C0A6AA900EB36DA /* TrailTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailTests.m; sourceTree = "<group>"; };
+		19A423281C107D6C006A0C2F /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
+		19A423291C107D6D006A0C2F /* TrailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewController.swift; sourceTree = "<group>"; };
+		19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewCell.swift; sourceTree = "<group>"; };
 		19C9CBD71BF54A0500E897BD /* CalorieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieCalculator.h; sourceTree = "<group>"; };
 		19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCalculator.m; sourceTree = "<group>"; };
 		19EAE0A01BE2339100A074F6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 				19EAE0A31BE24BC600A074F6 /* LoginViewController.m */,
 				5162D1441C0FB30D00899CF9 /* RunImageViewController.h */,
 				5162D1451C0FB30D00899CF9 /* RunImageViewController.m */,
+				19A423291C107D6D006A0C2F /* TrailTableViewController.swift */,
+				19A423281C107D6C006A0C2F /* Runner-Bridging-Header.h */,
+				19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -404,6 +412,7 @@
 		51527EC71BD5BCAC00E7369E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Group9;
 				TargetAttributes = {
@@ -491,6 +500,7 @@
 				2571DB381C0FDF3E00B32C2F /* ProfileTableViewController.m in Sources */,
 				9967A67B1BD86B3E00297580 /* AppDrawerViewController.m in Sources */,
 				199479541C0A636D00EB36DA /* Trail.m in Sources */,
+				19A4232A1C107D6D006A0C2F /* TrailTableViewController.swift in Sources */,
 				28CD954D1C0A416700574726 /* HistoryViewController.m in Sources */,
 				51FF2B951BE19F5500F0F2EE /* User.m in Sources */,
 				51527ED71BD5BCAC00E7369E /* AppDelegate.m in Sources */,
@@ -501,6 +511,7 @@
 				281432571BE1C54D0075B067 /* Location.xcdatamodeld in Sources */,
 				28024D341BEDE6AD004BD0EA /* MulticolorPolylineSegment.m in Sources */,
 				51527ED41BD5BCAC00E7369E /* main.m in Sources */,
+				19A4232C1C107DC1006A0C2F /* TrailTableViewCell.swift in Sources */,
 				281432541BE1ACB90075B067 /* SWRevealViewController.m in Sources */,
 				2571DB3B1C0FE01C00B32C2F /* ProfileCell.m in Sources */,
 				2814325D1BE1C61D0075B067 /* Location.m in Sources */,
@@ -648,6 +659,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,6 +669,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = group9.Runner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -664,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -673,6 +688,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = group9.Runner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 			};
 			name = Release;
 		};
