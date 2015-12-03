@@ -16,6 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    PFQuery *runQuery = [PFQuery queryWithClassName:@"Run"];
+
+    [runQuery getObjectInBackgroundWithId:_runId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        PFFile *imageFile = [object objectForKey:@"image"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+            _runImage = [UIImage imageWithData:data];
+            UIImageView *newImage = [[UIImageView alloc] initWithImage:_runImage];
+            _runImageView.image = newImage.image;
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
