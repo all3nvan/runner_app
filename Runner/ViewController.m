@@ -31,9 +31,6 @@ static UIImage* image;
     [super viewDidLoad];
     
     self.isMetric = [self getMetric];
-    if (self.isMetric) {
-        NSLog(@"%@", @"working");
-    }
     
     CLController = [[CoreLocationController alloc] init];
     CLController.speedDelegate = self;

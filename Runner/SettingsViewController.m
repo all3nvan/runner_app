@@ -74,7 +74,8 @@
 }
 
 -(IBAction) unitSegmentedControlIndexChanged{
-    switch (self.changeGender.selectedSegmentIndex) {
+    switch (self.changeUnit.selectedSegmentIndex) {
+            
         case 0:
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMetric"];
             break;
