@@ -12,7 +12,7 @@
 
 @interface HistoryViewController ()
 
-@property PFFile *runImage;
+@property NSString *selectedRunId;
 
 @end
 
@@ -20,8 +20,6 @@
 {
     NSArray *runHistory;
 }
-
-@synthesize runImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,13 +94,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-    runImage = [[runHistory objectAtIndex:indexPath.row] objectForKey:@"image"];
+    _selectedRunId = [[runHistory objectAtIndex:indexPath.row] objectId];
     [self performSegueWithIdentifier:@"historySegue" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     RunImageViewController *destination = [segue destinationViewController];
-    destination.runImage = runImage;
+    destination.runId = _selectedRunId;
 }
 
 /*

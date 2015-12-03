@@ -10,6 +10,8 @@
 
 @interface RunImageViewController : ViewController
 
-@property PFFile *runImage;
+@property UIImage *runImage;
+@property (strong, nonatomic) IBOutlet UIImageView *runImageView;
+@property NSString *runId;
 
 @end
