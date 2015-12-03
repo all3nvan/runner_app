@@ -78,15 +78,33 @@
                     duration += [[currentRun objectForKey:@"duration"] floatValue];
                 }
             }
+            
+            
+            //here, speed is converted from meters per second into appropriate metric per HOUR...
+            static float const metersInKM = 1000;
+            static float const metersInMile = 1609.344;
+            NSString *unit = @"meters";
+            
+            if([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"] == YES) {
+                totalDistance = totalDistance / metersInKM;
+                topSpeed = (topSpeed * 60 * 60) / metersInKM;
+                unit = @"kilometers";
+            }
+            else {
+                totalDistance = totalDistance / metersInMile;
+                topSpeed = (topSpeed * 60 * 60) / metersInMile;
+                unit = @"miles";
+            }
+        
 
             NSMutableArray *profileData = [[NSMutableArray alloc] init];
             [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Join Date:"], [NSString stringWithFormat:@"%@", joinDate], nil]];
             [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Number of Runs:"], [NSString stringWithFormat:@"%ld", numberOfRuns], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Top Speed:"], [NSString stringWithFormat:@"%.2f meters per second", topSpeed], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", calBurned], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Distance:"], [NSString stringWithFormat:@"%.2f meters", totalDistance], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", (calBurned / numberOfRuns)], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Distance:"], [NSString stringWithFormat:@"%.2f per run", (totalDistance / numberOfRuns)], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Top Average Speed:"], [NSString stringWithFormat:@"%.2f %@ per hour", topSpeed, unit], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Calories Burned:"], [NSString stringWithFormat:@"%.2f kcals", calBurned], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Distance Ran:"], [NSString stringWithFormat:@"%.2f %@", totalDistance, unit], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Calories Burned:"], [NSString stringWithFormat:@"%.2f kcals per run", (calBurned / numberOfRuns)], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Distance Per Run:"], [NSString stringWithFormat:@"%.2f %@", (totalDistance / numberOfRuns), unit], nil]];
             profileAttributes = [[NSArray alloc] initWithArray:profileData];
             [self.tableView reloadData];
         } else {
