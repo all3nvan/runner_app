@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *changeUnit;
 
+-(IBAction) genderSegmentedControlIndexChanged;
 
+-(IBAction) unitSegmentedControlIndexChanged;
 
 @end
