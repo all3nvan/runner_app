@@ -8,6 +8,9 @@
 
 #import "SettingsViewController.h"
 #import "SWRevealViewController.h"
+#import "ViewController.h"
+#import "LoginViewController.h"
+#import "ProfileViewController.h"
 
 @interface SettingsViewController ()
 
@@ -39,6 +42,18 @@
     
 }
 
+-(IBAction) changeGender:(id) sender{
+    
+}
+
+-(IBAction) changeHeight:(id) sender{
+    
+}
+
+-(IBAction) changeUnit:(id) sender{
+    
+}
+
 
 
 
@@ -59,10 +74,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-//    UITextField *weightField = (UITextField*)[cell viewWithTag:196];
-//    weightField.text = [[PFUser currentUser] weight];
-//    [weightField addTarget:self action:@selector(changeWeight) forControlEvents:UIControlEventTouchUpInside];
-//    
+    UITextField *weightField = (UITextField*)[cell viewWithTag:196];
+    
+    weightField.text = [[[PFUser currentUser] objectForKey:@"weight"] description ];
+    
+    [weightField addTarget:self action:@selector(changeWeight) forControlEvents:UIControlEventTouchUpInside];
+    
     UISegmentedControl *genderField = (UISegmentedControl*)[cell viewWithTag: 197];
     [genderField addTarget:self action:@selector(changeGender) forControlEvents:UIControlEventTouchUpInside];
     
