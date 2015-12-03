@@ -22,6 +22,7 @@
     self.trailName = name;
     self.distance = distance;
     self.locations = locations;
+    self.location = *([self calculateCenter:locations]);
     
     return self;
 }
@@ -79,6 +80,17 @@
             return true;
     }
 
-
+-(CLLocationCoordinate2D*) calculateCenter:(NSArray*) locations {
+    double latitudeTotal = 0;
+    double longitudeTotal = 0;
+    
+    for (NSObject* location in locations) {
+        latitudeTotal += [(CLLocation*) location coordinate].latitude;
+        longitudeTotal += [(CLLocation*) location coordinate].longitude;
+    }
+    
+    CLLocation *center = [[CLLocation alloc] initWithLatitude:latitudeTotal / locations.count longitude:longitudeTotal / locations.count];
+    return (__bridge CLLocationCoordinate2D*)center;
+}
 
 @end
