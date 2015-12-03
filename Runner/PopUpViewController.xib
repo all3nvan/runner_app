@@ -30,7 +30,7 @@
                             <animations/>
                             <state key="normal" title="Discard"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="157" y="543" width="53" height="30"/>
+                                <rect key="frame" x="307" y="543" width="53" height="30"/>
                             </variation>
                             <connections>
                                 <action selector="closePopup:" destination="-1" eventType="touchUpInside" id="54s-hB-NZd"/>
@@ -58,7 +58,7 @@
                             <animations/>
                             <state key="normal" title="Save Run"/>
                             <variation key="heightClass=regular" fixedFrame="YES">
-                                <rect key="frame" x="151" y="513" width="64" height="30"/>
+                                <rect key="frame" x="18" y="543" width="64" height="30"/>
                             </variation>
                             <connections>
                                 <action selector="saveRun:" destination="-1" eventType="touchUpInside" id="sM3-gN-BeA"/>
@@ -124,6 +124,23 @@
                                 <rect key="frame" x="8" y="359" width="318" height="76"/>
                             </variation>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share this trail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhB-e8-Wn6">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="8" y="506" width="110" height="21"/>
+                            </variation>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Tf-Rp-atL">
+                            <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                            <animations/>
+                            <variation key="heightClass=regular" fixedFrame="YES">
+                                <rect key="frame" x="143" y="501" width="51" height="31"/>
+                            </variation>
+                        </switch>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,6 +156,8 @@
                             <exclude reference="EDV-HQ-Wus"/>
                             <exclude reference="xxM-vu-Kcf"/>
                             <exclude reference="UAr-FQ-NGQ"/>
+                            <exclude reference="yhB-e8-Wn6"/>
+                            <exclude reference="9Tf-Rp-atL"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular" fixedFrame="YES">
@@ -154,6 +173,8 @@
                             <include reference="EDV-HQ-Wus"/>
                             <include reference="xxM-vu-Kcf"/>
                             <include reference="UAr-FQ-NGQ"/>
+                            <include reference="yhB-e8-Wn6"/>
+                            <include reference="9Tf-Rp-atL"/>
                         </mask>
                     </variation>
                 </view>
