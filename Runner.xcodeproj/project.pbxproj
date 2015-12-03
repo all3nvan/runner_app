@@ -12,6 +12,7 @@
 		199479561C0A6AA900EB36DA /* TrailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479551C0A6AA900EB36DA /* TrailTests.m */; };
 		19A4232A1C107D6D006A0C2F /* TrailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A423291C107D6D006A0C2F /* TrailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		19A4232C1C107DC1006A0C2F /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		19A4232D1C10824F006A0C2F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; };
 		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
@@ -187,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19A4232D1C10824F006A0C2F /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +698,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = group9.RunnerTests;
@@ -708,6 +714,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = group9.RunnerTests;
