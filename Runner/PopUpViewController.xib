@@ -11,6 +11,7 @@
                 <outlet property="dateTime" destination="eBI-hu-LN5" id="qs7-Uf-Lxz"/>
                 <outlet property="logoImg" destination="KHi-Ph-gPq" id="ITd-dU-Jfd"/>
                 <outlet property="popUpView" destination="i5M-Pr-FkT" id="9ss-TZ-cDC"/>
+                <outlet property="shareTrail" destination="9Tf-Rp-atL" id="fIK-A2-ZcQ"/>
                 <outlet property="time" destination="xal-D2-mh0" id="FgR-e8-Jub"/>
                 <outlet property="topSpeed" destination="xxM-vu-Kcf" id="hGn-kq-aen"/>
                 <outlet property="totalDist" destination="Exh-N5-wh4" id="irI-hS-r99"/>

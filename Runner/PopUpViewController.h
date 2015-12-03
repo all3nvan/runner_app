@@ -26,9 +26,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *topSpeed;
 @property (weak, nonatomic) IBOutlet UILabel *calories;
+@property IBOutlet UISwitch * shareTrail;
 
 @property PFObject *run;
 @property NSArray *locations;
 
 -(IBAction) saveRun:(id)sender;
 @end
+
