@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIButton *startRun;
 
+@property BOOL isMetric;
+
 @property NSDate *startTime;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 

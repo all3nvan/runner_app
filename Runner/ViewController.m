@@ -12,8 +12,9 @@
 #import "MulticolorPolylineSegment.h"
 #import "PopUpViewController.h"
 #import "CalorieCalculator.h"
+#import "LoginViewController.h"
+#import "ProfileViewController.h"
 
-static bool const isMetric = YES;
 static float const metersInKM = 1000;
 static float const metersInMile = 1609.344;
 static UIImage* image;
@@ -28,6 +29,11 @@ static UIImage* image;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isMetric = [self getMetric];
+    if (self.isMetric) {
+        NSLog(@"%@", @"working");
+    }
     
     CLController = [[CoreLocationController alloc] init];
     CLController.speedDelegate = self;
@@ -53,6 +59,16 @@ static UIImage* image;
     //Check if a user is currently logged in
     if([PFUser currentUser]){
         [self checkWeight];
+    }
+}
+
+-(BOOL)getMetric {
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isMetric"] != nil) {
+        return [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
+        return true;
     }
 }
 
@@ -191,7 +207,7 @@ static UIImage* image;
         NSNumber* userWeight = [[PFUser currentUser] objectForKey:@"userWeight"];
 
         //Call calorie calculator
-        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:[userWeight floatValue] andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!isMetric];
+        CalorieCalculator* calories = [[CalorieCalculator alloc] initWithRunDetailsOfWeight:[userWeight floatValue] andDistance:(self.distance * .001) andAverageSpeed:self.avgSpeed * 16.667 isImperial:!_isMetric];
             
         //Stores calories in Run object
         _run.calories = calories.caloriesBurned;
@@ -401,7 +417,7 @@ static UIImage* image;
     float unitDivider;
     NSString* unitName;
     
-    if(isMetric){
+    if(_isMetric){
         unitName = @"km";
         unitDivider = metersInKM;
     }
@@ -423,7 +439,7 @@ static UIImage* image;
     float unitMultiplier;
     NSString* unitName;
     
-    if(isMetric){
+    if(_isMetric){
         unitName = @"min/km";
         unitMultiplier = metersInKM;
     }
