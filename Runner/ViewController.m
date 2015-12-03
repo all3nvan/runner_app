@@ -36,7 +36,6 @@ static UIImage* image;
     CLController.speedDelegate = self;
     [CLController.speedManager startUpdatingLocation];
     
-    _startRun.layer.cornerRadius = _startRun.bounds.size.width/2;
     
     SWRevealViewController *revealViewController = self.revealViewController;
 //    if (revealViewController)
