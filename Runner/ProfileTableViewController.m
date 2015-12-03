@@ -86,7 +86,7 @@
             [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", calBurned], nil]];
             [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Total Distance:"], [NSString stringWithFormat:@"%.2f meters", totalDistance], nil]];
             [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Calories Burned:"], [NSString stringWithFormat:@"%.2f per run", (calBurned / numberOfRuns)], nil]];
-            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Distance:"], [NSString stringWithFormat:@"%ld", numberOfRuns], nil]];
+            [profileData addObject:[[NSArray alloc] initWithObjects:[NSString stringWithFormat:@"Average Distance:"], [NSString stringWithFormat:@"%.2f per run", (totalDistance / numberOfRuns)], nil]];
             profileAttributes = [[NSArray alloc] initWithArray:profileData];
             [self.tableView reloadData];
         } else {

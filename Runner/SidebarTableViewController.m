@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "ViewController.h"
 #import "LoginViewController.h"
-#import "ProfileViewController.h"
+#import "ProfileTableViewController.h"
 
 
 @interface SidebarTableViewController ()
@@ -189,7 +189,7 @@
     // Set the photo if it navigates to the PhotoView
     if ([segue.identifier isEqualToString:@"profileSegue"]) {
         UINavigationController *navController = segue.destinationViewController;
-        ProfileViewController *profileController = [navController childViewControllers].firstObject;
+        ProfileTableViewController *profileController = [navController childViewControllers].firstObject;
     }
 }
 

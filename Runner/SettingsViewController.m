@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "ViewController.h"
 #import "LoginViewController.h"
-#import "ProfileViewController.h"
+#import "ProfileTableViewController.h"
 
 @interface SettingsViewController ()
 

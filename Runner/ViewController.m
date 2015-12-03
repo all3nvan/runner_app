@@ -13,7 +13,7 @@
 #import "PopUpViewController.h"
 #import "CalorieCalculator.h"
 #import "LoginViewController.h"
-#import "ProfileViewController.h"
+#import "ProfileTableViewController.h"
 
 static float const metersInKM = 1000;
 static float const metersInMile = 1609.344;
