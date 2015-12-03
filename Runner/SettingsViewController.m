@@ -74,20 +74,19 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UITextField *weightField = (UITextField*)[cell viewWithTag:196];
+    _changeWeight = (UITextField*)[cell viewWithTag:196];
     
-    weightField.text = [[[PFUser currentUser] objectForKey:@"userWeight"] description ];
+    if ([CellIdentifier isEqualToString:@"weight"] ) {
+        _changeWeight = (UITextField*)[cell viewWithTag:196];
+        _changeWeight.text = [[[PFUser currentUser] objectForKey:@"userWeight"] description ];
+    }
     
-    [weightField addTarget:self action:@selector(changeWeight) forControlEvents:UIControlEventTouchUpInside];
+
+    _changeGender = (UISegmentedControl*)[cell viewWithTag: 197];
     
-    UISegmentedControl *genderField = (UISegmentedControl*)[cell viewWithTag: 197];
-    [genderField addTarget:self action:@selector(changeGender) forControlEvents:UIControlEventTouchUpInside];
+    _changeHeight = (UITextField*)[cell viewWithTag:198];
     
-    UITextField *heightField = (UITextField*)[cell viewWithTag:198];
-    [heightField addTarget:self action:@selector(changeHeight) forControlEvents:UIControlEventTouchUpInside];
-    
-    UISegmentedControl *unitField = (UISegmentedControl*)[cell viewWithTag: 199];
-    [unitField addTarget:self action:@selector(changeUnit) forControlEvents:UIControlEventTouchUpInside];
+    _changeUnit = (UISegmentedControl*)[cell viewWithTag: 199];
     
     
     
