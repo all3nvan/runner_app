@@ -166,6 +166,10 @@ static UIImage* image;
         [self userNotLoggedIn];
         return;
     }
+    if([[PFUser currentUser] objectForKey:@"userWeight"] == nil){
+        [self checkWeight];
+        return;
+    }
     if(self.timer){
         [self.timer invalidate];
         self.timer = nil;
