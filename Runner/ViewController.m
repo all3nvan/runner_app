@@ -347,7 +347,14 @@ static UIImage* image;
     if(location.speed > self.topSpeed){
         self.topSpeed = location.speed;
     }
-    [locationLabel setText:[NSString stringWithFormat:@"%@ mps", speedText]];
+
+    if(!_isMetric){
+        float feetPerSec = [speedText floatValue] * 3.28084;
+        [locationLabel setText:[NSString stringWithFormat:@"%.02f fps", feetPerSec]];
+    }
+    else{
+        [locationLabel setText:[NSString stringWithFormat:@"%@ mps", speedText]];
+    }
 }
 //******Sets label to error if an error occurs******//
 -(void) locationError:(NSError *)error{
