@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191C32781C175887007CAEBC /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 191C32771C175887007CAEBC /* circle.png */; settings = {ASSET_TAGS = (); }; };
+		196BAD731C12B813000501C0 /* button_start_run.png in Resources */ = {isa = PBXBuildFile; fileRef = 196BAD721C12B813000501C0 /* button_start_run.png */; settings = {ASSET_TAGS = (); }; };
+		196BAD751C12B8B1000501C0 /* button_end_run.png in Resources */ = {isa = PBXBuildFile; fileRef = 196BAD741C12B8B1000501C0 /* button_end_run.png */; settings = {ASSET_TAGS = (); }; };
 		199479511C0A403400EB36DA /* CalorieCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479501C0A403400EB36DA /* CalorieCounterTests.m */; };
 		199479541C0A636D00EB36DA /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479531C0A636D00EB36DA /* Trail.m */; };
 		199479561C0A6AA900EB36DA /* TrailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 199479551C0A6AA900EB36DA /* TrailTests.m */; };
 		19A4232A1C107D6D006A0C2F /* TrailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A423291C107D6D006A0C2F /* TrailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		19A4232C1C107DC1006A0C2F /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		19A4232D1C10824F006A0C2F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E8FE6D1BE18CD800D53965 /* Parse.framework */; };
-		19A423301C10E27F006A0C2F /* button_stop_run.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A4232E1C10E27F006A0C2F /* button_stop_run.png */; settings = {ASSET_TAGS = (); }; };
-		19A423311C10E27F006A0C2F /* button_start_run.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A4232F1C10E27F006A0C2F /* button_start_run.png */; settings = {ASSET_TAGS = (); }; };
 		19C9CBD91BF54A0500E897BD /* CalorieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */; };
 		19EAE0A11BE2339100A074F6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EAE0A01BE2339100A074F6 /* ParseUI.framework */; };
 		19EAE0A41BE24BC600A074F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EAE0A31BE24BC600A074F6 /* LoginViewController.m */; };
@@ -82,6 +83,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		191C32771C175887007CAEBC /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		196BAD721C12B813000501C0 /* button_start_run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_start_run.png; sourceTree = "<group>"; };
+		196BAD741C12B8B1000501C0 /* button_end_run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_end_run.png; sourceTree = "<group>"; };
 		199479501C0A403400EB36DA /* CalorieCounterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCounterTests.m; sourceTree = "<group>"; };
 		199479521C0A636D00EB36DA /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
 		199479531C0A636D00EB36DA /* Trail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trail.m; sourceTree = "<group>"; };
@@ -89,8 +93,6 @@
 		19A423281C107D6C006A0C2F /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		19A423291C107D6D006A0C2F /* TrailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewController.swift; sourceTree = "<group>"; };
 		19A4232B1C107DC1006A0C2F /* TrailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailTableViewCell.swift; sourceTree = "<group>"; };
-		19A4232E1C10E27F006A0C2F /* button_stop_run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_stop_run.png; sourceTree = "<group>"; };
-		19A4232F1C10E27F006A0C2F /* button_start_run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_start_run.png; sourceTree = "<group>"; };
 		19C9CBD71BF54A0500E897BD /* CalorieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieCalculator.h; sourceTree = "<group>"; };
 		19C9CBD81BF54A0500E897BD /* CalorieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieCalculator.m; sourceTree = "<group>"; };
 		19EAE0A01BE2339100A074F6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -348,9 +350,10 @@
 			isa = PBXGroup;
 			children = (
 				19EAE0A71BE28C3800A074F6 /* logo.png */,
+				191C32771C175887007CAEBC /* circle.png */,
+				196BAD741C12B8B1000501C0 /* button_end_run.png */,
+				196BAD721C12B813000501C0 /* button_start_run.png */,
 				99C491261BE1D09500BE2574 /* Settings.png */,
-				19A4232E1C10E27F006A0C2F /* button_stop_run.png */,
-				19A4232F1C10E27F006A0C2F /* button_start_run.png */,
 				99C491241BE1D06700BE2574 /* History.png */,
 				99C491221BE1D03400BE2574 /* Profile.png */,
 				9967A6771BD86A2600297580 /* menu48.png */,
@@ -469,15 +472,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				99C491271BE1D09500BE2574 /* Settings.png in Resources */,
+				196BAD751C12B8B1000501C0 /* button_end_run.png in Resources */,
 				51527EE21BD5BCAC00E7369E /* LaunchScreen.storyboard in Resources */,
+				191C32781C175887007CAEBC /* circle.png in Resources */,
 				99C491231BE1D03400BE2574 /* Profile.png in Resources */,
 				51527EDF1BD5BCAC00E7369E /* Assets.xcassets in Resources */,
 				19EAE0A81BE28C3800A074F6 /* logo.png in Resources */,
-				19A423311C10E27F006A0C2F /* button_start_run.png in Resources */,
-				19A423301C10E27F006A0C2F /* button_stop_run.png in Resources */,
 				28DF3D0B1BF925CB0001D02D /* PopUpViewController.xib in Resources */,
 				99C491251BE1D06700BE2574 /* History.png in Resources */,
 				9967A6781BD86A2600297580 /* menu48.png in Resources */,
+				196BAD731C12B813000501C0 /* button_start_run.png in Resources */,
 				51527EDD1BD5BCAC00E7369E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

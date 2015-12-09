@@ -57,9 +57,7 @@ class TrailTableViewController: UITableViewController, CLLocationManagerDelegate
         })
         
         // Do any additional setup after loading the view.
-        let revealViewController = self.revealViewController;
-        
-        if self.revealViewController() != nil {
+            if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -124,7 +122,7 @@ class TrailTableViewController: UITableViewController, CLLocationManagerDelegate
         
         
         
-        cell.title.text = currentTrail["trailName"] as! String
+        cell.title.text = (currentTrail["trailName"] as! String)
         
         cell.trailLength.text = NSString(format: "Length: %.2f", currentTrail["distance"] as! Float) as String
         

@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.menuOptions.delegate = self;
     self.menuOptions.dataSource = self;
-    menuItems = @[@"home", @"logout", @"history",@"trails", @"settings", @"profile"];
+    menuItems = @[@"home", @"history",@"trails", @"settings", @"profile",@"logout"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -78,6 +78,7 @@
     [self performSegueWithIdentifier:@"homeSegue" sender:nil];
 }
 
+
 //******Segue to Profile******//
 -(IBAction) showProfile:(id) sender{
     if([PFUser currentUser]){
@@ -101,20 +102,9 @@
 
 //******Displays an alert if a user is not logged in******//
 -(void) userNotLoggedIn{
-    UIAlertController* invalidUser = [UIAlertController alertControllerWithTitle:@"Error" message:@"Not logged in as a valid user." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [invalidUser dismissViewControllerAnimated:YES completion:nil];
-                             LoginViewController* loginView = [[LoginViewController alloc]init];
-                             loginView.delegate = self;
-                             loginView.signUpController.delegate = self;
-                             [self presentViewController:loginView animated:YES completion:nil];
-                         }];
-    [invalidUser addAction:ok];
-    [self presentViewController:invalidUser animated:YES completion:nil];
+    LoginViewController* loginView = [[LoginViewController alloc]init];
+    
+    [self presentViewController:loginView animated:YES completion:nil];
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
@@ -139,9 +129,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UIButton *objectOfButton = (UIButton*)[cell viewWithTag:200];
-    [objectOfButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    
     UIButton *showHomeButton = (UIButton*)[cell viewWithTag: 1];
     [showHomeButton addTarget:self action:@selector(showHome) forControlEvents:UIControlEventTouchUpInside];
     
@@ -157,6 +144,8 @@
     UIButton *showTrailsButton = (UIButton*) [cell viewWithTag:15];
     [showTrailsButton addTarget:self action:@selector(showTrails) forControlEvents:UIControlEventTouchUpInside];
 
+    UIButton *logOutButton = (UIButton*)[cell viewWithTag:200];
+    [logOutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }

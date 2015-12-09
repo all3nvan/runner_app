@@ -56,6 +56,7 @@ static UIImage* image;
     if([PFUser currentUser]){
         [self checkWeight];
     }
+    
 }
 
 -(BOOL)getMetric {
@@ -184,8 +185,6 @@ static UIImage* image;
         self.seconds = 0;
         self.distance = 0;
         self.locations = [NSMutableArray array];
-        _startRun.backgroundColor = UIColor.redColor;
-        [self.startRun setTitle:@"Stop Run" forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(eachSecond) userInfo:nil repeats:YES];
         [self startLocationUpdates];
         
@@ -200,8 +199,6 @@ static UIImage* image;
         self.timer = nil;
         [self.locationManager stopUpdatingLocation];
         button.selected = NO;
-        _startRun.backgroundColor = [UIColor colorWithRed: 0.0f green: 0.666667f blue: 0.0428568f alpha:1.0];
-        [self.startRun setTitle:@"Start Run" forState:UIControlStateNormal];
         
         //Get current user's weight
         NSNumber* userWeight = [[PFUser currentUser] objectForKey:@"userWeight"];
